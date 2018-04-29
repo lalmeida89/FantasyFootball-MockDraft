@@ -1,13 +1,15 @@
 import React  from 'react';
 import {connect} from 'react-redux';
 
-import {fetchPlayers} from '../fetchAction'
+import {fetchPlayers} from '../modules/fetchAction'
+import {setCurrentPlayer, getPlayerProfile} from '../modules/setCurrentPlayerAction'
 import {
   showQB,
   showRB,
   showWR,
   showTE
-} from '../showActions'
+} from '../modules/showActions'
+
 
 const sort_by = (field, reverse, primer) => {
   var key = primer ?
@@ -22,11 +24,14 @@ const sort_by = (field, reverse, primer) => {
 }
 
 const ShowPlayers = props => {
+  console.log(props)
   props.players.sort(sort_by('seasonPts', true, parseInt));
   let playerNames = props.players.map((player, index) => (
     <div key={index}>
-      <p>{player.key}</p>
-      <h3>{player.name} {player.position}</h3>
+      <h3
+      onClick={()=> props.currentId.dispatch(getPlayerProfile(player.id))}>
+      {player.name} {player.position}
+      </h3>
       <p>{player.seasonPts}</p>
       </div>
     ))
@@ -37,6 +42,7 @@ const ShowPlayers = props => {
 
 class Intro extends React.Component {
   componentDidMount() {
+    console.log(this.props);
     this.props.dispatch(fetchPlayers())
   }
 
@@ -79,7 +85,7 @@ class Intro extends React.Component {
           <button onClick={()=>this.displayRBS()}>show rbs </button>
           <button onClick={()=>this.displayWRS()}>show wrs </button>
           <button onClick={()=>this.displayTES()}>show tes </button>
-          <ShowPlayers players={this.props.displayPlayers} />
+          <ShowPlayers players={this.props.displayPlayers} currentId={this.props} />
         </div>
       )
     }
@@ -99,8 +105,11 @@ export const mapStateToProps = (state, props) => {
   te: state.te,
   loading: state.loading,
   error: state.error,
-  displayPlayers: state.displayPlayers
+  displayPlayers: state.displayPlayers,
+  currentPlayer: state.currentPlayer,
+  profile: state.profile
   })
 }
+
 
 export default connect(mapStateToProps)(Intro);

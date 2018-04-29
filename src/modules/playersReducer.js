@@ -1,5 +1,4 @@
 import {
-    //FETCH_PLAYERS_SUCCESS,
     FETCH_PLAYERS_REQUEST,
     FETCH_PLAYERS_ERROR,
 } from './fetchAction';
@@ -11,6 +10,11 @@ import {
   SHOW_QB
 } from './showActions'
 
+import {
+  SET_CURRENT_PLAYER,
+  SET_PLAYER_PROFILE
+} from './setCurrentPlayerAction'
+
 const initialState = {
     players: [],
     loading: false,
@@ -19,10 +23,12 @@ const initialState = {
     qb: [],
     rb: [],
     te: [],
-    displayPlayers: []
+    displayPlayers: [],
+    currentPlayer: 0,
+    profile: []
 };
 
-export default function reducer(playersState = initialState, action) {
+export default (playersState = initialState, action) => {
   console.log(action.type)
     switch (action.type) {
         case 'FETCH_PLAYERS_SUCCESS':
@@ -79,6 +85,24 @@ export default function reducer(playersState = initialState, action) {
             rb: playersState.rb,
             te: playersState.te
           };
+        case 'SET_CURRENT_PLAYER':
+          console.log(action);
+          return Object.assign({}, playersState, {
+            currentPlayer: action.id
+          });
+        case 'SET_PLAYER_PROFILE':
+          console.log(action, playersState)
+          return {
+            profile: action.profile,
+            loading: false,
+            error: null,
+            players: playersState.players,
+            wr: playersState.wr,
+            qb: playersState.qb,
+            rb: playersState.rb,
+            te: playersState.te,
+            displayPlayers: playersState.displayPlayers
+          };
         default:
           return {
             loading: true,
@@ -87,7 +111,8 @@ export default function reducer(playersState = initialState, action) {
             wr: playersState.wr,
             qb: playersState.qb,
             rb: playersState.rb,
-            te: playersState.te
+            te: playersState.te,
+            profile: playersState.profile
           }
         }
     return playersState;
