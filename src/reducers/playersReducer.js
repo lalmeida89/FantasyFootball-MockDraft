@@ -1,7 +1,7 @@
 
 const initialState = {
     players: [],
-    loading: false,
+    loading: true,
     error: null,
     wr: [],
     qb: [],
@@ -78,7 +78,8 @@ export default (playersState = initialState, action) => {
             def: playersState.def,
             k: playersState.k,
             menu: playersState.menu,
-            currentPlayer: playersState.currentPlayer
+            currentPlayer: playersState.currentPlayer,
+            displayPlayers: playersState.displayPlayers
           };
         case 'FETCH_PLAYERS_REQUEST':
           return {
@@ -92,7 +93,8 @@ export default (playersState = initialState, action) => {
             def: playersState.def,
             k: playersState.k,
             menu: playersState.menu,
-            currentPlayer: playersState.currentPlayer
+            currentPlayer: playersState.currentPlayer,
+            displayPlayers: playersState.displayPlayers
           };
         case 'SET_CURRENT_PLAYER':
           console.log(action);
@@ -159,7 +161,7 @@ export default (playersState = initialState, action) => {
           }
         default:
           return {
-            loading: true,
+            loading: playersState.loading,
             error: null,
             players: playersState.players,
             wr: playersState.wr,
@@ -172,7 +174,8 @@ export default (playersState = initialState, action) => {
             notes: playersState.notes,
             schedule: playersState.schedule,
             menu: playersState.menu,
-            currentPlayer: playersState.currentPlayer
+            currentPlayer: playersState.currentPlayer,
+            displayPlayers: playersState.displayPlayers
           }
         }
 }

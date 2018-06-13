@@ -93,6 +93,35 @@
   padding: 10px 14px;
   display: block;
   background-color: white;
+  overflow-y: scroll;
+}
+
+.draftDetails {
+  z-index: 999;
+  position: fixed;
+  margin: auto;
+  width: 100%;
+  display: none;
+  top: 100px;
+  background-color: white;
+}
+
+.scoringRules,
+.draftType,
+.countAndOrder,
+.mainStarters,
+.flexPlayers,
+.finalThree {
+  float: left;
+  margin-right: 20px;
+}
+
+.topHalf {
+  height: 100px;
+}
+
+.scoringRules label, .draftType label{
+  display: block;
 }
 
 .rosterPlayers {
@@ -129,6 +158,16 @@
 
 .schedule {
   line-height: 3px;
+}
+
+.fa-star {
+  color: #646557;
+  right: 300px;
+  position: absolute;
+}
+
+.fa-star:hover {
+  color: #bfbf2f;
 }
 
 .App {

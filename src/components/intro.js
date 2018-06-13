@@ -11,6 +11,7 @@ import {
 } from '../actions/showActions'
 import {playerDrafted} from '../actions/draftPlayersAction';
 import {Button} from '../styledComponents/dropdown'
+import {favoritedPlayer} from '../actions/favoriteActions'
 
 
 
@@ -29,20 +30,27 @@ const sort_by = (field, reverse, primer) => {
 const ShowPlayers = props => {
   console.log(props)
   props.players.sort(sort_by('rank', true, parseInt));
+  let style = {float : 'right', marginTop: '10px'};
   let playerNames = props.players.map((player, index) => (
     <div key={index} className='playerSelector'>
-    <button
-    style={{float : 'right', marginTop: '10px'}}
-    onClick={()=> props.currentId.dispatch(playerDrafted(player))}
-    className='draftBtn'>Draft
-    </button>
-    <p><b> {player.firstName} {player.lastName} </b>
-    <i className="far fa-file-alt"
-    onClick={()=> props.currentId.dispatch(getPlayerProfile(player.id))}>
-    </i></p>
-    { player.id === props.currentId.currentPlayer ?
-    <PlayerProfile /> : null }
-    <hr/>
+      <button
+      style={style}
+      onClick={()=> props.currentId.dispatch(playerDrafted(player))}
+      className='draftBtn'>Draft
+      </button>
+      <p><b> {player.firstName} {player.lastName} </b>
+        <i className="far fa-file-alt"
+        onClick={()=> props.currentId.dispatch(getPlayerProfile(player.id))}>
+        </i>
+        <i
+          className="fas fa-star"
+          title="Add to Favorites"
+          onClick={()=>props.currentId.dispatch(favoritedPlayer(player))}>
+        </i>
+      </p>
+      { player.id === props.currentId.currentPlayer ?
+      <PlayerProfile /> : null }
+      <hr/>
     </div>
     )
   )
@@ -142,7 +150,7 @@ class Intro extends React.Component {
 }
 
 
-export const mapStateToProps = ({playersReducer}) => {
+export const mapStateToProps = ({playersReducer, favoritesReducer}) => {
   console.log(playersReducer)
   return ({
   players: playersReducer.players,
@@ -157,7 +165,8 @@ export const mapStateToProps = ({playersReducer}) => {
   displayPlayers: playersReducer.displayPlayers,
   currentPlayer: playersReducer.currentPlayer,
   profile: playersReducer.profile,
-  menu: playersReducer.menu
+  menu: playersReducer.menu,
+  myFavorites: favoritesReducer.myFavorites
   })
 }
 
