@@ -69,7 +69,7 @@ export const fetchPlayers = () => {
           "http://api.fantasy.nfl.com/v1/players/editordraftranks?count=400&offset=300&format=json"
         ];
         dispatch(fetchPlayersRequest())
-        urls.map(url=> {
+        urls.map(url=> (
             fetch(proxyurl + url)
                 .then(res => res.json())
                 .then(response => {
@@ -77,12 +77,15 @@ export const fetchPlayers = () => {
                     let formattedRespObj = formatRespObj(response.players);
                     dispatch(loadPlayers(formattedRespObj));
                     console.log('success:', formattedRespObj);
-                })
+                    }
+                )
                 .catch(error => {
                     console.error('Error:', error);
                     dispatch(fetchPlayersError(error));
-                })
-        })
+                    }
+                )
+            )
+        )
     }
 };
 

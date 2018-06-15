@@ -76,10 +76,27 @@
   right: 0;
   top: 0;
   z-index: 5;
-  height: 100%;
+  height: 55%;
   padding: 10px 14px;
   display: block;
   background-color: white;
+  list-style: none;
+  border-bottom: 1px solid #80808054;
+}
+
+.favoritePlayers {
+  height: 40%;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  border-left: 1px solid #80808054;
+  padding: 10px 14px;
+}
+
+.favoritePlayers p {
+  line-height: 5px;
+  font-size: 13px;
 }
 
 .draftedPlayersList {
@@ -126,7 +143,7 @@
 
 .rosterPlayers {
   font-size: 12px;
-  line-height: 9px;
+  line-height: 5px;
 }
 
 .players {
@@ -150,10 +167,6 @@
 .dropdwnMenu {
   padding-left: 10px;
   width: 125px;
-}
-
-.rostersDiv {
-  list-style: none;
 }
 
 .schedule {

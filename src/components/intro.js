@@ -31,6 +31,16 @@ const ShowPlayers = props => {
   console.log(props)
   props.players.sort(sort_by('rank', true, parseInt));
   let style = {float : 'right', marginTop: '10px'};
+  let starStyle;
+  /*for (let i=0; i<props.players.length; i++){
+    if(props.currentId.myFavorites.length >= 1 ){
+      for(let j=0; j<props.currentId.myFavorites.length; i++){
+        console.log(props.currentId.myFavorites)
+        props.players[i].id == props.currentId.myFavorites[j].id ?
+          starStyle= { color: '#bfbf2f'} : starStyle= { color : '#646557'}
+      }
+    }
+  }*/
   let playerNames = props.players.map((player, index) => (
     <div key={index} className='playerSelector'>
       <button
@@ -39,10 +49,12 @@ const ShowPlayers = props => {
       className='draftBtn'>Draft
       </button>
       <p><b> {player.firstName} {player.lastName} </b>
-        <i className="far fa-file-alt"
+        <i
+        className="far fa-file-alt"
         onClick={()=> props.currentId.dispatch(getPlayerProfile(player.id))}>
         </i>
         <i
+          style= {starStyle}
           className="fas fa-star"
           title="Add to Favorites"
           onClick={()=>props.currentId.dispatch(favoritedPlayer(player))}>

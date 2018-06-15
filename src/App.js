@@ -4,6 +4,7 @@ import Intro from './components/intro'
 import TeamRosters from './components/teamRosters'
 import PlayersDrafted from './components/playersDrafted'
 import DraftPage from './components/draftPreferences'
+import Favorites from './components/favorites'
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
         <PlayersDrafted />
         <Intro />
         <TeamRosters />
+        <Favorites />
       </div>
     );
   }

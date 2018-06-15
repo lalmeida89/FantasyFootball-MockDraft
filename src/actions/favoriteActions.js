@@ -16,7 +16,6 @@ export const favoritePicks = player => {
   let favoritedPlayerObj = {favorites : []};
   favoritedPlayerObj.favorites.push(player)
   return favoritedPlayerObj
-  console.log(favoritedPlayerObj)
 }
 
 export const favoritedPlayer = player => {
