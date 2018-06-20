@@ -8,7 +8,9 @@ import favoritesReducer from './favoritesReducer'
 const rootReducer = combineReducers({
   playersReducer,
   teamReducer,
-  favoritesReducer
+  favoritesReducer,
+  form: formReducer,
+  draftPreferencesReducer
 });
 
 export default rootReducer

@@ -11,7 +11,7 @@ import {
 } from '../actions/showActions'
 import {playerDrafted} from '../actions/draftPlayersAction';
 import {Button} from '../styledComponents/dropdown'
-import {favoritedPlayer} from '../actions/favoriteActions'
+import {favoritedPlayer, removeFromFavorites} from '../actions/favoriteActions'
 
 
 
@@ -31,16 +31,12 @@ const ShowPlayers = props => {
   console.log(props)
   props.players.sort(sort_by('rank', true, parseInt));
   let style = {float : 'right', marginTop: '10px'};
-  let starStyle;
-  /*for (let i=0; i<props.players.length; i++){
-    if(props.currentId.myFavorites.length >= 1 ){
-      for(let j=0; j<props.currentId.myFavorites.length; i++){
-        console.log(props.currentId.myFavorites)
-        props.players[i].id == props.currentId.myFavorites[j].id ?
-          starStyle= { color: '#bfbf2f'} : starStyle= { color : '#646557'}
-      }
-    }
-  }*/
+  let starStyle = {color: 'blue'}
+  console.log(props.currentId.myFavorites);
+  console.log(props.players);
+  //add a function that loops through favorites and players
+  //when a player is added to favorites, the removeFavorite action can take place,
+  //and his addToFavorites button will already be highlighted
   let playerNames = props.players.map((player, index) => (
     <div key={index} className='playerSelector'>
       <button
@@ -54,10 +50,10 @@ const ShowPlayers = props => {
         onClick={()=> props.currentId.dispatch(getPlayerProfile(player.id))}>
         </i>
         <i
-          style= {starStyle}
+          style= { props.currentId.myFavorites.includes(player) ? {color:'#bfbf2f'} : {color: '#646557'}}
           className="fas fa-star"
           title="Add to Favorites"
-          onClick={()=>props.currentId.dispatch(favoritedPlayer(player))}>
+          onClick={()=>{props.currentId.myFavorites.includes(player) ? props.currentId.dispatch(removeFromFavorites(player)) : props.currentId.dispatch(favoritedPlayer(player)) }}>
         </i>
       </p>
       { player.id === props.currentId.currentPlayer ?

@@ -118,9 +118,26 @@
   position: fixed;
   margin: auto;
   width: 100%;
-  display: none;
   top: 100px;
   background-color: white;
+}
+
+td {
+  float: left;
+  margin-bottom: 10px;
+}
+
+td > label {
+  float: left;
+  text-align: right;
+  margin: 5px 10px 0 0;
+  width: 95px;
+}
+
+.positionCount {
+  position: relative;
+  height: 30px;
+  display: inline-block;
 }
 
 .scoringRules,
@@ -135,6 +152,7 @@
 
 .topHalf {
   height: 100px;
+  margin: auto;
 }
 
 .scoringRules label, .draftType label{
@@ -180,7 +198,7 @@
 }
 
 .fa-star:hover {
-  color: #bfbf2f;
+  color: #bfbf2f !important;
 }
 
 .App {
