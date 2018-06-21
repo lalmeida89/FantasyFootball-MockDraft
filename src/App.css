@@ -59,6 +59,16 @@
   margin-right: 40px;
 }
 
+.teamCount, .draftPosition {
+  padding: 0 10px 0;
+}
+
+.submitButton {
+  bottom: 10px;
+  position: absolute;
+  margin: 0 auto;
+}
+
 .playerSelector {
   font-size: 13px;
   padding: 5px 10px;
@@ -115,11 +125,13 @@
 
 .draftDetails {
   z-index: 999;
-  position: fixed;
-  margin: auto;
-  width: 100%;
+  position: relative;
+  width: 550px;
   top: 100px;
   background-color: white;
+  margin: 0 auto;
+  height: 400px;
+  padding: 10px;
 }
 
 td {
@@ -127,17 +139,40 @@ td {
   margin-bottom: 10px;
 }
 
-td > label {
+td > label, .formLabel {
   float: left;
   text-align: right;
   margin: 5px 10px 0 0;
   width: 95px;
 }
 
+
+
 .positionCount {
   position: relative;
   height: 30px;
   display: inline-block;
+  border: 2px solid #34423a;
+  padding: 2px;
+  width: 50px;
+  text-align: justify;
+  cursor: pointer;
+}
+
+.reduxFormDiv {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  position: fixed;
+  z-index: 998;
+  background-color: #000000e0;
+  top: 0;
+}
+
+.rosterHeader {
+  text-align: center;
+  padding-top: 20px;
+  margin-top: 30px;
 }
 
 .scoringRules,

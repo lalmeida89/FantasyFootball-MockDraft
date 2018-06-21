@@ -12,30 +12,35 @@ class DraftSetup extends Component {
   render() {
     const { handleSubmit, teamCount } = this.props;
     console.log(this.props, teamCount)
+    let style = {fontSize: '13px'}
     if (this.props.showSettingsPage){
     return (
+      <div className='reduxFormDiv'>
       <form className="draftDetails" onSubmit={handleSubmit}>
         <div className="topHalf">
+        <h3 style={{textAlign:'center'}}> Customize Your Draft </h3>
         <div className="scoringRules">
-          <label>League Scoring</label>
+          <label><b>League Scoring</b></label>
           <div>
-            <label><Field name="scoring" component="input" type="radio" value="standard" checked='true'/> Standard</label>
-            <label><Field name="scoring" component="input" type="radio" value="halfPPR" disabled/> Half PPR (Coming Soon!)</label>
-            <label><Field name="scoring" component="input" type="radio" value="PPR" disabled /> PPR (Coming Soon!)</label>
+            <label style={style}><Field name="scoring" component="input" type="radio" value="standard" checked='true'/> Standard</label>
+            <label style={style}><Field name="scoring" component="input" type="radio" value="halfPPR" disabled/> Half PPR (Coming Soon!)</label>
+            <label style={style}><Field name="scoring" component="input" type="radio" value="PPR" disabled /> PPR (Coming Soon!)</label>
           </div>
         </div>
         <div className="draftType">
-          <label>Draft Type</label>
+          <label><b>Draft Type</b></label>
           <div>
-            <label><Field name="drafting" component="input" type="radio" value="snake" checked='true'/> Snake</label>
-            <label><Field name="drafting" component="input" type="radio" value="auction" disabled/> Auction (Coming Soon!)</label>
+            <label style={style}><Field name="drafting" component="input" type="radio" value="snake" checked='true'/> Snake</label>
+            <label style={style}><Field name="drafting" component="input" type="radio" value="auction" disabled/> Auction (Coming Soon!)</label>
           </div>
         </div>
         <div className="countAndOrder">
         <div className="teamCount">
-          <label>Number of Teams</label>
+          <label><b>Number of Teams</b></label>
           <div>
             <Field
+              style={{width:'80px', padding: '0 10px 0'}}
+              className='positionCount'
               name="numberOfTeams"
               component="select"
               onChange={event=>this.handleOnChange(event.currentTarget.value)}>
@@ -73,9 +78,13 @@ class DraftSetup extends Component {
         </div>
 
         <div className="draftPosition">
-          <label>Draft Position</label>
+          <label><b>Draft Position</b></label>
           <div>
-            <Field name="draftOrder" component="select">
+            <Field
+              style={{width:'80px'}}
+              name="draftOrder"
+              component="select"
+              className='positionCount'>
               <option value="1">1st</option>
               <option value="2">2nd</option>
               <option value="3">3rd</option>
@@ -116,7 +125,9 @@ class DraftSetup extends Component {
         </div>
 
         <div className='rosterSetup'>
-          <h3> Roster Settings </h3>
+          <div>
+            <h3 className='rosterHeader'> Roster Settings </h3>
+          </div>
           <div className='mainStarters'>
           <table>
             <tbody>
@@ -296,9 +307,11 @@ class DraftSetup extends Component {
         </table>
       </div>
     </div>
-
-  <button type="submit">Submit</button>
+    <div className='submitButton'>
+      <button type="submit">Submit</button>
+    </div>
 </form>
+</div>
     )
   }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PlayerProfile from './playerProfile'
 import {getPlayerProfile} from '../actions/setCurrentPlayerAction'
-import {favoritedPlayer} from '../actions/favoriteActions'
+import {favoritedPlayer, removeFromFavorites} from '../actions/favoriteActions'
 
 class Favorites extends React.Component {
   render(){
@@ -12,9 +12,14 @@ class Favorites extends React.Component {
     }
     else if(myFavorites){
       let ShowFaves = myFavorites.map((player, index) => (
-        <div key={index}> <p
-          onClick={()=> dispatch(getPlayerProfile(player.id))}>
-          <b> {player.firstName} {player.lastName} </b>
+        <div className='favoritesList' key={index}>
+          <p>
+            <b onClick={()=> dispatch(getPlayerProfile(player.id))}>
+            {player.firstName} {player.lastName} </b>
+            <i className="fas fa-times"
+            style={{marginLeft:'15px'}}
+            onClick={()=> dispatch(removeFromFavorites(player))}
+            title="Remove Player from favorites"></i>
           </p>
         </div>
       ))
