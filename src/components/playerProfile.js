@@ -4,16 +4,13 @@ import {hidePlayerProfile} from '../actions/setCurrentPlayerAction';
 import {showNotes, showSchedule} from '../actions/showActions'
 
 
-function rearrangeDate(dateString) {
-
+const rearrangeDate = (dateString) => {
   var numbers = dateString.substring(0,4);
-
   return dateString.substring(5) + '-' + numbers
 }
 
 
 class PlayerProfile extends React.Component {
-
   renderNotes = () => {
     this.props.dispatch(showNotes())
   }
@@ -34,8 +31,9 @@ class PlayerProfile extends React.Component {
       if(this.props.playerProfile){
         return (
           <div className='playrHedr'>
-            <p onClick={()=>this.props.dispatch(hidePlayerProfile())}
-            style={style}><b>x</b></p>
+            <i className="fas fa-times"
+              style={style}
+              onClick={()=>this.props.dispatch(hidePlayerProfile())}></i>
             <div className='infoSelector'>
               <button onClick={()=> this.renderNotes()}> Notes </button>
               <button onClick={()=> this.renderSchedule()}> Schedule </button>

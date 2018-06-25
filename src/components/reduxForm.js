@@ -307,9 +307,8 @@ class DraftSetup extends Component {
         </table>
       </div>
     </div>
-    <div className='submitButton'>
-      <button type="submit">Submit</button>
-    </div>
+
+    <button className='submitButton' type="submit">Submit</button>
 </form>
 </div>
     )

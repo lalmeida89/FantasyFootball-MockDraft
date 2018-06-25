@@ -1,12 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import PlayerProfile from './playerProfile'
 import {getPlayerProfile} from '../actions/setCurrentPlayerAction'
-import {favoritedPlayer, removeFromFavorites} from '../actions/favoriteActions'
+import {removeFromFavorites} from '../actions/favoriteActions'
 
 class Favorites extends React.Component {
   render(){
-    const { myFavorites, dispatch, currentPlayer } = this.props
+    const { myFavorites, dispatch } = this.props
     if (!myFavorites){
       return null
     }
