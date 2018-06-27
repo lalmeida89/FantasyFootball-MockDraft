@@ -63,7 +63,7 @@ const ShowPlayers = props => {
     )
   )
   return (
-    <div>
+    <div style={{padding: '0 10px'}}>
     {playerNames}
     </div>
   )

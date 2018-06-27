@@ -90,7 +90,7 @@
 
 .rostersDiv {
   position: fixed;
-  width: 200px;
+  width: 22%;
   border-left: 1px solid #80808054;
   right: 0;
   top: 0;
@@ -108,9 +108,10 @@
   position: fixed;
   bottom: 0;
   right: 0;
-  width: 200px;
+  width: 22%;
   border-left: 1px solid #80808054;
   padding: 10px 14px;
+  background-color: white;
 }
 
 .favoritePlayers p {
@@ -120,7 +121,7 @@
 
 .draftedPlayersList {
   position: fixed;
-  width: 200px;
+  width: 22%;
   border-right: 1px solid #80808054;
   left: 0;
   top: 0;
@@ -209,7 +210,7 @@ td > label, .formLabel {
 }
 
 .players {
-  width: 400px;
+  width: 49%;
   margin: auto;
 }
 
@@ -227,7 +228,7 @@ td > label, .formLabel {
 }
 
 .dropdwnMenu {
-  padding-left: 10px;
+  padding-left: 20px;
   width: 125px;
 }
 
@@ -238,7 +239,8 @@ td > label, .formLabel {
 .fa-star {
   color: #646557;
   right: 300px;
-  position: absolute;
+  float: right;
+  margin-right: 10px;
 }
 
 .fa-star:hover {
