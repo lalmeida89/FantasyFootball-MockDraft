@@ -3,18 +3,19 @@ const initialState = {
   scoring: 'standard',
   draftPos: 7,
   draftType: 'snake',
-  numberOfQBs: 1,
-  numberOfRBs: 2,
-  numberOfWRs: 2,
-  numberOfTEs: 1,
-  numberOfWRsRBs: 0,
-  numberOfWRsTEs: 0,
-  numberOfRBsTEs: 0,
-  numberOfRBsWRsTEs: 1,
-  numberOfQBsWRsRBsTEs: 0,
-  numberOfDST: 1,
-  numberOfKickers: 1,
-  benchCount: 6,
+  numberOfQBs: '',
+  numberOfRBs: '',
+  numberOfWRs: '',
+  numberOfTEs: '',
+  numberOfWRsRBs: '',
+  numberOfWRsTEs: '',
+  numberOfRBsTEs: '',
+  numberOfRBsWRsTEs: '',
+  numberOfQBsWRsRBsTEs: '',
+  numberOfDST: '',
+  numberOfKickers: '',
+  benchCount: '',
+  flexCount: '',
   showSettingsPage: true
 }
 
@@ -44,6 +45,7 @@ export default (preferenceState = initialState, action) => {
             numberOfDST: action.numberOfDST,
             numberOfKickers: action.numberOfKickers,
             benchCount: action.benchCount,
+            flexCount: parseInt(action.numberOfWRsRBs) + parseInt(action.numberOfWRsTEs) + parseInt(action.numberOfRBsTEs) + parseInt(action.numberOfRBsWRsTEs) + parseInt(action.numberOfQBsWRsRBsTEs),
             showSettingsPage: false
           };
         default:
@@ -64,7 +66,8 @@ export default (preferenceState = initialState, action) => {
             numberOfDST: preferenceState.numberOfDST,
             numberOfKickers: preferenceState.numberOfKickers,
             benchCount: preferenceState.benchCount,
-            showSettingsPage: preferenceState.showSettingsPage
+            showSettingsPage: preferenceState.showSettingsPage,
+            flexCount: preferenceState.flexCount
           }
     }
 }

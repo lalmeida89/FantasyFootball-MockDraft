@@ -5,72 +5,91 @@ class TeamRosters extends React.Component {
 
   render(){
     console.log(this.props.team1)
-    const { numberOfQBs, numberOfWRs, numberOfRBs, numberOfTEs, showSettingsPage, numberOfDST, numberOfKickers, benchCount } = this.props;
+    const {
+      numberOfQBs,
+      numberOfWRs,
+      numberOfRBs,
+      numberOfTEs,
+      showSettingsPage,
+      numberOfDST,
+      numberOfKickers,
+      benchCount,
+      numberOfWRsRBs,
+      numberOfWRsTEs,
+      numberOfRBsTEs,
+      numberOfRBsWRsTEs,
+      numberOfQBsWRsRBsTEs,
+      flexCount
+      } = this.props;
 
-    if (showSettingsPage == true) {
+    if (showSettingsPage === true) {
       return null
     }
 
-    else if (showSettingsPage == false) {
+    else if (showSettingsPage === false) {
     const Team1Roster = () => {
       let myTeam = this.props.team1
       let myRoster = {qbs : [], wrs : [], rbs : [], tes : [], def : [], flex : [], k : [], bench : []}
-      console.log(myRoster)
+      console.log(flexCount);
       for(let i=0; i< myTeam.length; i++){
         if (myTeam[i].position === 'QB'){
           myRoster.qbs.push(myTeam[i])
-          if (myRoster.qbs.length > numberOfQBs){
-            myRoster.bench.push(myTeam[i])
+            if (myRoster.qbs.length > numberOfQBs && myRoster.flex.length <= flexCount && numberOfQBsWRsRBsTEs >= 1){
+              myRoster.flex.push(myTeam[i])
+            }
+            if (myRoster.qbs.length > numberOfQBs && myRoster.flex.length > flexCount){
+              myRoster.bench.push(myTeam[i])
           }
         }
         if (myTeam[i].position === 'WR'){
           myRoster.wrs.push(myTeam[i])
-          if (myRoster.wrs.length > 2){
-            myRoster.bench.push(myTeam[i])
-            if (myRoster.flex.length < 1) {
+            if (myRoster.wrs.length > numberOfWRs && myRoster.flex.length <= flexCount && (numberOfRBsWRsTEs >= 1 || numberOfWRsTEs >= 1 || numberOfWRsRBs >= 1 || numberOfQBsWRsRBsTEs >= 1)) {
               myRoster.flex.push(myTeam[i])
             }
+            if (myRoster.wrs.length > numberOfWRs && myRoster.flex.length > flexCount){
+              myRoster.bench.push(myTeam[i])
           }
         }
+
         if (myTeam[i].position === 'TE'){
           myRoster.tes.push(myTeam[i])
-          if (myRoster.tes.length > 1){
-            myRoster.bench.push(myTeam[i])
-            if (myRoster.flex.length < 1) {
+            if (myRoster.tes.length > numberOfTEs && myRoster.flex.length <= flexCount && (numberOfRBsTEs >= 1 || numberOfWRsTEs >=1 || numberOfRBsWRsTEs >=1 || numberOfQBsWRsRBsTEs >= 1)) {
               myRoster.flex.push(myTeam[i])
             }
+            if (myRoster.tes.length > numberOfTEs && myRoster.flex.length > flexCount){
+              myRoster.bench.push(myTeam[i])
           }
         }
+
         if (myTeam[i].position === 'RB'){
           myRoster.rbs.push(myTeam[i])
-          if (myRoster.rbs.length > 2){
+          if (myRoster.rbs.length > numberOfRBs && myRoster.flex.length <= flexCount && (numberOfRBsWRsTEs >= 1 || numberOfRBsTEs >= 1 || numberOfWRsRBs >= 1 || numberOfQBsWRsRBsTEs >= 1)) {
+            myRoster.flex.push(myTeam[i])
+            console.log(myRoster)
+          }
+          if (myRoster.rbs.length > numberOfRBs && myRoster.flex.length > flexCount){
             myRoster.bench.push(myTeam[i])
-            if (myRoster.flex.length < 1) {
-              myRoster.flex.push(myTeam[i])
-            }
+            console.log(myRoster.bench, 'plum', myRoster.flex)
           }
         }
+
         if (myTeam[i].position === 'DEF'){
           myRoster.def.push(myTeam[i])
-          if (myRoster.def.length > 1){
+          if (myRoster.def.length > numberOfDST){
             myRoster.bench.push(myTeam[i])
           }
         }
         if (myTeam[i].position ==='K'){
           myRoster.k.push(myTeam[i])
-          if (myRoster.k.length > 1){
+          if (myRoster.k.length > numberOfKickers){
             myRoster.bench.push(myTeam[i])
           }
         }
 
       }
-      const newBench = myRoster.bench.filter(player=>{
-        if(myRoster.flex[0]){
-          return player.id !== myRoster.flex[0].id
-        }
-        return player.id
-      })
-      console.log(newBench)
+      console.log(myRoster.bench);
+      console.log(myRoster.flex);
+      console.log(myRoster.rbs.length, 'pineapple', numberOfRBs)
       let showStyle = {display: 'inline'};
 
         return (
@@ -143,13 +162,43 @@ class TeamRosters extends React.Component {
             </p>
 
 
-            <p><b> FLX </b>
-            { myRoster.flex[0]
-              ? (myRoster.flex[0].name
-                ? myRoster.flex[0].name
-                : myRoster.flex[0].firstName + ' ' + myRoster.flex[0].lastName )
-                : null}
-                </p>
+            <p style={ flexCount >= 1 ? {showStyle} : {display:'none'}}><b> FLX </b>
+            { myRoster.flex[0] ? (myRoster.flex[0].firstName + ' ' + myRoster.flex[0].lastName ) : null }
+            </p>
+            <p style={ flexCount >= 2 ? {showStyle} : {display:'none'}}><b> FLX </b>
+            { myRoster.flex[1] ? (myRoster.flex[1].firstName + ' ' + myRoster.flex[1].lastName  ) : null }
+            </p>
+            <p style={ flexCount >= 3 ? {showStyle} : {display:'none'}}><b> FLX </b>
+            { myRoster.flex[2] ? (myRoster.flex[2].firstName + ' ' + myRoster.flex[2].lastName  ) : null }
+            </p>
+            <p style={ flexCount >= 4 ? {showStyle} : {display:'none'}}><b> FLX </b>
+            { myRoster.flex[3] ? (myRoster.flex[3].firstName + ' ' + myRoster.flex[3].lastName  ) : null }
+            </p>
+            <p style={ flexCount >= 5 ? {showStyle} : {display:'none'}}><b> FLX </b>
+            { myRoster.flex[4] ? (myRoster.flex[4].firstName + ' ' + myRoster.flex[4].lastName ) : null }
+            </p>
+            <p style={ flexCount >= 6 ? {showStyle} : {display:'none'}}><b> FLX </b>
+            { myRoster.flex[5] ? (myRoster.flex[5].firstName + ' ' + myRoster.flex[5].lastName  ) : null }
+            </p>
+            <p style={ flexCount >= 7 ? {showStyle} : {display:'none'}}><b> FLX </b>
+            { myRoster.flex[6] ? (myRoster.flex[6].firstName + ' ' + myRoster.flex[6].lastName  ) : null }
+            </p>
+            <p style={ flexCount >= 8 ? {showStyle} : {display:'none'}}><b> FLX </b>
+            { myRoster.flex[7] ? (myRoster.flex[7].firstName + ' ' + myRoster.flex[7].lastName  ) : null }
+            </p>
+            <p style={ flexCount >= 9 ? {showStyle} : {display:'none'}}><b> FLX </b>
+            { myRoster.flex[8] ? (myRoster.flex[8].firstName + ' ' + myRoster.flex[8].lastName ) : null }
+            </p>
+            <p style={ flexCount >= 10 ? {showStyle} : {display:'none'}}><b> FLX </b>
+            { myRoster.flex[9] ? (myRoster.flex[9].firstName + ' ' + myRoster.flex[9].lastName  ) : null }
+            </p>
+            <p style={ flexCount >= 11 ? {showStyle} : {display:'none'}}><b> FLX </b>
+            { myRoster.flex[10] ? (myRoster.flex[10].firstName + ' ' + myRoster.flex[10].lastName  ) : null }
+            </p>
+            <p style={ flexCount >= 12 ? {showStyle} : {display:'none'}}><b> FLX </b>
+            { myRoster.flex[11] ? (myRoster.flex[11].firstName + ' ' + myRoster.flex[11].lastName  ) : null }
+            </p>
+
 
             <p style={ numberOfDST >= 1 ? {showStyle} : {display:'none'}}><b> DST </b>
             { myRoster.def[0] ? (myRoster.def[0].firstName + ' ' + myRoster.def[0].lastName ) : null }
@@ -182,35 +231,35 @@ class TeamRosters extends React.Component {
             <h3 style={{color:'grey', fontSize :'18px'}}> Bench </h3>
 
             <p style={ benchCount >= 1 ? {showStyle} : {display:'none'}}><b> BN </b>
-              { newBench[0] ?
-                (newBench[0].firstName + ' ' + newBench[0].lastName + ' ' + newBench[0].position ) : null } </p>
+              { myRoster.bench[0] ?
+                (myRoster.bench[0].firstName + ' ' + myRoster.bench[0].lastName + ' ' + myRoster.bench[0].position ) : null } </p>
             <p style={ benchCount >= 2 ? {showStyle} : {display:'none'}}><b> BN </b>
-              { newBench[1] ?
-                (newBench[1].firstName + ' ' + newBench[1].lastName + ' ' + newBench[1].position ) : null } </p>
+              { myRoster.bench[1] ?
+                (myRoster.bench[1].firstName + ' ' + myRoster.bench[1].lastName + ' ' + myRoster.bench[1].position ) : null } </p>
             <p style={ benchCount >= 3 ? {showStyle} : {display:'none'}}><b> BN </b>
-              { newBench[2] ?
-                (newBench[2].firstName + ' ' + newBench[2].lastName + ' ' + newBench[2].position ) : null } </p>
+              { myRoster.bench[2] ?
+                (myRoster.bench[2].firstName + ' ' + myRoster.bench[2].lastName + ' ' + myRoster.bench[2].position ) : null } </p>
             <p style={ benchCount >= 4 ? {showStyle} : {display:'none'}}><b> BN </b>
-              { newBench[3] ?
-                (newBench[3].firstName + ' ' + newBench[3].lastName + ' ' + newBench[3].position ) : null } </p>
+              { myRoster.bench[3] ?
+                (myRoster.bench[3].firstName + ' ' + myRoster.bench[3].lastName + ' ' + myRoster.bench[3].position ) : null } </p>
             <p style={ benchCount >= 5 ? {showStyle} : {display:'none'}}><b> BN </b>
-              { newBench[4] ?
-                (newBench[4].firstName + ' ' + newBench[4].lastName + ' ' + newBench[4].position ) : null } </p>
+              { myRoster.bench[4] ?
+                (myRoster.bench[4].firstName + ' ' + myRoster.bench[4].lastName + ' ' + myRoster.bench[4].position ) : null } </p>
             <p style={ benchCount >= 6 ? {showStyle} : {display:'none'}}><b> BN </b>
-              { newBench[5] ?
-                (newBench[5].firstName + ' ' + newBench[5].lastName + ' ' + newBench[5].position ) : null } </p>
+              { myRoster.bench[5] ?
+                (myRoster.bench[5].firstName + ' ' + myRoster.bench[5].lastName + ' ' + myRoster.bench[5].position ) : null } </p>
             <p style={ benchCount >= 7 ? {showStyle} : {display:'none'}}><b> BN </b>
-              { newBench[6] ?
-                (newBench[6].firstName + ' ' + newBench[6].lastName + ' ' + newBench[6].position ) : null } </p>
+              { myRoster.bench[6] ?
+                (myRoster.bench[6].firstName + ' ' + myRoster.bench[6].lastName + ' ' + myRoster.bench[6].position ) : null } </p>
             <p style={ benchCount >= 8 ? {showStyle} : {display:'none'}}><b> BN </b>
-              { newBench[7] ?
-                (newBench[7].firstName + ' ' + newBench[7].lastName + ' ' + newBench[7].position ) : null } </p>
+              { myRoster.bench[7] ?
+                (myRoster.bench[7].firstName + ' ' + myRoster.bench[7].lastName + ' ' + myRoster.bench[7].position ) : null } </p>
             <p style={ benchCount >= 9 ? {showStyle} : {display:'none'}}><b> BN </b>
-              { newBench[8] ?
-                (newBench[8].firstName + ' ' + newBench[8].lastName + ' ' + newBench[8].position ) : null } </p>
+              { myRoster.bench[8] ?
+                (myRoster.bench[8].firstName + ' ' + myRoster.bench[8].lastName + ' ' + myRoster.bench[8].position ) : null } </p>
             <p style={ benchCount >= 10 ? {showStyle} : {display:'none'}}><b> BN </b>
-              { newBench[9] ?
-                (newBench[9].firstName + ' ' + newBench[9].lastName + ' ' + newBench[9].position ) : null } </p>
+              { myRoster.bench[9] ?
+                (myRoster.bench[9].firstName + ' ' + myRoster.bench[9].lastName + ' ' + myRoster.bench[9].position ) : null } </p>
 
 
           </div>
@@ -238,6 +287,12 @@ export const mapStateToProps = ({teamReducer, draftPreferencesReducer}) => {
     numberOfDST: draftPreferencesReducer.numberOfDST,
     numberOfKickers: draftPreferencesReducer.numberOfKickers,
     benchCount: draftPreferencesReducer.benchCount,
+    numberOfWRsRBs: draftPreferencesReducer.numberOfWRsRBs,
+    numberOfWRsTEs: draftPreferencesReducer.numberOfWRsTEs,
+    numberOfRBsTEs: draftPreferencesReducer.numberOfRBsTEs,
+    numberOfRBsWRsTEs: draftPreferencesReducer.numberOfRBsWRsTEs,
+    numberOfQBsWRsRBsTEs: draftPreferencesReducer.numberOfQBsWRsRBsTEs,
+    flexCount: draftPreferencesReducer.flexCount,
     playersUsed: teamReducer.playersUsed,
     team1: teamReducer.team1
   })

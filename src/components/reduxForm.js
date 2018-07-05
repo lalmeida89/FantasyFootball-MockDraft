@@ -331,17 +331,18 @@ DraftSetup = reduxForm({
   initialValues: {
        numberOfTeams: 12,
        draftOrder: 7,
-       qbCount: 1,
-       rbCount: 2,
-       wrCount: 2,
-       teCount: 1,
-       wrRbFlexCount: 0,
-       wrTeFlexCount: 0,
-       wrRbTeFlexCount: 1,
-       qbWrRbTeFlexCount: 0,
-       dstCount: 1,
-       kCount: 1,
-       benchCount: 6
+       qbCount: '1',
+       rbCount: '2',
+       wrCount: '2',
+       teCount: '1',
+       rbTeFlexCount: '0',
+       wrRbFlexCount: '0',
+       wrTeFlexCount: '0',
+       wrRbTeFlexCount: '1',
+       qbWrRbTeFlexCount: '0',
+       dstCount: '1',
+       kCount: '1',
+       benchCount: '6'
    },
    enableReinitialize : true
 })(DraftSetup);

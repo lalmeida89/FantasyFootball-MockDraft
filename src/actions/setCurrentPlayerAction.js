@@ -3,7 +3,6 @@ export const SET_PLAYER_PROFILE = 'SET_PLAYER_PROFILE';
 export const HIDE_PLAYER_PROFILE ='HIDE_PLAYER_PROFILE'
 
 export const setCurrentPlayer = id => {
-  console.log(id);
   return {
     type: SET_CURRENT_PLAYER,
     id
@@ -36,7 +35,7 @@ export function getPlayerProfile(id) {
   }
 }
 
-export function hidePlayerProfile() {
+export const hidePlayerProfile = () => {
   return dispatch => {
     dispatch(setPlayerProfile(null))
   }
