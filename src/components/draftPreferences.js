@@ -3,9 +3,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {draftPageSubmit} from '../actions/draftPreferencesAction'
 
+
 class DraftPage extends React.Component {
   submit = (values) => {
-    const { dispatch } = this.props;
+    const { dispatch, myTeam } = this.props;
     // Do something with the form values
     dispatch(draftPageSubmit(
       values.numberOfTeams,
@@ -21,8 +22,9 @@ class DraftPage extends React.Component {
       values.qbWrRbTeFlexCount,
       values.dstCount,
       values.kCount,
-      values.benchCount
-    ))
+      values.benchCount,
+      myTeam
+    ));
     console.log(values);
   }
   render() {
@@ -32,10 +34,11 @@ class DraftPage extends React.Component {
   }
 }
 
-export const mapStateToProps = ({draftPreferencesReducer}) => {
+export const mapStateToProps = ({draftPreferencesReducer, teamReducer}) => {
   console.log(draftPreferencesReducer);
   return ({
-    teamCount: draftPreferencesReducer.teamCount
+    teamCount: draftPreferencesReducer.teamCount,
+    myTeam: teamReducer.myTeam
   })
 }
 

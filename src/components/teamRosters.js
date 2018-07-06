@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 class TeamRosters extends React.Component {
 
   render(){
-    console.log(this.props.team1)
+    console.log(this.props.myTeam)
     const {
       numberOfQBs,
       numberOfWRs,
@@ -28,7 +28,7 @@ class TeamRosters extends React.Component {
 
     else if (showSettingsPage === false) {
     const Team1Roster = () => {
-      let myTeam = this.props.team1
+      let myTeam = this.props.myTeam
       let myRoster = {qbs : [], wrs : [], rbs : [], tes : [], def : [], flex : [], k : [], bench : []}
       console.log(flexCount);
       for(let i=0; i< myTeam.length; i++){
@@ -294,7 +294,7 @@ export const mapStateToProps = ({teamReducer, draftPreferencesReducer}) => {
     numberOfQBsWRsRBsTEs: draftPreferencesReducer.numberOfQBsWRsRBsTEs,
     flexCount: draftPreferencesReducer.flexCount,
     playersUsed: teamReducer.playersUsed,
-    team1: teamReducer.team1
+    myTeam: teamReducer.myTeam
   })
 }
 export default connect (mapStateToProps)(TeamRosters)

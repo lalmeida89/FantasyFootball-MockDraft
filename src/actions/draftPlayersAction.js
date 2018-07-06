@@ -4,22 +4,14 @@ export const DRAFT_PLAYER ='DRAFT_PLAYER';
 the state to be that team array. all of the players drafted will be merged onto the playersUsed array */
 export const draftPlayer = teamPicksObj => ({
   type: DRAFT_PLAYER,
-  team1: teamPicksObj.team1,
-  team2: teamPicksObj.team2,
-  playersUsed: teamPicksObj.team1
+  myTeam: teamPicksObj.myTeam,
+  playersUsed: teamPicksObj.myTeam
 })
 
 export const teamPicks = player => {
-  let teamPicksObj = {team1 : [], team2 : []}
-  let team1 = teamPicksObj.team1;
-  let team2 = teamPicksObj.team2;
-  team1.push(player)/*
-  if (team1.length === team2.length){
-    team1.push(player)
-  }
-  if (team1.length > team2.length){
-    team2.push(player)
-  }*/
+  let teamPicksObj = {myTeam : [], team2 : []}
+  let myTeam = teamPicksObj.myTeam;
+  myTeam.push(player);
   console.log(teamPicksObj)
   return teamPicksObj
 }
@@ -31,13 +23,3 @@ export const playerDrafted = (player) => {
     console.log(player);
   }
 }
-
-/*
-teams = [userTeam : [], compTeam1 : []]
-  for( let i=0; i< teams.length ; i++){
-    if (user == teams[i]) {
-
-    }
-  }
-
-*/

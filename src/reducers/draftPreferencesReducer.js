@@ -16,7 +16,8 @@ const initialState = {
   numberOfKickers: '',
   benchCount: '',
   flexCount: '',
-  showSettingsPage: true
+  showSettingsPage: true,
+  teams: []
 }
 
 export default (preferenceState = initialState, action) => {
@@ -26,6 +27,11 @@ export default (preferenceState = initialState, action) => {
           console.log(action);
           return Object.assign({}, preferenceState, {
             teamCount: action.teamCount
+          });
+        case 'TEAM_ARRAYS':
+          console.error(action);
+          return Object.assign({}, preferenceState, {
+            teams: action.teams
           });
         case 'DRAFT_PAGE_SUBMIT':
           console.log(action, preferenceState);
@@ -45,8 +51,9 @@ export default (preferenceState = initialState, action) => {
             numberOfDST: action.numberOfDST,
             numberOfKickers: action.numberOfKickers,
             benchCount: action.benchCount,
-            flexCount: parseInt(action.numberOfWRsRBs) + parseInt(action.numberOfWRsTEs) + parseInt(action.numberOfRBsTEs) + parseInt(action.numberOfRBsWRsTEs) + parseInt(action.numberOfQBsWRsRBsTEs),
-            showSettingsPage: false
+            flexCount: parseInt(action.numberOfWRsRBs, 10) + parseInt(action.numberOfWRsTEs, 10) + parseInt(action.numberOfRBsTEs, 10) + parseInt(action.numberOfRBsWRsTEs, 10) + parseInt(action.numberOfQBsWRsRBsTEs, 10),
+            showSettingsPage: false,
+            teams: action.teamArrays
           };
         default:
           return {
@@ -67,7 +74,8 @@ export default (preferenceState = initialState, action) => {
             numberOfKickers: preferenceState.numberOfKickers,
             benchCount: preferenceState.benchCount,
             showSettingsPage: preferenceState.showSettingsPage,
-            flexCount: preferenceState.flexCount
+            flexCount: preferenceState.flexCount,
+            teams: preferenceState.teams
           }
     }
 }
