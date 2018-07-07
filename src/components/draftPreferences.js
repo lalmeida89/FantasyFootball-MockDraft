@@ -5,9 +5,9 @@ import {draftPageSubmit} from '../actions/draftPreferencesAction'
 
 
 class DraftPage extends React.Component {
+  // we simply dispatch the action creator and pass on the values of the form onSubmit
   submit = (values) => {
     const { dispatch, myTeam } = this.props;
-    // Do something with the form values
     dispatch(draftPageSubmit(
       values.numberOfTeams,
       values.draftOrder,
@@ -25,7 +25,7 @@ class DraftPage extends React.Component {
       values.benchCount,
       myTeam
     ));
-    console.log(values);
+    //console.log(values);
   }
   render() {
     return (
@@ -35,7 +35,7 @@ class DraftPage extends React.Component {
 }
 
 export const mapStateToProps = ({draftPreferencesReducer, teamReducer}) => {
-  console.log(draftPreferencesReducer);
+  //console.log(draftPreferencesReducer);
   return ({
     teamCount: draftPreferencesReducer.teamCount,
     myTeam: teamReducer.myTeam

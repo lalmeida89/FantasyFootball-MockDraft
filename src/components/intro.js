@@ -14,7 +14,7 @@ import {Button} from '../styledComponents/dropdown'
 import {favoritedPlayer, removeFromFavorites} from '../actions/favoriteActions'
 
 
-
+//sort function to sort players by their rank
 const sort_by = (field, reverse, primer) => {
   var key = primer ?
     function(x) {return primer(x[field])} :
@@ -27,12 +27,15 @@ const sort_by = (field, reverse, primer) => {
     }
 }
 
+//we map the players based on the displayPlayers props. whichever players we want to display
+//the currentId is just our props which we mapped from state. the draft button dispatches the playerDrafted action.
+//the file icon runs a fetch based on the id and then returns the player profile.
+//we check if the current player exists in the favorites array which sets the color of our star icon
+//and dispatches either addToFavorites if it isn't there or removedFavorite if it is.
+//PlayerProfile will only display for the player the user selected
 const ShowPlayers = props => {
-  console.log(props)
   props.players.sort(sort_by('rank', true, parseInt));
   let style = {float : 'right', marginTop: '10px'};
-  console.log(props.currentId.myFavorites);
-  console.log(props.players);
   let playerNames = props.players.map((player, index) => (
     <div key={index} className='playerSelector'>
       <button
@@ -69,26 +72,30 @@ const ShowPlayers = props => {
 
 class Intro extends React.Component {
   componentDidMount() {
-    console.log(this.props);
+    //fetches all the players when this component mounts
     this.props.dispatch(fetchPlayers())
   }
 
+  //dispatch showPosition on the array of positions we select. then close the dropdown menu
   displayPosition = position => {
     this.props.dispatch(showPosition(position));
     this.closeMenu();
   }
 
+  //set the menu value in the reducer to true
   displayMenu = () => {
     this.props.dispatch(showMenu());
-    console.log(this.props.menu);
   }
 
+  //set the menu value in the reducer to false
   closeMenu = () => {
     this.props.dispatch(hideMenu());
-    console.log(this.props.menu);
   }
 
   render() {
+    //what the dropdown will render will be based on the the prop we pass to displayPlayers based on
+    //what is set in the showPosition function. initially it will show all players but buttons
+    //bellow will change the value and render a different position header
     const PositionHeader = () => {
       let playerPosition = this.props.displayPlayers
 
@@ -122,6 +129,10 @@ class Intro extends React.Component {
     if(loading) {
       return <div className='players'> LOADING... </div>;
     }
+    //if there is no error and our fetch isnt loading then render the main component.
+    //our Button will open or close the menu based on the menu prop. PositionHeader is shown inside of it.
+    //similarly our droptdown buttons will show only if the menu prop is true. ShowPlayers
+    //will show what is passed onto the displayPosition function
     else {
       return (
         <div className='players'>
@@ -155,7 +166,7 @@ class Intro extends React.Component {
 
 
 export const mapStateToProps = ({playersReducer, favoritesReducer}) => {
-  console.log(playersReducer)
+  //console.log(playersReducer)
   return ({
   players: playersReducer.players,
   qb: playersReducer.qb,

@@ -9,7 +9,7 @@ export const draftPlayer = teamPicksObj => ({
 })
 
 export const teamPicks = player => {
-  let teamPicksObj = {myTeam : [], team2 : []}
+  let teamPicksObj = {myTeam : []}
   let myTeam = teamPicksObj.myTeam;
   myTeam.push(player);
   console.log(teamPicksObj)

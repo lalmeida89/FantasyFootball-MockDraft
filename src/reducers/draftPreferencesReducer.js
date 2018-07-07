@@ -21,20 +21,12 @@ const initialState = {
 }
 
 export default (preferenceState = initialState, action) => {
-  console.log(action.type)
     switch (action.type) {
         case 'TEAM_COUNT_CHANGE':
-          console.log(action);
           return Object.assign({}, preferenceState, {
             teamCount: action.teamCount
           });
-        case 'TEAM_ARRAYS':
-          console.error(action);
-          return Object.assign({}, preferenceState, {
-            teams: action.teams
-          });
         case 'DRAFT_PAGE_SUBMIT':
-          console.log(action, preferenceState);
           return {
             ...preferenceState,
             teamCount: action.teamCount,

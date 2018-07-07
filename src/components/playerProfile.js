@@ -4,6 +4,7 @@ import {hidePlayerProfile} from '../actions/setCurrentPlayerAction';
 import {showNotes, showSchedule} from '../actions/showActions'
 
 
+//rearrange the date from the data given from the fetch
 const rearrangeDate = (dateString) => {
   var numbers = dateString.substring(0,4);
   return dateString.substring(5) + '-' + numbers
@@ -11,6 +12,8 @@ const rearrangeDate = (dateString) => {
 
 
 class PlayerProfile extends React.Component {
+  //player profile will have several options. showNotes sets notes to true and schedule to false.
+  //showSchedule will do the exact opposite. We will then render different info based on what is true.
   renderNotes = () => {
     this.props.dispatch(showNotes())
   }
@@ -27,6 +30,7 @@ class PlayerProfile extends React.Component {
       marginTop: '0'
     }
 
+    //if a player profile is true, we render this component with PlayerHeader as the header.
     const PlayerHeader = () => {
       if(this.props.playerProfile){
         return (
@@ -48,9 +52,11 @@ class PlayerProfile extends React.Component {
       return null
     }
 
+    //this might be redundant but we again check the truthiness of the playerProfile and
+    //at the moment only render the first piece in the notes array that we receive from the fetch
     else if (this.props.playerProfile){
       let profile = this.props.playerProfile;
-      console.log(profile);
+      //notes are set to true by default but can also be set to true by the renderNotes function
       if (this.props.notes === true) {
         if (profile.notes[0]){
           let newDate = profile.notes[0].timestamp.slice(0,10);
@@ -68,6 +74,9 @@ class PlayerProfile extends React.Component {
           </div>
           )
         }
+
+        //if the selected player has no notes (which is rare but is the case for a few newer players)
+        //we simply tell the user that there aren't news at this time
         else if(!profile.notes[0]){
           return (
           <div className='playerCard'>
@@ -81,6 +90,11 @@ class PlayerProfile extends React.Component {
           )
         }
       }
+
+      //if we click on the renderSchedule button, we will render the player's schedule which
+      //comes with the player fetch. If there is a week where the user is not playing,
+      //we replace 'false' with --BYE-- for BYE week. There's probably
+      //a better way of doing this by looping but it's already done.
       else if (this.props.schedule === true) {
         for(let i = 0; i < profile.weeks.length ; i++){
           if (profile.weeks[i].opponent === false){

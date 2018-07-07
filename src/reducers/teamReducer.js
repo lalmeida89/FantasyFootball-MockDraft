@@ -5,7 +5,7 @@ const initialState = {
 
 
 export default (teamState = initialState, action) => {
-  console.log(action.type)
+  //this will all change soon to accomodate the CPU teams and not just the user's team
     switch (action.type) {
       case 'DRAFT_PLAYER':
       return {

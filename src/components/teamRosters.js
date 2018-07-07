@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 class TeamRosters extends React.Component {
 
   render(){
-    console.log(this.props.myTeam)
     const {
       numberOfQBs,
       numberOfWRs,
@@ -26,11 +25,16 @@ class TeamRosters extends React.Component {
       return null
     }
 
+    //this entire component will be adjusted soon. It's a little crazy right now. We're simply pushing
+    //the players that are drafted into the appropriate place. If that number specific to a position is full,
+    //then if one of the flex spots is appropriate we push it to the flex, and then we push them to the bench.
+    //Will probably update this to an action creator and pass it to the reducer and just use this component
+    //for rendering.
+    
     else if (showSettingsPage === false) {
     const Team1Roster = () => {
       let myTeam = this.props.myTeam
       let myRoster = {qbs : [], wrs : [], rbs : [], tes : [], def : [], flex : [], k : [], bench : []}
-      console.log(flexCount);
       for(let i=0; i< myTeam.length; i++){
         if (myTeam[i].position === 'QB'){
           myRoster.qbs.push(myTeam[i])
@@ -65,11 +69,11 @@ class TeamRosters extends React.Component {
           myRoster.rbs.push(myTeam[i])
           if (myRoster.rbs.length > numberOfRBs && myRoster.flex.length <= flexCount && (numberOfRBsWRsTEs >= 1 || numberOfRBsTEs >= 1 || numberOfWRsRBs >= 1 || numberOfQBsWRsRBsTEs >= 1)) {
             myRoster.flex.push(myTeam[i])
-            console.log(myRoster)
+            //console.log(myRoster)
           }
           if (myRoster.rbs.length > numberOfRBs && myRoster.flex.length > flexCount){
             myRoster.bench.push(myTeam[i])
-            console.log(myRoster.bench, 'plum', myRoster.flex)
+            //console.log(myRoster.bench, 'plum', myRoster.flex)
           }
         }
 
@@ -87,9 +91,6 @@ class TeamRosters extends React.Component {
         }
 
       }
-      console.log(myRoster.bench);
-      console.log(myRoster.flex);
-      console.log(myRoster.rbs.length, 'pineapple', numberOfRBs)
       let showStyle = {display: 'inline'};
 
         return (

@@ -5,6 +5,9 @@ import {removeFromFavorites} from '../actions/favoriteActions'
 
 class Favorites extends React.Component {
   render(){
+    //if myFavorites is true (currently only set to false when reduxForm is true), then map
+    //through array of favorite players and return them. clicking on the players name will
+    //show their profile while clicking on the X icon will remove them from the favorites array
     const { myFavorites, dispatch } = this.props
     if (!myFavorites){
       return null

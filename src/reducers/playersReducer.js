@@ -18,10 +18,10 @@ const initialState = {
 };
 
 export default (playersState = initialState, action) => {
-  console.log(action.type)
+  //console.log(action.type)
     switch (action.type) {
         case 'FETCH_PLAYERS_SUCCESS':
-          console.log(action);
+          //console.log(action);
           return {
             ...playersState,
             qb: [...playersState.qb,...action.qb],
@@ -38,30 +38,30 @@ export default (playersState = initialState, action) => {
             currentPlayer: playersState.currentPlayer
           };
         case 'SHOW_POSITION' :
-          console.log(action);
+          //console.log(action);
           return Object.assign({}, playersState, {
             displayPlayers: action.displayPlayers,
             currentPlayer: 0,
             playerProfile: null
           });
         case 'SHOW_NOTES' :
-          console.log(action);
+          //console.log(action);
           return Object.assign({}, playersState, {
             notes: true,
             schedule: false
         });
         case 'SHOW_MENU' :
-          console.log(action);
+          //console.log(action);
           return Object.assign({}, playersState, {
             menu: true
         });
         case 'HIDE_MENU' :
-          console.log(action);
+          //console.log(action);
           return Object.assign({}, playersState, {
             menu: false
         });
         case 'SHOW_SCHEDULE' :
-          console.log(action);
+          //console.log(action);
           return Object.assign({}, playersState, {
             notes: false,
             schedule: true
@@ -97,18 +97,18 @@ export default (playersState = initialState, action) => {
             displayPlayers: playersState.displayPlayers
           };
         case 'SET_CURRENT_PLAYER':
-          console.log(action);
+          //console.log(action);
           return Object.assign({}, playersState, {
             currentPlayer: action.id
           });
         case 'HIDE_PLAYER_PROFILE':
-          console.log(action);
+          //console.log(action);
           return Object.assign({}, playersState, {
             currentPlayer: 0,
             playerProfile: null
           });
         case 'SET_PLAYER_PROFILE':
-          console.log(action, playersState)
+          //console.log(action, playersState)
           return {
             playerProfile: action.profile,
             loading: false,
@@ -126,6 +126,8 @@ export default (playersState = initialState, action) => {
             currentPlayer: playersState.currentPlayer
           };
         case 'DRAFT_PLAYER':
+          //once we draft a player, we want him in the teams roster but removed from the
+          //players array and the position array. So we use the filter method.
           const withPlayersRemoved = playersState.players.filter(player => {
             return player.id !== action.playersUsed[0].id
           })
@@ -147,8 +149,6 @@ export default (playersState = initialState, action) => {
           const kPlayersRemoved = playersState.k.filter(k => {
             return k.id !== action.playersUsed[0].id
           })
-          console.log(withPlayersRemoved)
-          console.log(action, playersState);
           return {
             players: withPlayersRemoved,
             wr: wrPlayersRemoved,

@@ -10,8 +10,11 @@ class DraftSetup extends Component {
   }
 
   render() {
+
+    //settingsPage is set to true to start. This component renders at the start of the app.
+    //It's just a reduxForm with select and radio buttons whose values then get passed to the
+    //draftPreferences component and then saved in the store
     const { handleSubmit, teamCount } = this.props;
-    console.log(this.props, teamCount)
     let style = {fontSize: '13px'}
     if (this.props.showSettingsPage){
     return (
