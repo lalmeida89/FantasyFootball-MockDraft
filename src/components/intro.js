@@ -95,7 +95,7 @@ class Intro extends React.Component {
 
   autoDrafting = (boolean) => {
     //let players = this.props.players;
-    this.props.dispatch(addPlayerToTeam(false))
+    this.props.dispatch(addPlayerToTeam(this.props.counter))
   }
 
   render() {
@@ -172,7 +172,7 @@ class Intro extends React.Component {
 }
 
 
-export const mapStateToProps = ({playersReducer, favoritesReducer}) => {
+export const mapStateToProps = ({playersReducer, favoritesReducer, counterReducer}) => {
   //console.log(playersReducer)
   return ({
   players: playersReducer.players,
@@ -188,7 +188,8 @@ export const mapStateToProps = ({playersReducer, favoritesReducer}) => {
   currentPlayer: playersReducer.currentPlayer,
   profile: playersReducer.profile,
   menu: playersReducer.menu,
-  myFavorites: favoritesReducer.myFavorites
+  myFavorites: favoritesReducer.myFavorites,
+  counter: counterReducer.counter
   })
 }
 

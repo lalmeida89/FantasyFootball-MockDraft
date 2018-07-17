@@ -21,8 +21,7 @@ class DraftPage extends React.Component {
 export const mapStateToProps = ({draftPreferencesReducer, teamReducer}) => {
   //console.log(draftPreferencesReducer);
   return ({
-    teamCount: draftPreferencesReducer.teamCount,
-    myTeam: teamReducer.myTeam
+    teamCount: draftPreferencesReducer.teamCount
   })
 }
 

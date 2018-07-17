@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
 import playersReducer from './playersReducer';
-import teamReducer from './teamReducer';
 import { reducer as formReducer } from 'redux-form';
 import draftPreferencesReducer from './draftPreferencesReducer';
-import favoritesReducer from './favoritesReducer'
+import favoritesReducer from './favoritesReducer';
+import counterReducer from './counterReducer';
 
 const rootReducer = combineReducers({
   playersReducer,
-  teamReducer,
   favoritesReducer,
+  counterReducer,
   form: formReducer,
   draftPreferencesReducer
 });

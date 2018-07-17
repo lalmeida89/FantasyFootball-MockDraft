@@ -297,7 +297,6 @@ export const mapStateToProps = ({teamReducer, draftPreferencesReducer}) => {
     numberOfRBsWRsTEs: draftPreferencesReducer.numberOfRBsWRsTEs,
     numberOfQBsWRsRBsTEs: draftPreferencesReducer.numberOfQBsWRsRBsTEs,
     flexCount: draftPreferencesReducer.flexCount,
-    playersUsed: teamReducer.playersUsed,
     teams: draftPreferencesReducer.teams,
     draftPos: draftPreferencesReducer.draftPos
   })
