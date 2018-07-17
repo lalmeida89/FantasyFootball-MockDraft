@@ -17,7 +17,8 @@ const initialState = {
   benchCount: '',
   flexCount: '',
   showSettingsPage: true,
-  teams: []
+  teams: [],
+  playersUsed: []
 }
 
 export default (preferenceState = initialState, action) => {
@@ -26,26 +27,45 @@ export default (preferenceState = initialState, action) => {
           return Object.assign({}, preferenceState, {
             teamCount: action.teamCount
           });
-        case 'DRAFT_PAGE_SUBMIT':
+        case 'ADD_TO_TEAM':
+          console.log(preferenceState, action)
+          let t = preferenceState.teams[action.team]
+          t.push(action.player)
           return {
             ...preferenceState,
-            teamCount: action.teamCount,
-            draftPos: action.draftPos,
-            numberOfQBs: action.numberOfQBs,
-            numberOfRBs: action.numberOfRBs,
-            numberOfWRs: action.numberOfWRs,
-            numberOfTEs: action.numberOfTEs,
-            numberOfWRsRBs: action.numberOfWRsRBs,
-            numberOfWRsTEs: action.numberOfWRsTEs,
-            numberOfRBsTEs: action.numberOfRBsTEs,
-            numberOfRBsWRsTEs: action.numberOfRBsWRsTEs,
-            numberOfQBsWRsRBsTEs: action.numberOfQBsWRsRBsTEs,
-            numberOfDST: action.numberOfDST,
-            numberOfKickers: action.numberOfKickers,
-            benchCount: action.benchCount,
-            flexCount: parseInt(action.numberOfWRsRBs, 10) + parseInt(action.numberOfWRsTEs, 10) + parseInt(action.numberOfRBsTEs, 10) + parseInt(action.numberOfRBsWRsTEs, 10) + parseInt(action.numberOfQBsWRsRBsTEs, 10),
+            teams: [...preferenceState.teams],
+            playersUsed: [...action.playersUsed]
+          }
+        case 'ADD_TO_MY_TEAM':
+          console.log(preferenceState, action)
+            /*let t = preferenceState.playersUsed
+            t.push(action.player)*/
+          return {
+            ...preferenceState,
+            teams: [...preferenceState.teams],
+            playersUsed: [...action.playersUsed]
+          }
+        case 'DRAFT_PAGE_SUBMIT':
+          console.log(action.values)
+          return {
+            ...preferenceState,
+            teamCount: action.values.numberOfTeams,
+            draftPos: action.values.draftOrder,
+            numberOfQBs: action.values.qbCount,
+            numberOfRBs: action.values.rbCount,
+            numberOfWRs: action.values.wrCount,
+            numberOfTEs: action.values.teCount,
+            numberOfWRsRBs: action.values.wrRbFlexCount,
+            numberOfWRsTEs: action.values.wrTeFlexCount,
+            numberOfRBsTEs: action.values.rbTeFlexCount,
+            numberOfRBsWRsTEs: action.values.wrRbTeFlexCount,
+            numberOfQBsWRsRBsTEs: action.values.qbWrRbTeFlexCount,
+            numberOfDST: action.values.dstCount,
+            numberOfKickers: action.values.kCount,
+            benchCount: action.values.benchCount,
+            flexCount: parseInt(action.values.wrRbFlexCount, 10) + parseInt(action.values.wrTeFlexCount, 10) + parseInt(action.values.rbTeFlexCount, 10) + parseInt(action.values.wrRbTeFlexCount, 10) + parseInt(action.values.qbWrRbTeFlexCount, 10),
             showSettingsPage: false,
-            teams: action.teamArrays
+            teams: action.teamArrays,
           };
         default:
           return {
@@ -67,7 +87,8 @@ export default (preferenceState = initialState, action) => {
             benchCount: preferenceState.benchCount,
             showSettingsPage: preferenceState.showSettingsPage,
             flexCount: preferenceState.flexCount,
-            teams: preferenceState.teams
+            teams: preferenceState.teams,
+            playersUsed: preferenceState.playersUsed
           }
     }
 }

@@ -6,25 +6,9 @@ import {draftPageSubmit} from '../actions/draftPreferencesAction'
 
 class DraftPage extends React.Component {
   // we simply dispatch the action creator and pass on the values of the form onSubmit
-  submit = (values) => {
+  submit = (values, team) => {
     const { dispatch, myTeam } = this.props;
-    dispatch(draftPageSubmit(
-      values.numberOfTeams,
-      values.draftOrder,
-      values.qbCount,
-      values.rbCount,
-      values.wrCount,
-      values.teCount,
-      values.wrRbFlexCount,
-      values.wrTeFlexCount,
-      values.rbTeFlexCount,
-      values.wrRbTeFlexCount,
-      values.qbWrRbTeFlexCount,
-      values.dstCount,
-      values.kCount,
-      values.benchCount,
-      myTeam
-    ));
+    dispatch(draftPageSubmit(values, myTeam));
     //console.log(values);
   }
   render() {

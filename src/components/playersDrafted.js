@@ -28,9 +28,9 @@ class PlayersDrafted extends React.Component {
 }
 
 
-export const mapStateToProps = ({teamReducer}) => {
+export const mapStateToProps = ({draftPreferencesReducer}) => {
   return ({
-    playersUsed: teamReducer.playersUsed
+    playersUsed: draftPreferencesReducer.playersUsed
   })
 }
 export default connect (mapStateToProps)(PlayersDrafted)

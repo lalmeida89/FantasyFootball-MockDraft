@@ -18,7 +18,9 @@ class TeamRosters extends React.Component {
       numberOfRBsTEs,
       numberOfRBsWRsTEs,
       numberOfQBsWRsRBsTEs,
-      flexCount
+      flexCount,
+      teams,
+      draftPos
       } = this.props;
 
     if (showSettingsPage === true) {
@@ -30,11 +32,12 @@ class TeamRosters extends React.Component {
     //then if one of the flex spots is appropriate we push it to the flex, and then we push them to the bench.
     //Will probably update this to an action creator and pass it to the reducer and just use this component
     //for rendering.
-    
+
     else if (showSettingsPage === false) {
     const Team1Roster = () => {
-      let myTeam = this.props.myTeam
+      let myTeam = teams[draftPos-1]
       let myRoster = {qbs : [], wrs : [], rbs : [], tes : [], def : [], flex : [], k : [], bench : []}
+      console.log(teams, myRoster, myTeam)
       for(let i=0; i< myTeam.length; i++){
         if (myTeam[i].position === 'QB'){
           myRoster.qbs.push(myTeam[i])
@@ -295,7 +298,8 @@ export const mapStateToProps = ({teamReducer, draftPreferencesReducer}) => {
     numberOfQBsWRsRBsTEs: draftPreferencesReducer.numberOfQBsWRsRBsTEs,
     flexCount: draftPreferencesReducer.flexCount,
     playersUsed: teamReducer.playersUsed,
-    myTeam: teamReducer.myTeam
+    teams: draftPreferencesReducer.teams,
+    draftPos: draftPreferencesReducer.draftPos
   })
 }
 export default connect (mapStateToProps)(TeamRosters)

@@ -28,7 +28,7 @@ class Favorites extends React.Component {
       return (
         <div className='favoritePlayers'>
           <h3> Favorite Players </h3>
-          { ShowFaves }
+          { myFavorites.length >= 1 ? ShowFaves : <h5> No favorites atm </h5> }
         </div>
       )
     }

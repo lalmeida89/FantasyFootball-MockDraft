@@ -9,9 +9,9 @@ import {
   showMenu,
   hideMenu
 } from '../actions/showActions'
-import {playerDrafted} from '../actions/draftPlayersAction';
 import {Button} from '../styledComponents/dropdown'
 import {favoritedPlayer, removeFromFavorites} from '../actions/favoriteActions'
+import {addPlayerToTeam, addPlayerToMyTeam} from '../actions/draftPreferencesAction'
 
 
 //sort function to sort players by their rank
@@ -40,7 +40,8 @@ const ShowPlayers = props => {
     <div key={index} className='playerSelector'>
       <button
       style={style}
-      onClick={()=> props.currentId.dispatch(playerDrafted(player))}
+      onClick={()=> {props.currentId.dispatch(addPlayerToMyTeam(player))
+      }}
       className='draftBtn'>Draft
       </button>
       <p><b> {player.firstName} {player.lastName} </b>
@@ -90,6 +91,11 @@ class Intro extends React.Component {
   //set the menu value in the reducer to false
   closeMenu = () => {
     this.props.dispatch(hideMenu());
+  }
+
+  autoDrafting = (boolean) => {
+    //let players = this.props.players;
+    this.props.dispatch(addPlayerToTeam(false))
   }
 
   render() {
@@ -157,6 +163,7 @@ class Intro extends React.Component {
               : null
             }
           </div>
+          <button onClick={()=>this.autoDrafting(this.props.players[0])}> auto draft </button>
           <ShowPlayers players={this.props.displayPlayers} currentId={this.props} />
         </div>
       )
