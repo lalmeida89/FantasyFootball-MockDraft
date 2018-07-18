@@ -54,57 +54,56 @@ export const addPlayerToTeam = (counter) => (dispatch, getState) => {
   let turns = getState().counterReducer.turns
   console.log(player, getState().draftPreferencesReducer.draftPos)
   player.sort(sort_by('rank', true, parseInt))
-  for (let i = counter; i >= 0; i+= dir) {
+  for (let i = counter; i < allTeams.length ; i+= dir) {
     if (i === myTeam && dir === 1){
-        counter = myTeam+1;
-        console.log(allTeams, 'butt', count)
-        return
-      }
-      if (i === myTeam && dir === -1){
-        counter = myTeam-1
-        console.log(allTeams, 'butt', count)
-        return
-      }
+      counter = myTeam+1;
+      console.log(allTeams, 'butt', count)
+      return
+    }
+    if (i === myTeam && dir === -1){
+      counter = myTeam-1
+      console.log(allTeams, 'butt', count)
+      return
+    }
 
     setTimeout(function(x) { return function() {
-        playersDrafted.push(player[x])
+        playersDrafted.push(player[i-count])
         console.log(x, 'butt', count, allTeams.length-1)
           return dispatch ({
             type: ADD_TO_TEAM,
-            player: player[x],
-            team: x,
+            player: player[i-count],
+            team: i,
             playersUsed: playersDrafted,
             count: i
           })
-      }; }(i), 200*i);
+      }; }(i-count), 200*(i-count));
   }
 }
 
 export const ADD_TO_MY_TEAM = 'ADD_TO_MY_TEAM'
 export const addPlayerToMyTeam = (player, team) => (dispatch, getState) => {
-  let myTeam = getState().draftPreferencesReducer.draftPos
+  let myTeam = getState().draftPreferencesReducer.draftPos -1
   let playersDrafted = getState().draftPreferencesReducer.playersUsed
   let allTeams = getState().draftPreferencesReducer.teams
   let count = getState().counterReducer.counter
   let dir = getState().counterReducer.currentDirection
-  allTeams[myTeam-1].push(player)
+  allTeams[myTeam].push(player)
   playersDrafted.push(player)
   if (dir === 1){
     return dispatch ({
       type: ADD_TO_MY_TEAM,
       player,
       playersUsed: playersDrafted,
-      count: count + dir
+      count: myTeam + 1
     })
     console.log('going up', count)
   }
   if (dir === -1){
-
     return dispatch ({
       type: ADD_TO_MY_TEAM,
       player,
       playersUsed: playersDrafted,
-      count : count + dir
+      count : myTeam-1
     })
   }
 

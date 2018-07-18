@@ -35,12 +35,14 @@ const sort_by = (field, reverse, primer) => {
 //PlayerProfile will only display for the player the user selected
 const ShowPlayers = props => {
   props.players.sort(sort_by('rank', true, parseInt));
+  console.log(props);
   let style = {float : 'right', marginTop: '10px'};
   let playerNames = props.players.map((player, index) => (
     <div key={index} className='playerSelector'>
       <button
       style={style}
       onClick={()=> {props.currentId.dispatch(addPlayerToMyTeam(player))
+      //props.currentId.dispatch(addPlayerToTeam(props.currentId.counter))
       }}
       className='draftBtn'>Draft
       </button>

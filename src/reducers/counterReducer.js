@@ -28,7 +28,6 @@ export default (counterState = initialState, action) => {
       console.log(action.type, counterState)
       return Object.assign({}, counterState, {
         currentDirection: -1,
-        counter: action.count
     })
     case 'KEEP_COUNT':
       console.log(action.type, counterState)
