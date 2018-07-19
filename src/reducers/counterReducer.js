@@ -11,24 +11,29 @@ export default (counterState = initialState, action) => {
       return {
         counter: action.count,
         currentDirection: counterState.currentDirection,
-        turns: action.turns
+        turns: counterState.turns
       }
     case 'ADD_TO_MY_TEAM':
       console.log(action.type, counterState)
       return  {
-        ...counterState,
-        counter: action.count
+        currentDirection: counterState.currentDirection,
+        counter: action.count,
+        turns: counterState.turns
       }
     case 'INCREASING':
       console.log(action.type, counterState)
-      return Object.assign({}, counterState, {
-        currentDirection: 1
-      })
+      return  {
+        counter: counterState.counter,
+        currentDirection: action.direction,
+        turns: counterState.turns + 1
+      }
     case 'DECREASING':
       console.log(action.type, counterState)
-      return Object.assign({}, counterState, {
-        currentDirection: -1,
-    })
+      return  {
+        counter: counterState.counter,
+        currentDirection: action.direction,
+        turns: counterState.turns + 1
+    }
     case 'KEEP_COUNT':
       console.log(action.type, counterState)
       return Object.assign({}, counterState, {

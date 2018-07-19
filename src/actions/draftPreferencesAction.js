@@ -30,21 +30,21 @@ export const draftPageSubmit = (values) => {
 
 const sort_by = (field, reverse, primer) => {
   var key = primer ?
-    function(x) {return primer(x[field])} :
-    function(x) {return x[field]};
+  function(x) {return primer(x[field])} :
+  function(x) {return x[field]};
 
-    reverse = !reverse ? 1 : -1;
+  reverse = !reverse ? 1 : -1;
 
-    return function (a, b) {
-       return a = key(a), b = key(b), reverse * ((a < b) - (b < a));
-    }
+  return function (a, b) {
+    return a = key(a), b = key(b), reverse * ((a < b) - (b < a));
+  }
 }
 
 
 export const INCREASING = 'INCREASING';
 export const DECREASING = 'DECREASING';
 export const ADD_TO_TEAM = 'ADD_TO_TEAM';
-export const addPlayerToTeam = (counter) => (dispatch, getState) => {
+export const addPlayerToTeam = (counter, direction) => (dispatch, getState) => {
   let playersDrafted = getState().draftPreferencesReducer.playersUsed
   let myTeam = getState().draftPreferencesReducer.draftPos - 1
   let player = getState().playersReducer.players
@@ -54,21 +54,16 @@ export const addPlayerToTeam = (counter) => (dispatch, getState) => {
   let turns = getState().counterReducer.turns
   console.log(player, getState().draftPreferencesReducer.draftPos)
   player.sort(sort_by('rank', true, parseInt))
-  for (let i = counter; i < allTeams.length ; i+= dir) {
-    if (i === myTeam && dir === 1){
-      counter = myTeam+1;
-      console.log(allTeams, 'butt', count)
-      return
-    }
-    if (i === myTeam && dir === -1){
-      counter = myTeam-1
-      console.log(allTeams, 'butt', count)
-      return
-    }
-
-    setTimeout(function(x) { return function() {
-        playersDrafted.push(player[i-count])
-        console.log(x, 'butt', count, allTeams.length-1)
+  if (turns <= 3){
+    if (dir == 1) {
+      for (let i = counter; i <= allTeams.length; i+= direction) {
+        if (i === myTeam){
+          counter = myTeam+1;
+          console.log(allTeams, 'butt', count)
+          return
+        }
+        setTimeout(function(x) { return function() {
+          playersDrafted.push(player[i-count])
           return dispatch ({
             type: ADD_TO_TEAM,
             player: player[i-count],
@@ -76,12 +71,50 @@ export const addPlayerToTeam = (counter) => (dispatch, getState) => {
             playersUsed: playersDrafted,
             count: i
           })
-      }; }(i-count), 200*(i-count));
+        }; }(i-count), 200*(i-count));
+        if (i >= allTeams.length -1 ){
+          console.log(i, 'see if this works +', allTeams.length-1, 'DECREASING')
+          return dispatch({
+            type: DECREASING,
+            direction: -1
+          })
+        }
+      }
+    }
+    if (dir == -1) {
+      for (let i = counter; i >= 0 ; i += direction) {
+        console.log(counter)
+        if (i === myTeam){
+          counter = myTeam-1;
+          console.log(allTeams, 'butt', count)
+          return
+        }
+        setTimeout(function(x) { return function() {
+          playersDrafted.push(player[i-count])
+          return dispatch ({
+            type: ADD_TO_TEAM,
+            player: player[i-count],
+            team: i,
+            playersUsed: playersDrafted,
+            count: i
+          })
+        }; }(i-count), 200*(i-count));
+        if (i == 0){
+          console.log('see if this works + INCREASING')
+          return dispatch({
+            type: INCREASING,
+            direction: 1
+          })
+        }
+      }
+    }
+  } else {
+    return
   }
 }
 
 export const ADD_TO_MY_TEAM = 'ADD_TO_MY_TEAM'
-export const addPlayerToMyTeam = (player, team) => (dispatch, getState) => {
+export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
   let myTeam = getState().draftPreferencesReducer.draftPos -1
   let playersDrafted = getState().draftPreferencesReducer.playersUsed
   let allTeams = getState().draftPreferencesReducer.teams
@@ -90,6 +123,7 @@ export const addPlayerToMyTeam = (player, team) => (dispatch, getState) => {
   allTeams[myTeam].push(player)
   playersDrafted.push(player)
   if (dir === 1){
+    console.log(dir, 'plum')
     return dispatch ({
       type: ADD_TO_MY_TEAM,
       player,
@@ -106,9 +140,12 @@ export const addPlayerToMyTeam = (player, team) => (dispatch, getState) => {
       count : myTeam-1
     })
   }
+}
 
-  console.log('going down', count)
-  dispatch(addPlayerToTeam(count));
+export const choosingMyPlayer =  player => (dispatch, getState) => {
+  dispatch(addPlayerToMyTeam(player))
+  dispatch(addPlayerToTeam(getState().counterReducer.counter, 1))
+  //dispatch(addPlayerToTeam(getState().counterReducer.counter, -1))
 }
 
 
@@ -123,19 +160,19 @@ export const addPlayerToMyTeam = (player, team) => (dispatch, getState) => {
 
 
 /*  if (i === myTeam && dir === 1){
-    count = myTeam+1;
-    console.log(allTeams, 'butt', count)
-    return
-  }
-  if (i === myTeam && dir === -1){
-    count = myTeam-1
-    console.log(allTeams, 'butt', count)
-    return
-  }
-  if (i === allTeams.length-1){
-    return dispatch ({
-      type: DECREASING,
-      dir: -1,
-      count: allTeams.length -1
-    })
-  }*/
+count = myTeam+1;
+console.log(allTeams, 'butt', count)
+return
+}
+if (i === myTeam && dir === -1){
+count = myTeam-1
+console.log(allTeams, 'butt', count)
+return
+}
+if (i === allTeams.length-1){
+return dispatch ({
+type: DECREASING,
+dir: -1,
+count: allTeams.length -1
+})
+}*/
