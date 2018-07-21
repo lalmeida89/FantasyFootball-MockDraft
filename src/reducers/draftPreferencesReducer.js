@@ -30,23 +30,19 @@ export default (preferenceState = initialState, action) => {
         case 'ADD_TO_TEAM':
           let t = preferenceState.teams[action.team]
           t.push(action.player)
-          console.log(t)
+          console.log(t, action.player)
           return {
             ...preferenceState,
             teams: [...preferenceState.teams],
             playersUsed: [...action.playersUsed]
           }
         case 'ADD_TO_MY_TEAM':
-          console.log(preferenceState, action)
-            /*let t = preferenceState.playersUsed
-            t.push(action.player)*/
           return {
             ...preferenceState,
             teams: [...preferenceState.teams],
             playersUsed: [...action.playersUsed]
           }
         case 'DRAFT_PAGE_SUBMIT':
-          console.log(action.values)
           return {
             ...preferenceState,
             teamCount: action.values.numberOfTeams,

@@ -134,7 +134,6 @@ class PlayerProfile extends React.Component {
 export const mapStateToProps = ({playersReducer, teamReducer}) => {
   return ({
     playerProfile: playersReducer.playerProfile,
-    myTeam: teamReducer.myTeam,
     notes: playersReducer.notes,
     schedule: playersReducer.schedule
   })

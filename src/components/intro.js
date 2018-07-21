@@ -11,7 +11,7 @@ import {
 } from '../actions/showActions'
 import {Button} from '../styledComponents/dropdown'
 import {favoritedPlayer, removeFromFavorites} from '../actions/favoriteActions'
-import {addPlayerToTeam, choosingMyPlayer} from '../actions/draftPreferencesAction'
+import {addPlayerToTeamUp, choosingMyPlayer} from '../actions/draftPreferencesAction'
 
 
 //sort function to sort players by their rank
@@ -35,14 +35,13 @@ const sort_by = (field, reverse, primer) => {
 //PlayerProfile will only display for the player the user selected
 const ShowPlayers = props => {
   props.players.sort(sort_by('rank', true, parseInt));
-  console.log(props);
+  //console.log(props);
   let style = {float : 'right', marginTop: '10px'};
   let playerNames = props.players.map((player, index) => (
     <div key={index} className='playerSelector'>
       <button
       style={style}
       onClick={()=> {props.currentId.dispatch(choosingMyPlayer(player, 1))
-      //props.currentId.dispatch(addPlayerToTeam(props.currentId.counter))
       }}
       className='draftBtn'>Draft
       </button>
@@ -97,7 +96,7 @@ class Intro extends React.Component {
 
   autoDrafting = () => {
     //let players = this.props.players;
-    this.props.dispatch(addPlayerToTeam(this.props.counter, 1))
+    this.props.dispatch(addPlayerToTeamUp(this.props.counter, 1))
   }
 
   render() {
@@ -165,7 +164,7 @@ class Intro extends React.Component {
               : null
             }
           </div>
-          <button onClick={()=>this.autoDrafting(this.props.players[0], 1)}> auto draft </button>
+          <button onClick={()=>this.autoDrafting(this.props.counter, 1)}> auto draft </button>
           <ShowPlayers players={this.props.displayPlayers} currentId={this.props} />
         </div>
       )
@@ -175,7 +174,7 @@ class Intro extends React.Component {
 
 
 export const mapStateToProps = ({playersReducer, favoritesReducer, counterReducer}) => {
-  //console.log(playersReducer)
+  ////console.log(playersReducer)
   return ({
   players: playersReducer.players,
   qb: playersReducer.qb,
