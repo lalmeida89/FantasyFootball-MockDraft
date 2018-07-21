@@ -67,9 +67,7 @@ export const addPlayerToTeamUp = (counter, direction) => (dispatch, getState) =>
           return
         }
         if (getState().counterReducer.counter === allTeams.length-1){
-          dispatch({
-            type: DECREASING
-          })
+          dispatch(decreasing())
           dispatch ({
             type: ADD_TO_TEAM,
             player: player[x],
@@ -108,15 +106,10 @@ export const addPlayerToTeamDown = (counter, direction) => (dispatch, getState) 
       playersDrafted.push(player[x*-1])
       console.log(player[x*-1], playersDrafted, myTeam, counter, getState().counterReducer.counter)
       if (getState().counterReducer.counter === myTeam){
-        counter = myTeam-1;
-        console.log(allTeams, 'butt')
         return
       }
       if (getState().counterReducer.counter === 0){
-        console.log(player[getState().counterReducer.counter])
-        dispatch({
-          type: INCREASING
-        })
+        dispatch(increasing())
         dispatch ({
           type: ADD_TO_TEAM,
           player: player[x*-1],
@@ -147,151 +140,67 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
   let dir = getState().counterReducer.currentDirection
   allTeams[myTeam].push(player)
   playersDrafted.push(player)
-  if (getState().counterReducer.currentDirection === 1){
+  if (getState().counterReducer.currentDirection === 1 && myTeam !== allTeams.length -1){
     console.log(dir, 'plum', getState().counterReducer.counter)
     dispatch ({
       type: ADD_TO_MY_TEAM,
       player,
       playersUsed: playersDrafted,
-      count: myTeam + 1
+      counter: myTeam + 1
     })
     console.log('going up', count, getState().counterReducer.counter)
   }
-  if (getState().counterReducer.currentDirection === -1){
+  if (getState().counterReducer.currentDirection === -1 && myTeam === 0){
+    console.log(dir, 'plumper', getState().counterReducer.counter)
     dispatch ({
       type: ADD_TO_MY_TEAM,
       player,
       playersUsed: playersDrafted,
-      count : myTeam-1
+      counter: 0
     })
+    console.log('going up', count, getState().counterReducer.counter)
   }
+  /*if (getState().counterReducer.currentDirection === -1){
+    dispatch ({
+      type: ADD_TO_MY_TEAM,
+      player,
+      playersUsed: playersDrafted,
+      counter : myTeam-1
+    })
+  }*/
 }
 
 export const choosingMyPlayer =  (player, direction) => (dispatch, getState) => {
   let allTeams = getState().draftPreferencesReducer.teams
-  if (getState().counterReducer.currentDirection === 1){
+  let myTeam = getState().draftPreferencesReducer.draftPos -1
+  if (getState().counterReducer.currentDirection === 1 && myTeam === allTeams.length-1){
+    dispatch(decreasing())
+    dispatch(addPlayerToMyTeam(player))
+  }
+  if (getState().counterReducer.currentDirection === -1 && myTeam === 0){
+    dispatch(addPlayerToMyTeam(player))
+    dispatch(increasing())
+  }
+  else if (getState().counterReducer.currentDirection === 1 && myTeam !== allTeams.length-1){
     dispatch(addPlayerToMyTeam(player))
     console.log('shoot')
     dispatch(addPlayerToTeamUp(getState().counterReducer.counter, getState().counterReducer.currentDirection))
   }
-  else if (getState().counterReducer.currentDirection === -1){
+  else if (getState().counterReducer.currentDirection === -1 && myTeam !== 0){
     dispatch(addPlayerToMyTeam(player))
     console.log('shoot')
     dispatch(addPlayerToTeamDown(getState().counterReducer.counter, getState().counterReducer.currentDirection))
   }
 }
 
-
-/*
-export const addPlayerToTeam = (counter, direction) => (dispatch, getState) => {
-  let playersDrafted = getState().draftPreferencesReducer.playersUsed
-  let myTeam = getState().draftPreferencesReducer.draftPos - 1
-  let player = getState().playersReducer.players
-  let allTeams = getState().draftPreferencesReducer.teams
-  let count = getState().counterReducer.counter
-  let dir = getState().counterReducer.currentDirection
-  let turns = getState().counterReducer.turns
-  console.log(player, getState().draftPreferencesReducer.draftPos)
-  player.sort(sort_by('rank', true, parseInt))
-  //if (turns <= 3){
-    //if (dir == 1) {
-    for (let j = 1; j < 4; j++){
-      for (let i = counter; i < allTeams.length; i+= 1) {
-        if (i === myTeam){
-          console.log(j)
-          if(j % 2 !== 0){
-          counter = myTeam+1;
-          console.log(allTeams, 'butt', count)
-          return
-          }
-          else {
-            console.log('else statement')
-            counter = allTeams.length - myTeam+1
-            console.log(counter)
-            return
-          }
-        }
-        setTimeout(function(x) { return function() {
-          playersDrafted.push(player[i])
-          dispatch ({
-            type: ADD_TO_TEAM,
-            player: player[i],
-            team: i,
-            playersUsed: playersDrafted,
-            count: i
-          })
-        }; }(i-count), 200*(i-count));
-        }
-        counter = 0
-        dispatch({
-          type: REVERSE_TEAMS
-        })
-      }
-    }
-
-
-
-      /*if (i >= allTeams.length -1 ){
-        console.log(i, 'see if this works +', allTeams.length-1, 'DECREASING')
-        return dispatch({
-          type: DECREASING,
-          direction: -1
-        })
-      */
-    //}
-    /*if (dir == -1) {
-      for (let i = counter; i >= 0 ; i += direction) {
-        console.log(counter)
-        if (i === myTeam){
-          counter = myTeam-1;
-          console.log(allTeams, 'butt', count)
-          return
-        }
-        setTimeout(function(x) { return function() {
-          playersDrafted.push(player[i-count])
-          return dispatch ({
-            type: ADD_TO_TEAM,
-            player: player[i-count],
-            team: i,
-            playersUsed: playersDrafted,
-            count: i
-          })
-        }; }(i-count), 200*(i-count));
-        if (i == 0){
-          console.log('see if this works + INCREASING')
-          return dispatch({
-            type: INCREASING,
-            direction: 1
-          })
-        }
-      }
-    }
-  /*/
-
-
-
-
-
-
-
-
-
-
-
-/*  if (i === myTeam && dir === 1){
-count = myTeam+1;
-console.log(allTeams, 'butt', count)
-return
+export const decreasing = () => {
+  return {
+    type: DECREASING
+  }
 }
-if (i === myTeam && dir === -1){
-count = myTeam-1
-console.log(allTeams, 'butt', count)
-return
+
+export const increasing = () => {
+  return {
+    type: INCREASING
+  }
 }
-if (i === allTeams.length-1){
-return dispatch ({
-type: DECREASING,
-dir: -1,
-count: allTeams.length -1
-})
-}*/

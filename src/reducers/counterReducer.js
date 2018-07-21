@@ -16,14 +16,16 @@ export default (counterState = initialState, action) => {
       console.log(action.type, counterState)
       return  {
         ...counterState,
-        counter: counterState.counter + counterState.currentDirection
+        counter: action.counter
       }
     case 'INCREASING':
+    console.log(action.type, counterState)
       return  {
         ...counterState,
         currentDirection: 1,
       }
     case 'DECREASING':
+    console.log(action.type, counterState)
       return  {
         ...counterState,
         currentDirection: -1,
