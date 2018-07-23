@@ -11,7 +11,7 @@ import {
 } from '../actions/showActions'
 import {Button} from '../styledComponents/dropdown'
 import {favoritedPlayer, removeFromFavorites} from '../actions/favoriteActions'
-import {addPlayerToTeamUp, choosingMyPlayer} from '../actions/draftPreferencesAction'
+import {addPlayerToTeamUp, addPlayerToMyTeam} from '../actions/draftPreferencesAction'
 
 
 //sort function to sort players by their rank
@@ -41,7 +41,7 @@ const ShowPlayers = props => {
     <div key={index} className='playerSelector'>
       <button
       style={style}
-      onClick={()=> {props.currentId.dispatch(choosingMyPlayer(player, 1))
+      onClick={()=> {props.currentId.dispatch(addPlayerToMyTeam(player))
       }}
       className='draftBtn'>Draft
       </button>
