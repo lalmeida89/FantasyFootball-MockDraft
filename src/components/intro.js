@@ -164,7 +164,6 @@ class Intro extends React.Component {
               : null
             }
           </div>
-          <button onClick={()=>this.autoDrafting(this.props.counter, 1)}> auto draft </button>
           <ShowPlayers players={this.props.displayPlayers} currentId={this.props} />
         </div>
       )

@@ -18,17 +18,20 @@ export const teamCountChange = teamCount => {
 //sets the values of the form into the state to be stored. We create objects with empty arrays
 //to represent the other teams. teamCount - 1 is to leave room for the User's team which we
 //then insert based on draft position (see splice method).
-export const draftPageSubmit = (values) => {
+export const draftPageSubmit = (values) => (dispatch, getState) => {
   let myTeam = [];
   let teams = [];
   for (let i=0; i<(values.numberOfTeams-1); i++){
     teams[i] = []
   }
   teams.splice(values.draftOrder-1, 0, myTeam);
-  return {
+  dispatch({
     type: DRAFT_PAGE_SUBMIT,
     values,
     teamArrays: teams
+  })
+  if (values.draftOrder !== 1){
+    return dispatch(addPlayerToTeamUp(0, 1))
   }
 }
 
@@ -170,8 +173,8 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
         playersUsed: playersDrafted,
         counter: allTeams.length-1
       })
-      return dispatch(decreasing())
       console.log('now drecreasing')
+      return dispatch(decreasing())
     }
     else {
       console.log('lets see this bad boy')
