@@ -4,7 +4,6 @@ export const TEAM_COUNT_CHANGE = 'TEAM_COUNT_CHANGE';
 export const INCREASING = 'INCREASING';
 export const DECREASING = 'DECREASING';
 export const ADD_TO_TEAM = 'ADD_TO_TEAM';
-export const REVERSE_TEAMS = 'REVERSE_TEAMS';
 
 //the teamCount happens onChange. Users selecting their draft position will only be able
 //to choose up to the teamCount value
@@ -35,6 +34,7 @@ export const draftPageSubmit = (values) => (dispatch, getState) => {
   }
 }
 
+//QuickSort method
 const sort_by = (field, reverse, primer) => {
   var key = primer ?
   function(x) {return primer(x[field])} :
@@ -47,7 +47,9 @@ const sort_by = (field, reverse, primer) => {
   }
 }
 
-
+//loop through team arrays and push the best player Available to each team, stop when it reaches
+//the user's array. adding to the counter by one for each time to keep track of whose
+//pick it is.
 export const addPlayerToTeamUp = (counter, direction) => (dispatch, getState) => {
   console.log('beggining of going up')
   const state = getState()
@@ -55,20 +57,16 @@ export const addPlayerToTeamUp = (counter, direction) => (dispatch, getState) =>
   let myTeam = state.draftPreferencesReducer.draftPos - 1
   let player = state.playersReducer.players
   let allTeams = state.draftPreferencesReducer.teams
-  let count = state.counterReducer.counter
-  //let dir = state.counterReducer.currentDirection
-  //let turns = state.counterReducer.turns
   player.sort(sort_by('rank', true, parseInt))
-  console.log(counter, direction)
   for (let i = counter; i < allTeams.length; i+= direction) {
       setTimeout(function(x) { return function() {
         playersDrafted.push(player[x])
-        console.log('checking', getState().counterReducer.counter)
         if (getState().counterReducer.counter === myTeam){
           return
         }
+        //if we reach the end of the arrays and the users team is not picking last, add player
+        //change direction to go down and dispatch the other action which loops in reverse order
         if (getState().counterReducer.counter === allTeams.length-1 && myTeam !== allTeams.length-1){
-          console.log('how many times is this getting called?')
           dispatch ({
             type: ADD_TO_TEAM,
             player: player[x],
@@ -79,35 +77,33 @@ export const addPlayerToTeamUp = (counter, direction) => (dispatch, getState) =>
           dispatch(decreasing())
           return dispatch(addPlayerToTeamDown(allTeams.length-1, -1))
         }
+        //otherwise just add player to team and add to counter
         else {
-          console.log('this counter is buggin', getState().counterReducer.counter)
-        return dispatch ({
-          type: ADD_TO_TEAM,
-          player: player[x],
-          team: getState().counterReducer.counter,
-          playersUsed: playersDrafted,
-          counter: getState().counterReducer.counter + 1
-        })
-      }
+          return dispatch ({
+            type: ADD_TO_TEAM,
+            player: player[x],
+            team: getState().counterReducer.counter,
+            playersUsed: playersDrafted,
+            counter: getState().counterReducer.counter + 1
+          })
+        }
       };
     }(i-getState().counterReducer.counter), 200*(i-getState().counterReducer.counter));
   }
 }
 
+//pretty much the same as the action above, but dispatches when the above loop reaches the end
+//then this dispatches the action above once it reaches the end
 export const addPlayerToTeamDown = (counter, direction) => (dispatch, getState) => {
-  console.log('beggining of going down')
-  console.log(counter, direction)
   const state = getState()
   let playersDrafted = state.draftPreferencesReducer.playersUsed
   let myTeam = state.draftPreferencesReducer.draftPos - 1
   let player = state.playersReducer.players
   let allTeams = state.draftPreferencesReducer.teams
-  let count = state.counterReducer.counter
   player.sort(sort_by('rank', true, parseInt))
   for (let i = counter; i>=0; i += direction) {
     setTimeout(function(x) { return function() {
       playersDrafted.push(player[x*-1])
-      console.log(player[x*-1], playersDrafted, myTeam, counter, getState().counterReducer.counter)
       if (getState().counterReducer.counter === myTeam){
         return
       }
@@ -123,29 +119,30 @@ export const addPlayerToTeamDown = (counter, direction) => (dispatch, getState) 
         return dispatch(addPlayerToTeamUp(0, 1))
       }
       else {
-      dispatch ({
-        type: ADD_TO_TEAM,
-        player: player[x*-1],
-        team: getState().counterReducer.counter,
-        playersUsed: playersDrafted,
-        counter: getState().counterReducer.counter -1
-      })
-    }
-  }; }(i-counter), 200*(i-counter));
+        dispatch ({
+          type: ADD_TO_TEAM,
+          player: player[x*-1],
+          team: getState().counterReducer.counter,
+          playersUsed: playersDrafted,
+          counter: getState().counterReducer.counter -1
+        })
+      }
+    }; }(i-counter), 200*(i-counter));
   }
 }
 
+//this action runs when the player clicks to draft a player.
 export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
   let myTeam = getState().draftPreferencesReducer.draftPos -1
   let playersDrafted = getState().draftPreferencesReducer.playersUsed
   let allTeams = getState().draftPreferencesReducer.teams
-  let count = getState().counterReducer.counter
-  let dir = getState().counterReducer.currentDirection
   allTeams[myTeam].push(player)
   playersDrafted.push(player)
   if (myTeam === 0) {
+    //if the user is picking first and the direction is coming down, meaning its looping down,
+    //we add the player to the team and then it is the user's pick again to begin the next round.
+    //it also dispatches increasing which simply sets the direction to 1 instead of -1
     if (getState().counterReducer.currentDirection === -1){
-      console.log('direction down')
       dispatch ({
         type: ADD_TO_MY_TEAM,
         player,
@@ -155,7 +152,8 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
       return dispatch(increasing())
     }
     else {
-      console.log('direction up')
+      //if the direction isnt negative, we just add the player and dispatch addPlayerToTeamUp starting
+      //at the next player
       dispatch ({
         type: ADD_TO_MY_TEAM,
         player,
@@ -166,6 +164,8 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
     }
   }
   if (myTeam === allTeams.length -1){
+    //if we're picking last, we pretty much do the same as above, letting the user pick again
+    //to start the next round and reverse the direction.
     if (getState().counterReducer.currentDirection === 1){
       dispatch ({
         type: ADD_TO_MY_TEAM,
@@ -173,11 +173,11 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
         playersUsed: playersDrafted,
         counter: allTeams.length-1
       })
-      console.log('now drecreasing')
       return dispatch(decreasing())
     }
     else {
-      console.log('lets see this bad boy')
+      //similar to above, except if it's coming down we dispatch addPlayerToTeamDown with the
+      //index of the team before it
       dispatch ({
         type: ADD_TO_MY_TEAM,
         player,
@@ -187,6 +187,8 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
       return dispatch(addPlayerToTeamDown(myTeam-1, -1))
     }
   }
+  //if we're not picking first or last then we just add the player to our team and move
+  //on to the next team based on the direction we're going
   else if (myTeam !== 0 && myTeam !== allTeams.length-1){
     if (getState().counterReducer.currentDirection === 1){
       dispatch ({

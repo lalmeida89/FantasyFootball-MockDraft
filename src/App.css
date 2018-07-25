@@ -36,6 +36,7 @@
 	border-width: 7px;
 	margin-top: -7px;
 }
+
 .playerCard:before {
 	border-color: rgba(116, 131, 143, 0);
 	border-right-color: #74838f;
