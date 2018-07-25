@@ -94,11 +94,6 @@ class Intro extends React.Component {
     this.props.dispatch(hideMenu());
   }
 
-  autoDrafting = () => {
-    //let players = this.props.players;
-    this.props.dispatch(addPlayerToTeamUp(this.props.counter, 1))
-  }
-
   render() {
     //what the dropdown will render will be based on the the prop we pass to displayPlayers based on
     //what is set in the showPosition function. initially it will show all players but buttons

@@ -30,7 +30,6 @@ export default (preferenceState = initialState, action) => {
         case 'ADD_TO_TEAM':
           let t = preferenceState.teams[action.team]
           t.push(action.player)
-          console.log(t, action.player)
           return {
             ...preferenceState,
             teams: [...preferenceState.teams],

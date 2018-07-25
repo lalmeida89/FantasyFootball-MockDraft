@@ -1,9 +1,12 @@
+import {showCurrentTeam} from './showActions'
+
 export const ADD_TO_MY_TEAM = 'ADD_TO_MY_TEAM'
 export const DRAFT_PAGE_SUBMIT = 'DRAFT_PAGE_SUBMIT';
 export const TEAM_COUNT_CHANGE = 'TEAM_COUNT_CHANGE';
 export const INCREASING = 'INCREASING';
 export const DECREASING = 'DECREASING';
 export const ADD_TO_TEAM = 'ADD_TO_TEAM';
+
 
 //the teamCount happens onChange. Users selecting their draft position will only be able
 //to choose up to the teamCount value
@@ -29,6 +32,7 @@ export const draftPageSubmit = (values) => (dispatch, getState) => {
     values,
     teamArrays: teams
   })
+  dispatch(showCurrentTeam(myTeam, values.draftOrder))
   if (values.draftOrder !== 1){
     return dispatch(addPlayerToTeamUp(0, 1))
   }

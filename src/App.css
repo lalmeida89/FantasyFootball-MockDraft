@@ -208,6 +208,7 @@ td > label, .formLabel {
 .rosterPlayers {
   font-size: 12px;
   line-height: 5px;
+  margin-top: 32px;
 }
 
 .players {
@@ -220,7 +221,7 @@ td > label, .formLabel {
   position: fixed;
   z-index: 99;
   background-color: white;
-  width: 125px;
+  width: 175px;
 }
 
 .fa-chevron-up, .fa-chevron-down {
@@ -230,7 +231,15 @@ td > label, .formLabel {
 
 .dropdwnMenu {
   padding-left: 20px;
-  width: 125px;
+  width: 175px;
+}
+
+.teamDropdown {
+  width: 175px;
+}
+
+.teamBtn {
+  float: left;
 }
 
 .schedule {
@@ -246,6 +255,10 @@ td > label, .formLabel {
 
 .fa-star:hover {
   color: #bfbf2f !important;
+}
+
+.fa-user {
+  margin-left: 20px;
 }
 
 .App {

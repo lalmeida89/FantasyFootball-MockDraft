@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 const ShowDraftedPlayers = props => {
+  console.log(props)
   //will update soon, currently maps through list of players that have been drafted and displays them.
   let style = {fontSize: '13px', lineHeight: '8px'}
   let playersDraftedList = props.draftedPlayers.map((player, index) => (
