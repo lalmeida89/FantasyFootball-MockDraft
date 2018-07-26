@@ -1,6 +1,5 @@
 import React  from 'react';
 import {connect} from 'react-redux';
-import PlayerProfile from './playerProfile'
 
 import {fetchPlayers} from '../actions/fetchAction'
 import {getPlayerProfile} from '../actions/setCurrentPlayerAction'
@@ -11,7 +10,7 @@ import {
 } from '../actions/showActions'
 import {Button} from '../styledComponents/dropdown'
 import {favoritedPlayer, removeFromFavorites} from '../actions/favoriteActions'
-import {addPlayerToTeamUp, addPlayerToMyTeam} from '../actions/draftPreferencesAction'
+import {addPlayerToMyTeam} from '../actions/draftPreferencesAction'
 
 
 //sort function to sort players by their rank
