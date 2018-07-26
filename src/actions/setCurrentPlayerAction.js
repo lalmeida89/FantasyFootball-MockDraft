@@ -21,6 +21,7 @@ initial fetch. The response will be an array of just one player so we dispatch o
 on the first player in the array. We can then use all of the information to create a profile of that player*/
 
 export function getPlayerProfile(id) {
+  console.log(id, 'lets see if this works')
   return dispatch => {
     let idUrl = dispatch(setCurrentPlayer(id))
     ////console.log(idUrl.id);

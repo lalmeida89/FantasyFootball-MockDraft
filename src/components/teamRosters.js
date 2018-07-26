@@ -74,8 +74,12 @@
           ))
           return (
             <div className='teamDropdown positionBtn'>
-            { menu ? teamNames :
-              <Button dropBtn onClick={()=> this.displayMenu()}>
+            { menu
+              ? <div>
+                  <Button dropBtn> Team {teamNumber} </Button>
+                  {teamNames}
+                </div>
+              : <Button dropBtn onClick={()=> this.displayMenu()}>
                 <div className='teamBtn'>Team {teamNumber}
                   { currentTeam === teams[draftPos-1]
                     ? userIcon

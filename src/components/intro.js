@@ -57,8 +57,6 @@ const ShowPlayers = props => {
           onClick={()=>{props.currentId.myFavorites.includes(player) ? props.currentId.dispatch(removeFromFavorites(player)) : props.currentId.dispatch(favoritedPlayer(player)) }}>
         </i>
       </p>
-      { player.id === props.currentId.currentPlayer ?
-      <PlayerProfile /> : null }
       <hr/>
     </div>
     )

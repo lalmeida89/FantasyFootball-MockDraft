@@ -31,8 +31,15 @@ class PlayerProfile extends React.Component {
     }
 
     //if a player profile is true, we render this component with PlayerHeader as the header.
-    const PlayerHeader = () => {
-      if(this.props.playerProfile){
+
+    if(!this.props.playerProfile){
+      return null
+    }
+
+    //this might be redundant but we again check the truthiness of the playerProfile and
+    //at the moment only render the first piece in the notes array that we receive from the fetch
+    else if (this.props.playerProfile){
+      const PlayerHeader = () => {
         return (
           <div className='playrHedr'>
             <i className="fas fa-times"
@@ -45,18 +52,23 @@ class PlayerProfile extends React.Component {
           </div>
         )
       }
-    }
 
+      /*let currentPlayer = this.props.currentPlayer;
+      let playersUsed = this.props.playersUsed;
+      let playerId = JSON.stringify(profile.id)
+      console.log(playerId, playersUsed.includes(playerId), playersUsed.includes(profile.id))
+      let playersUsed = this.props.playersUsed
+      for (let i=0; i< playersUsed.length ; i++){
+        console.log(playersUsed[i].id === currentPlayer)
+      }
+      console.log(currentPlayer, this.props.playersUsed[0].id===currentPlayer, this.props.playersUsed[0].id)
+      if(this.props.playersUsed.includes(profile)){
+        console.log('hey this is working')
+      }*/
 
-    if(!this.props.playerProfile){
-      return null
-    }
-
-    //this might be redundant but we again check the truthiness of the playerProfile and
-    //at the moment only render the first piece in the notes array that we receive from the fetch
-    else if (this.props.playerProfile){
+      //notes are set to true by default but can also be set to true
+      //by the renderNotes function
       let profile = this.props.playerProfile;
-      //notes are set to true by default but can also be set to true by the renderNotes function
       if (this.props.notes === true) {
         if (profile.notes[0]){
           let newDate = profile.notes[0].timestamp.slice(0,10);
@@ -131,11 +143,13 @@ class PlayerProfile extends React.Component {
   }
 }
 
-export const mapStateToProps = ({playersReducer, teamReducer}) => {
+export const mapStateToProps = ({playersReducer, teamReducer, draftPreferencesReducer}) => {
   return ({
+    playersUsed: draftPreferencesReducer.playersUsed,
     playerProfile: playersReducer.playerProfile,
     notes: playersReducer.notes,
-    schedule: playersReducer.schedule
+    schedule: playersReducer.schedule,
+    currentPlayer: playersReducer.currentPlayer
   })
 }
 export default connect (mapStateToProps)(PlayerProfile)

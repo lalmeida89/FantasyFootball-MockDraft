@@ -98,7 +98,7 @@ export default (playersState = initialState, action) => {
             displayPlayers: playersState.displayPlayers
           };
         case 'SET_CURRENT_PLAYER':
-          ////console.log(action);
+          console.log(action);
           return Object.assign({}, playersState, {
             currentPlayer: action.id
           });

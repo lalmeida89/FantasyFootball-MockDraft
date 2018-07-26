@@ -7,6 +7,7 @@ export const INCREASING = 'INCREASING';
 export const DECREASING = 'DECREASING';
 export const ADD_TO_TEAM = 'ADD_TO_TEAM';
 export const INCREASE_TURNS = 'INCREASE_TURNS';
+export const RENDER_FINAL_PAGE = 'RENDER_FINAL_PAGE';
 
 
 //the teamCount happens onChange. Users selecting their draft position will only be able
@@ -20,7 +21,8 @@ export const teamCountChange = teamCount => {
 
 //sets the values of the form into the state to be stored. We create objects with empty arrays
 //to represent the other teams. teamCount - 1 is to leave room for the User's team which we
-//then insert based on draft position (see splice method).
+//then insert based on draft position (see splice method). And then, after a 2 second delay,
+//if the user is not picking first, the drafting begins right away.
 export const draftPageSubmit = (values) => (dispatch, getState) => {
   let myTeam = [];
   let teams = [];
@@ -28,14 +30,20 @@ export const draftPageSubmit = (values) => (dispatch, getState) => {
     teams[i] = []
   }
   teams.splice(values.draftOrder-1, 0, myTeam);
+  let flexCount = parseInt(values.wrRbFlexCount, 10) + parseInt(values.wrTeFlexCount, 10) + parseInt(values.rbTeFlexCount, 10) + parseInt(values.wrRbTeFlexCount, 10) + parseInt(values.qbWrRbTeFlexCount, 10);
+  let startersCount = parseInt(values.wrCount, 10) + parseInt(values.dstCount, 10) + parseInt(values.kCount, 10) + parseInt(values.rbCount, 10) + parseInt(values.qbCount, 10) + parseInt(values.teCount, 10);
+  let maxRounds = flexCount + startersCount + parseInt(values.benchCount, 10);
+  console.log(maxRounds);
   dispatch({
     type: DRAFT_PAGE_SUBMIT,
     values,
-    teamArrays: teams
+    teamArrays: teams,
+    flexPlayers: flexCount,
+    maxTurns: maxRounds
   })
   dispatch(showCurrentTeam(myTeam, values.draftOrder))
-  if (values.draftOrder !== 1){
-    return dispatch(addPlayerToTeamUp(0, 1))
+  if (values.draftOrder > 1){
+    return setTimeout(()=> dispatch(addPlayerToTeamUp(0, 1)), 2000)
   }
 }
 
@@ -56,16 +64,20 @@ const sort_by = (field, reverse, primer) => {
 //the user's array. adding to the counter by one for each time to keep track of whose
 //pick it is.
 export const addPlayerToTeamUp = (counter, direction) => (dispatch, getState) => {
-  console.log('beggining of going up')
   const state = getState()
   let playersDrafted = state.draftPreferencesReducer.playersUsed
   let myTeam = state.draftPreferencesReducer.draftPos - 1
   let player = state.playersReducer.players
   let allTeams = state.draftPreferencesReducer.teams
+  let maxTurns = state.draftPreferencesReducer.maxTurns
   player.sort(sort_by('rank', true, parseInt))
-  for (let i = counter; i < allTeams.length; i+= direction) {
+  if (getState().counterReducer.turns <= maxTurns){
+    for (let i = counter; i < allTeams.length; i+= direction) {
       setTimeout(function(x) { return function() {
-        playersDrafted.push(player[x])
+        let pickedAt = {pickedAt : getState().counterReducer.counter+1, round: getState().counterReducer.turns}
+        let currentPlayer = player[x]
+        currentPlayer = {...currentPlayer, ...pickedAt};
+        playersDrafted.push(currentPlayer)
         if (getState().counterReducer.counter === myTeam){
           return
         }
@@ -74,7 +86,7 @@ export const addPlayerToTeamUp = (counter, direction) => (dispatch, getState) =>
         if (getState().counterReducer.counter === allTeams.length-1 && myTeam !== allTeams.length-1){
           dispatch ({
             type: ADD_TO_TEAM,
-            player: player[x],
+            player: currentPlayer,
             team: getState().counterReducer.counter,
             playersUsed: playersDrafted,
             counter: getState().counterReducer.counter
@@ -85,17 +97,20 @@ export const addPlayerToTeamUp = (counter, direction) => (dispatch, getState) =>
         }
         //otherwise just add player to team and add to counter
         else {
-          console.log(state.counterReducer.counter, getState().counterReducer.counter)
           return dispatch ({
             type: ADD_TO_TEAM,
-            player: player[x],
+            player: currentPlayer,
             team: getState().counterReducer.counter,
             playersUsed: playersDrafted,
             counter: getState().counterReducer.counter + 1
           })
         }
       };
-    }(i-getState().counterReducer.counter), 200*(i-getState().counterReducer.counter));
+      }(i-getState().counterReducer.counter), 200*(i-getState().counterReducer.counter));
+    }
+  }
+  else{
+    dispatch(renderFinalPage())
   }
 }
 
@@ -107,17 +122,22 @@ export const addPlayerToTeamDown = (counter, direction) => (dispatch, getState) 
   let myTeam = state.draftPreferencesReducer.draftPos - 1
   let player = state.playersReducer.players
   let allTeams = state.draftPreferencesReducer.teams
+  let maxTurns = state.draftPreferencesReducer.maxTurns
   player.sort(sort_by('rank', true, parseInt))
-  for (let i = counter; i>=0; i += direction) {
+  if (getState().counterReducer.turns <= maxTurns){
+    for (let i = counter; i>=0; i += direction) {
     setTimeout(function(x) { return function() {
-      playersDrafted.push(player[x*-1])
+      let pickedAt = {pickedAt:getState().counterReducer.counter+1, round:getState().counterReducer.turns}
+      let currentPlayer = player[x*-1]
+      currentPlayer = {...currentPlayer, ...pickedAt};
+      playersDrafted.push(currentPlayer)
       if (getState().counterReducer.counter === myTeam){
         return
       }
       if (getState().counterReducer.counter === 0 && myTeam !== 0){
         dispatch ({
           type: ADD_TO_TEAM,
-          player: player[x*-1],
+          player: currentPlayer,
           team: getState().counterReducer.counter,
           playersUsed: playersDrafted,
           counter: getState().counterReducer.counter
@@ -129,13 +149,16 @@ export const addPlayerToTeamDown = (counter, direction) => (dispatch, getState) 
       else {
         dispatch ({
           type: ADD_TO_TEAM,
-          player: player[x*-1],
+          player: currentPlayer,
           team: getState().counterReducer.counter,
           playersUsed: playersDrafted,
           counter: getState().counterReducer.counter -1
         })
       }
     }; }(i-counter), 200*(i-counter));
+  }}
+  else{
+    dispatch(renderFinalPage())
   }
 }
 
@@ -144,19 +167,25 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
   let myTeam = getState().draftPreferencesReducer.draftPos -1
   let playersDrafted = getState().draftPreferencesReducer.playersUsed
   let allTeams = getState().draftPreferencesReducer.teams
-  allTeams[myTeam].push(player)
-  playersDrafted.push(player)
-  if (myTeam === 0) {
+  let maxTurns = getState().draftPreferencesReducer.maxTurns
+  if (getState().counterReducer.turns <= maxTurns){
+    let pickedAt = {pickedAt:getState().counterReducer.counter+1, round:getState().counterReducer.turns}
+    let currentPlayer = player
+    currentPlayer = {...currentPlayer, ...pickedAt};
+    allTeams[myTeam].push(currentPlayer)
+    playersDrafted.push(currentPlayer)
+    if (myTeam === 0) {
     //if the user is picking first and the direction is coming down, meaning its looping down,
     //we add the player to the team and then it is the user's pick again to begin the next round.
     //it also dispatches increasing which simply sets the direction to 1 instead of -1
     if (getState().counterReducer.currentDirection === -1){
       dispatch ({
         type: ADD_TO_MY_TEAM,
-        player,
+        player: currentPlayer,
         playersUsed: playersDrafted,
         counter: 0
       })
+      dispatch(increaseTurns())
       return dispatch(increasing())
     }
     else {
@@ -164,11 +193,11 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
       //at the next player
       dispatch ({
         type: ADD_TO_MY_TEAM,
-        player,
+        player: currentPlayer,
         playersUsed: playersDrafted,
         counter: myTeam + 1
       })
-      return dispatch(addPlayerToTeamUp(1, 1))
+      return setTimeout(()=>dispatch(addPlayerToTeamUp(1, 1)), 1000)
     }
   }
   if (myTeam === allTeams.length -1){
@@ -177,7 +206,7 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
     if (getState().counterReducer.currentDirection === 1){
       dispatch ({
         type: ADD_TO_MY_TEAM,
-        player,
+        player: currentPlayer,
         playersUsed: playersDrafted,
         counter: allTeams.length-1
       })
@@ -188,11 +217,11 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
       //index of the team before it
       dispatch ({
         type: ADD_TO_MY_TEAM,
-        player,
+        player: currentPlayer,
         playersUsed: playersDrafted,
         counter: myTeam-1
       })
-      return dispatch(addPlayerToTeamDown(myTeam-1, -1))
+      return setTimeout(()=>dispatch(addPlayerToTeamDown(myTeam-1, -1)), 1000)
     }
   }
   //if we're not picking first or last then we just add the player to our team and move
@@ -201,21 +230,24 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
     if (getState().counterReducer.currentDirection === 1){
       dispatch ({
         type: ADD_TO_MY_TEAM,
-        player,
+        player: currentPlayer,
         playersUsed: playersDrafted,
         counter: myTeam + 1
       })
-      dispatch(addPlayerToTeamUp(myTeam+1, 1))
+      setTimeout(()=>dispatch(addPlayerToTeamUp(myTeam+1, 1)), 1000)
     }
     if (getState().counterReducer.currentDirection === -1){
       dispatch ({
         type: ADD_TO_MY_TEAM,
-        player,
+        player: currentPlayer,
         playersUsed: playersDrafted,
         counter : myTeam-1
       })
-      dispatch(addPlayerToTeamDown(myTeam-1, -1))
+      setTimeout(()=>dispatch(addPlayerToTeamDown(myTeam-1, -1)), 1000)
     }
+  }}
+  else{
+    dispatch(renderFinalPage())
   }
 }
 
@@ -234,5 +266,11 @@ export const increasing = () => {
 export const increaseTurns = () => {
   return {
     type: INCREASE_TURNS
+  }
+}
+
+export const renderFinalPage = () => {
+  return {
+    type: RENDER_FINAL_PAGE
   }
 }

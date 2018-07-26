@@ -18,7 +18,8 @@ const initialState = {
   flexCount: '',
   showSettingsPage: true,
   teams: [],
-  playersUsed: []
+  playersUsed: [],
+  maxTurns: ''
 }
 
 export default (preferenceState = initialState, action) => {
@@ -42,6 +43,7 @@ export default (preferenceState = initialState, action) => {
             playersUsed: [...action.playersUsed]
           }
         case 'DRAFT_PAGE_SUBMIT':
+          console.log(preferenceState)
           return {
             ...preferenceState,
             teamCount: action.values.numberOfTeams,
@@ -58,7 +60,8 @@ export default (preferenceState = initialState, action) => {
             numberOfDST: action.values.dstCount,
             numberOfKickers: action.values.kCount,
             benchCount: action.values.benchCount,
-            flexCount: parseInt(action.values.wrRbFlexCount, 10) + parseInt(action.values.wrTeFlexCount, 10) + parseInt(action.values.rbTeFlexCount, 10) + parseInt(action.values.wrRbTeFlexCount, 10) + parseInt(action.values.qbWrRbTeFlexCount, 10),
+            flexCount: action.flexPlayers,
+            maxTurns: action.maxTurns,
             showSettingsPage: false,
             teams: action.teamArrays,
           };
@@ -83,7 +86,8 @@ export default (preferenceState = initialState, action) => {
             showSettingsPage: preferenceState.showSettingsPage,
             flexCount: preferenceState.flexCount,
             teams: preferenceState.teams,
-            playersUsed: preferenceState.playersUsed
+            playersUsed: preferenceState.playersUsed,
+            maxTurns: preferenceState.maxTurns
           }
     }
 }

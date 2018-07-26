@@ -46,12 +46,10 @@ export const showCurrentTeam = (currentTeam, teamNumber) => ({
     teamNumber
 });
 
-export const hideTeamMenu = menu => ({
-  type: HIDE_TEAM_MENU,
-  menu
+export const hideTeamMenu = () => ({
+  type: HIDE_TEAM_MENU
 })
 
-export const showTeamMenu = menu => ({
-  type: SHOW_TEAM_MENU,
-  menu
+export const showTeamMenu = () => ({
+  type: SHOW_TEAM_MENU
 })

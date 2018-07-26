@@ -1,28 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import PlayerProfile from './playerProfile'
+import {getPlayerProfile} from '../actions/setCurrentPlayerAction'
+
 const ShowDraftedPlayers = props => {
   console.log(props)
-  //will update soon, currently maps through list of players that have been drafted and displays them.
-  /*let playerPick = (index) => {
-    if (index < props.allProps.teamCount)
-    {
-       for(let i=index; i<props.allProps.teamCount; i++){
-         return i+1
-         console.log(i)
-       }
-    }
-    if (index >= props.allProps.teamCount){
-       for(let i=index; i; i--){
-         return i+1
-         console.log(i)
-       }
-    }
-  }*/
   let style = {fontSize: '13px', lineHeight: '8px'}
   let playersDraftedList = props.draftedPlayers.map((player, index) => (
     <div key={index} style={style} className='drafted'>
-      <p> 1.{index+1} {player.firstName} {player.lastName} {player.position} </p>
+      <p className='draftedPlayer' onClick={()=>props.allProps.dispatch(getPlayerProfile(player.id))}>
+        {player.round}.{player.pickedAt}  {player.firstName} {player.lastName} {player.position}
+      </p>
+    
     </div>
   ))
   return (
@@ -44,11 +34,12 @@ class PlayersDrafted extends React.Component {
 }
 
 
-export const mapStateToProps = ({draftPreferencesReducer, counterReducer}) => {
+export const mapStateToProps = ({draftPreferencesReducer, counterReducer, playersReducer}) => {
   return ({
     playersUsed: draftPreferencesReducer.playersUsed,
     counter: counterReducer.counter,
-    teamCount: draftPreferencesReducer.teamCount
+    teamCount: draftPreferencesReducer.teamCount,
+    currentPlayer: playersReducer.currentPlayer,
 
   })
 }

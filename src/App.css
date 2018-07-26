@@ -11,14 +11,16 @@
 	position: absolute;
 	background: #f5f5f5;
 	border: 1px solid #63737d;
-  z-index: 99;
-  width: 300px;
+  z-index: 9999;
+  width: 500px;
   height: contain;
   font-size: 10px;
   border-radius: 8px;
   padding: 5px;
+  margin: auto;
 }
 
+/*
 .playerCard:after, .playerCard:before {
 	right: 100%;
 	top: 50%;
@@ -43,6 +45,7 @@
 	border-width: 10px;
 	margin-top: -10px;
 }
+*/
 
 .draftBtn {
   display: inline-block;
@@ -115,8 +118,8 @@
   background-color: white;
 }
 
-.favoritePlayers p {
-  line-height: 5px;
+.favorites {
+  line-height: 2px;
   font-size: 13px;
 }
 
@@ -127,13 +130,16 @@
   left: 0;
   top: 0;
   z-index: 5;
-  height: 100%;
+  height: 92%;
   padding: 10px 14px;
   display: block;
   background-color: white;
   overflow-y: scroll;
 }
 
+.draftedPlayer:hover, .favorites:hover {
+  cursor: pointer;
+}
 .draftDetails {
   z-index: 999;
   position: relative;
@@ -264,4 +270,8 @@ td > label, .formLabel {
 .App {
   width: 100%;
   margin: auto;
+}
+
+.App > .playerCard {
+  margin: 0 auto 0 20%;
 }

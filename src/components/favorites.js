@@ -16,7 +16,7 @@ class Favorites extends React.Component {
       let ShowFaves = myFavorites.map((player, index) => (
         <div className='favoritesList' key={index}>
           <p>
-            <b onClick={()=> dispatch(getPlayerProfile(player.id))}>
+            <b className='favorites' onClick={()=> dispatch(getPlayerProfile(player.id))}>
             {player.firstName} {player.lastName} </b>
             <i className="fas fa-times"
             style={{marginLeft:'15px'}}
