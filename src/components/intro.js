@@ -139,6 +139,7 @@ class Intro extends React.Component {
       return (
         <div className='players'>
           <h1 style={{textAlign: 'center'}}> Players Available </h1>
+          <h5 style={{textAlign: 'center'}}> Round {this.props.turn} </h5>
           <div className='dropdwnMenu'>
             <Button onClick={()=> this.props.menu
               ? this.closeMenu()
@@ -184,7 +185,8 @@ export const mapStateToProps = ({playersReducer, favoritesReducer, counterReduce
   profile: playersReducer.profile,
   menu: playersReducer.menu,
   myFavorites: favoritesReducer.myFavorites,
-  counter: counterReducer.counter
+  counter: counterReducer.counter,
+  turn: counterReducer.turns
   })
 }
 

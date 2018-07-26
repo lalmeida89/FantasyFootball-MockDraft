@@ -1,7 +1,7 @@
 const initialState = {
   counter : 0,
   currentDirection : 1,
-  turns: 0
+  turns: 1
 }
 
 export default (counterState = initialState, action) => {
@@ -26,6 +26,12 @@ export default (counterState = initialState, action) => {
         ...counterState,
         currentDirection: -1,
     }
+    case 'INCREASE_TURNS':
+      console.log(action, counterState)
+      return {
+        ...counterState,
+        turns: counterState.turns + 1
+      }
     default:
       return {
         counter: counterState.counter,

@@ -1,11 +1,12 @@
-import {showCurrentTeam} from './showActions'
+import {showCurrentTeam} from './showActions';
 
-export const ADD_TO_MY_TEAM = 'ADD_TO_MY_TEAM'
+export const ADD_TO_MY_TEAM = 'ADD_TO_MY_TEAM';
 export const DRAFT_PAGE_SUBMIT = 'DRAFT_PAGE_SUBMIT';
 export const TEAM_COUNT_CHANGE = 'TEAM_COUNT_CHANGE';
 export const INCREASING = 'INCREASING';
 export const DECREASING = 'DECREASING';
 export const ADD_TO_TEAM = 'ADD_TO_TEAM';
+export const INCREASE_TURNS = 'INCREASE_TURNS';
 
 
 //the teamCount happens onChange. Users selecting their draft position will only be able
@@ -78,11 +79,13 @@ export const addPlayerToTeamUp = (counter, direction) => (dispatch, getState) =>
             playersUsed: playersDrafted,
             counter: getState().counterReducer.counter
           })
+          dispatch(increaseTurns())
           dispatch(decreasing())
           return dispatch(addPlayerToTeamDown(allTeams.length-1, -1))
         }
         //otherwise just add player to team and add to counter
         else {
+          console.log(state.counterReducer.counter, getState().counterReducer.counter)
           return dispatch ({
             type: ADD_TO_TEAM,
             player: player[x],
@@ -119,6 +122,7 @@ export const addPlayerToTeamDown = (counter, direction) => (dispatch, getState) 
           playersUsed: playersDrafted,
           counter: getState().counterReducer.counter
         })
+        dispatch(increaseTurns())
         dispatch(increasing())
         return dispatch(addPlayerToTeamUp(0, 1))
       }
@@ -224,5 +228,11 @@ export const decreasing = () => {
 export const increasing = () => {
   return {
     type: INCREASING
+  }
+}
+
+export const increaseTurns = () => {
+  return {
+    type: INCREASE_TURNS
   }
 }
