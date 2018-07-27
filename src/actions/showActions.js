@@ -6,6 +6,9 @@ export const HIDE_MENU = 'HIDE_MENU';
 export const SHOW_TEAM_MENU = 'SHOW_TEAM_MENU';
 export const HIDE_TEAM_MENU = 'HIDE_TEAM_MENU';
 export const SHOW_CURRENT_TEAM = 'SHOW_CURRENT_TEAM';
+export const SHOW_DRAFTED_PLAYERS = 'SHOW_DRAFTED_PLAYERS';
+export const SHOW_ROSTERS = 'SHOW_ROSTERS';
+export const SHOW_FAVORITES = 'SHOW_FAVORITES';
 
 /* Depending on the button click on the intro component, we can filter what position we'd like to see,
 setting the props to be the displayPlayers and then rendering the displayPlayers. Notes and Schedules just
@@ -52,4 +55,16 @@ export const hideTeamMenu = () => ({
 
 export const showTeamMenu = () => ({
   type: SHOW_TEAM_MENU
+})
+
+export const showFavorites = () => ({
+  type: SHOW_FAVORITES
+})
+
+export const showRosters = () => ({
+  type: SHOW_ROSTERS
+})
+
+export const showDraftedPlayers = () => ({
+  type: SHOW_DRAFTED_PLAYERS
 })

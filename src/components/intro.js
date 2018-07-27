@@ -11,6 +11,7 @@ import {
 import {Button} from '../styledComponents/dropdown'
 import {favoritedPlayer, removeFromFavorites} from '../actions/favoriteActions'
 import {addPlayerToMyTeam} from '../actions/draftPreferencesAction'
+import '../styles/intro.css'
 
 
 //sort function to sort players by their rank
@@ -51,7 +52,7 @@ const ShowPlayers = props => {
         </i>
         <i
           style={ props.currentId.myFavorites.includes(player) ? {color:'#bfbf2f'} : {color: '#646557'}}
-          className="fas fa-star"
+          className="fas fa-star faveStar"
           title={ props.currentId.myFavorites.includes(player) ? 'Remove from Favorites' : 'Add to Favorites'  }
           onClick={()=>{props.currentId.myFavorites.includes(player) ? props.currentId.dispatch(removeFromFavorites(player)) : props.currentId.dispatch(favoritedPlayer(player)) }}>
         </i>

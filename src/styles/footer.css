@@ -1,0 +1,43 @@
+.footer {
+  position: fixed;
+  display: inline;
+  height: 40px;
+  width: 100%;
+  bottom: 0;
+  background-color: #000000ab;
+  text-align: center;
+  padding-top: 10px;
+  z-index: 99;
+}
+
+.rostersBtn {
+  float: left;
+  margin-left: 25%;
+}
+
+.favesBtn {
+  float: right;
+  margin-right: 25%;
+}
+
+.footer label {
+  font-size: 10px;
+  color: #bbb4b4;
+}
+
+.footer .fas {
+  font-size: 22px;
+}
+
+.footerBtn {
+  color: #bbb4b4;
+}
+
+.footerBtn:hover {
+  color: #03ff6c !important;
+  cursor: pointer;
+}
+
+.draftedPlayer:hover, .favorites:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,119 @@
+
+.draftDetails {
+  z-index: 999;
+  position: relative;
+  width: 85%;
+  top: 100px;
+  background-color: white;
+  margin: 0 auto;
+  height: 75%;
+  padding: 10px;
+}
+
+.reduxFormDiv {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  position: fixed;
+  z-index: 998;
+  background-color: #000000e0;
+  top: 0;
+}
+
+.options{
+  font-size: 13px;
+}
+
+.positionCount {
+  position: relative;
+  height: 3em;
+  display: inline-block;
+  border: 2px solid #34423a;
+  padding: 2px;
+  width: 6em;
+  text-align: justify;
+  cursor: pointer;
+}
+
+.rosterHeader {
+  text-align: center;
+  padding-top: 30px;
+  margin-top: 50px;
+}
+
+.scoringRules,
+.draftType,
+.countAndOrder {
+  float: left;
+  margin-right: 20px;
+}
+
+.topHalf {
+  height: 100px;
+  margin: auto;
+}
+
+.scoringRules label, .draftType label{
+  display: block;
+}
+
+.teamCount, .draftPosition {
+  padding: 10px 10px 0;
+}
+
+.submitButton {
+  bottom: 10px;
+  position: absolute;
+  margin: 0 auto;
+  left: 37%;
+  font-size: 1.4rem;
+  padding: 10px 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #0f5cefc9;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .labelHeader {
+    font-size: 12px;
+  }
+
+  .positionCount {
+    width: 3.5em;
+    height: 2.2em;
+  }
+
+  .mainStarters {
+    height: 300px;
+  }
+
+  .options{
+    font-size: 10px;
+  }
+
+  .teamCount{
+    float: left;
+  }
+
+  .draftPosition {
+    float: right;
+  }
+
+  .starter {
+    position: relative;
+    float: left;
+    font-size: 12px;
+  }
+
+  tr {
+    display: table-row-group;
+  }
+
+  .flex {
+    float: right;
+    font-size: 12px;
+  }
+}

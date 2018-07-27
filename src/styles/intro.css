@@ -1,0 +1,41 @@
+
+.draftBtn {
+  display: inline-block;
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+  height: 25px;
+  width: 50px;
+  font-size: 14px;
+  padding: 2px;
+}
+
+.playerName {
+  display: inline-block;
+  margin-right: 40px;
+}
+
+.playerSelector {
+  font-size: 13px;
+  padding: 5px 10px;
+  height: 30px;
+}
+
+.fa-file-alt {
+  cursor: pointer;
+}
+
+.players {
+  width: 65%;
+}
+
+.faveStar {
+  color: #646557;
+  right: 300px;
+  float: right;
+  margin-right: 10px;
+}
+
+.faveStar:hover {
+  color: #bfbf2f !important;
+}

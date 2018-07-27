@@ -1,0 +1,102 @@
+* {
+  padding-left: 0;
+}
+
+.playerCard {
+	position: fixed;
+	background: #f5f5f5;
+	border: 1px solid #63737d;
+  z-index: 9999;
+  width: 75%;
+  height: contain;
+  font-size: 10px;
+  border-radius: 8px;
+  padding: 5px;
+  left: 10%;
+}
+
+.rostersDiv {
+  margin-top: 5%;
+}
+
+.mainHeader {
+  display: block;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-bottom: 2px solid gray;
+  padding-bottom: 10px;
+}
+
+
+.RightSide {
+  position: fixed;
+  width: 33%;
+  border-left: 1px solid #80808054;
+  right: 0;
+  z-index: 5;
+  padding: 10px 14px;
+  display: inline-block;
+  background-color: white;
+  list-style: none;
+  overflow-y: scroll;
+}
+
+.favorites {
+  line-height: 2px;
+  font-size: 13px;
+}
+
+.rosterPlayers {
+  font-size: 12px;
+  line-height: 5px;
+  margin-top: 32px;
+  position: absolute;
+}
+
+.rightSide-App {
+  position: fixed;
+  right: 0;
+  width: 33%;
+}
+
+.positionBtn {
+  position: fixed;
+  z-index: 99;
+  background-color: white;
+  width: 175px;
+}
+
+.fa-chevron-up, .fa-chevron-down {
+  float: right;
+  background-color: #b7b7b77a;
+}
+
+.dropdwnMenu {
+  padding-left: 20px;
+  width: 175px;
+}
+
+.teamDropdown {
+  width: 175px;
+}
+
+.teamBtn {
+  float: left;
+}
+
+.schedule {
+  line-height: 3px;
+}
+
+.fa-user {
+  margin-left: 20px;
+}
+
+.App {
+  width: 100%;
+  margin: auto;
+  height: 90%;
+  margin-top: 80px;
+}

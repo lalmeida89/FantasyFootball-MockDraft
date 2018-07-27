@@ -31,7 +31,7 @@ export function getPlayerProfile(id) {
       .then(res => res.json())
       .then(profile => {
         dispatch(setPlayerProfile(profile.players[0]));
-        ////console.log(profile.players[0]);
+        console.log(profile.players[0]);
     });
   }
 }

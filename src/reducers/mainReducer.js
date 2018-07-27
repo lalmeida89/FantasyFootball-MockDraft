@@ -6,11 +6,13 @@ import favoritesReducer from './favoritesReducer';
 import counterReducer from './counterReducer';
 import rostersReducer from './rostersReducer';
 import analysisReducer from './analysisReducer';
+import renderReducer from './renderReducer'
 
 const rootReducer = combineReducers({
   playersReducer,
   favoritesReducer,
   counterReducer,
+  renderReducer,
   rostersReducer,
   analysisReducer,
   form: formReducer,
