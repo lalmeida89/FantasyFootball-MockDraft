@@ -21,26 +21,30 @@
 
 .mainHeader {
   display: block;
-  z-index: 99;
+  z-index: 999;
   position: fixed;
   top: 0;
   width: 100%;
   border-bottom: 2px solid gray;
-  padding-bottom: 10px;
+  height: 7%;
+  padding-top: 2%;
+  background-color: #ffffffe6;
+  margin: 0;
 }
-
 
 .RightSide {
   position: fixed;
   width: 33%;
   border-left: 1px solid #80808054;
   right: 0;
+  top: 11%;
   z-index: 5;
-  padding: 10px 14px;
+  padding: 0 14px;
   display: inline-block;
   background-color: white;
   list-style: none;
   overflow-y: scroll;
+  height: 100%;
 }
 
 .favorites {
@@ -62,7 +66,7 @@
 }
 
 .positionBtn {
-  position: fixed;
+  position: absolute;
   z-index: 99;
   background-color: white;
   width: 175px;
@@ -79,7 +83,7 @@
 }
 
 .teamDropdown {
-  width: 175px;
+  width: 75%;
 }
 
 .teamBtn {
@@ -99,4 +103,12 @@
   margin: auto;
   height: 90%;
   margin-top: 80px;
+  padding-top: 5px;
+}
+
+@media screen and (max-width: 600px) {
+
+  .draftedPlayer{
+    font-size: 10px;
+  }
 }

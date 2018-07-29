@@ -28,11 +28,7 @@ class App extends Component {
           <PlayerProfile />
           <Intro />
           <RightSide />
-          <div className="rightSite-App">
-            <DraftPage />
-            <TeamRosters />
-            <Favorites />
-          </div>
+          <DraftPage />
           <Footer />
         </div>
         </div>
