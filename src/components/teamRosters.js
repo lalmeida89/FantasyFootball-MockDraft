@@ -154,136 +154,136 @@
           return (
             <div className='rosterPlayers'>
               <p style={ numberOfQBs >= 1 ? {showStyle} : {display:'none'}}><b> QB </b>
-              { currentRoster.qbs[0] ? (currentRoster.qbs[0].firstName + ' ' + currentRoster.qbs[0].lastName ) : null }
+              { currentRoster.qbs[0] ? (currentRoster.qbs[0].name) : null }
               </p>
               <p style={ numberOfQBs >= 2 ? {showStyle} : {display:'none'}}><b> QB </b>
-              { currentRoster.qbs[1] ? (currentRoster.qbs[1].firstName + ' ' + currentRoster.qbs[1].lastName  ) : null }
+              { currentRoster.qbs[1] ? (currentRoster.qbs[1].name ) : null }
               </p>
               <p style={ numberOfQBs >= 3 ? {showStyle} : {display:'none'}}><b> QB </b>
-              { currentRoster.qbs[2] ? (currentRoster.qbs[2].firstName + ' ' + currentRoster.qbs[2].lastName  ) : null }
+              { currentRoster.qbs[2] ? (currentRoster.qbs[2].name ) : null }
               </p>
               <p style={ numberOfQBs >= 4 ? {showStyle} : {display:'none'}}><b> QB </b>
-              { currentRoster.qbs[3] ? (currentRoster.qbs[3].firstName + ' ' + currentRoster.qbs[3].lastName  ) : null }
+              { currentRoster.qbs[3] ? (currentRoster.qbs[3].name  ) : null }
               </p>
 
 
               <p style={ numberOfWRs >= 1 ? {showStyle} : {display:'none'}}><b> WR </b>
-              { currentRoster.wrs[0] ? (currentRoster.wrs[0].firstName + ' ' + currentRoster.wrs[0].lastName ) : null }
+              { currentRoster.wrs[0] ? (currentRoster.wrs[0].name ) : null }
               </p>
               <p style={ numberOfWRs >= 2 ? {showStyle} : {display:'none'}}><b> WR </b>
-              { currentRoster.wrs[1] ? (currentRoster.wrs[1].firstName + ' ' + currentRoster.wrs[1].lastName  ) : null }
+              { currentRoster.wrs[1] ? (currentRoster.wrs[1].name  ) : null }
               </p>
               <p style={ numberOfWRs >= 3 ? {showStyle} : {display:'none'}}><b> WR </b>
-              { currentRoster.wrs[2] ? (currentRoster.wrs[2].firstName + ' ' + currentRoster.wrs[2].lastName  ) : null }
+              { currentRoster.wrs[2] ? (currentRoster.wrs[2].name  ) : null }
               </p>
               <p style={ numberOfWRs >= 4 ? {showStyle} : {display:'none'}}><b> WR </b>
-              { currentRoster.wrs[3] ? (currentRoster.wrs[3].firstName + ' ' + currentRoster.wrs[3].lastName  ) : null }
+              { currentRoster.wrs[3] ? (currentRoster.wrs[3].name  ) : null }
               </p>
               <p style={ numberOfWRs >= 5 ? {showStyle} : {display:'none'}}><b> WR </b>
-              { currentRoster.wrs[4] ? (currentRoster.wrs[4].firstName + ' ' + currentRoster.wrs[4].lastName  ) : null }
+              { currentRoster.wrs[4] ? (currentRoster.wrs[4].name  ) : null }
               </p>
               <p style={ numberOfWRs >= 6 ? {showStyle} : {display:'none'}}><b> WR </b>
-              { currentRoster.wrs[5] ? (currentRoster.wrs[5].firstName + ' ' + currentRoster.wrs[5].lastName  ) : null }
+              { currentRoster.wrs[5] ? (currentRoster.wrs[5].name  ) : null }
               </p>
 
 
               <p style={ numberOfRBs >= 1 ? {showStyle} : {display:'none'}}><b> RB </b>
-              { currentRoster.rbs[0] ? (currentRoster.rbs[0].firstName + ' ' + currentRoster.rbs[0].lastName ) : null }
+              { currentRoster.rbs[0] ? (currentRoster.rbs[0].name ) : null }
               </p>
               <p style={ numberOfRBs >= 2 ? {showStyle} : {display:'none'}}><b> RB </b>
-              { currentRoster.rbs[1] ? (currentRoster.rbs[1].firstName + ' ' + currentRoster.rbs[1].lastName  ) : null }
+              { currentRoster.rbs[1] ? (currentRoster.rbs[1].name  ) : null }
               </p>
               <p style={ numberOfRBs >= 3 ? {showStyle} : {display:'none'}}><b> RB </b>
-              { currentRoster.rbs[2] ? (currentRoster.rbs[2].firstName + ' ' + currentRoster.rbs[2].lastName  ) : null }
+              { currentRoster.rbs[2] ? (currentRoster.rbs[2].name  ) : null }
               </p>
               <p style={ numberOfRBs >= 4 ? {showStyle} : {display:'none'}}><b> RB </b>
-              { currentRoster.rbs[3] ? (currentRoster.rbs[3].firstName + ' ' + currentRoster.rbs[3].lastName  ) : null }
+              { currentRoster.rbs[3] ? (currentRoster.rbs[3].name ) : null }
               </p>
               <p style={ numberOfRBs >= 5 ? {showStyle} : {display:'none'}}><b> RB </b>
-              { currentRoster.rbs[4] ? (currentRoster.rbs[4].firstName + ' ' + currentRoster.rbs[4].lastName  ) : null }
+              { currentRoster.rbs[4] ? (currentRoster.rbs[4].name  ) : null }
               </p>
               <p style={ numberOfRBs >= 6 ? {showStyle} : {display:'none'}}><b> RB </b>
-              { currentRoster.rbs[5] ? (currentRoster.rbs[5].firstName + ' ' + currentRoster.rbs[5].lastName  ) : null }
+              { currentRoster.rbs[5] ? (currentRoster.rbs[5].name  ) : null }
               </p>
 
 
               <p style={ numberOfTEs >= 1 ? {showStyle} : {display:'none'}}><b> TE </b>
-              { currentRoster.tes[0] ? (currentRoster.tes[0].firstName + ' ' + currentRoster.tes[0].lastName ) : null }
+              { currentRoster.tes[0] ? (currentRoster.tes[0].name ) : null }
               </p>
               <p style={ numberOfTEs >= 2 ? {showStyle} : {display:'none'}}><b> TE </b>
-              { currentRoster.tes[1] ? (currentRoster.tes[1].firstName + ' ' + currentRoster.tes[1].lastName  ) : null }
+              { currentRoster.tes[1] ? (currentRoster.tes[1].name  ) : null }
               </p>
               <p style={ numberOfTEs >= 3 ? {showStyle} : {display:'none'}}><b> TE </b>
-              { currentRoster.tes[2] ? (currentRoster.tes[2].firstName + ' ' + currentRoster.tes[2].lastName  ) : null }
+              { currentRoster.tes[2] ? (currentRoster.tes[2].name  ) : null }
               </p>
               <p style={ numberOfTEs >= 4 ? {showStyle} : {display:'none'}}><b> TE </b>
-              { currentRoster.tes[3] ? (currentRoster.tes[3].firstName + ' ' + currentRoster.tes[3].lastName  ) : null }
+              { currentRoster.tes[3] ? (currentRoster.tes[3].name  ) : null }
               </p>
 
 
               <p style={ flexCount >= 1 ? {showStyle} : {display:'none'}}><b> FLX </b>
-              { currentRoster.flex[0] ? (currentRoster.flex[0].firstName + ' ' + currentRoster.flex[0].lastName ) : null }
+              { currentRoster.flex[0] ? (currentRoster.flex[0].name ) : null }
               </p>
               <p style={ flexCount >= 2 ? {showStyle} : {display:'none'}}><b> FLX </b>
-              { currentRoster.flex[1] ? (currentRoster.flex[1].firstName + ' ' + currentRoster.flex[1].lastName  ) : null }
+              { currentRoster.flex[1] ? (currentRoster.flex[1].name  ) : null }
               </p>
               <p style={ flexCount >= 3 ? {showStyle} : {display:'none'}}><b> FLX </b>
-              { currentRoster.flex[2] ? (currentRoster.flex[2].firstName + ' ' + currentRoster.flex[2].lastName  ) : null }
+              { currentRoster.flex[2] ? (currentRoster.flex[2].name  ) : null }
               </p>
               <p style={ flexCount >= 4 ? {showStyle} : {display:'none'}}><b> FLX </b>
-              { currentRoster.flex[3] ? (currentRoster.flex[3].firstName + ' ' + currentRoster.flex[3].lastName  ) : null }
+              { currentRoster.flex[3] ? (currentRoster.flex[3].name  ) : null }
               </p>
               <p style={ flexCount >= 5 ? {showStyle} : {display:'none'}}><b> FLX </b>
-              { currentRoster.flex[4] ? (currentRoster.flex[4].firstName + ' ' + currentRoster.flex[4].lastName ) : null }
+              { currentRoster.flex[4] ? (currentRoster.flex[4].name ) : null }
               </p>
               <p style={ flexCount >= 6 ? {showStyle} : {display:'none'}}><b> FLX </b>
-              { currentRoster.flex[5] ? (currentRoster.flex[5].firstName + ' ' + currentRoster.flex[5].lastName  ) : null }
+              { currentRoster.flex[5] ? (currentRoster.flex[5].name  ) : null }
               </p>
               <p style={ flexCount >= 7 ? {showStyle} : {display:'none'}}><b> FLX </b>
-              { currentRoster.flex[6] ? (currentRoster.flex[6].firstName + ' ' + currentRoster.flex[6].lastName  ) : null }
+              { currentRoster.flex[6] ? (currentRoster.flex[6].name  ) : null }
               </p>
               <p style={ flexCount >= 8 ? {showStyle} : {display:'none'}}><b> FLX </b>
-              { currentRoster.flex[7] ? (currentRoster.flex[7].firstName + ' ' + currentRoster.flex[7].lastName  ) : null }
+              { currentRoster.flex[7] ? (currentRoster.flex[7].name  ) : null }
               </p>
               <p style={ flexCount >= 9 ? {showStyle} : {display:'none'}}><b> FLX </b>
-              { currentRoster.flex[8] ? (currentRoster.flex[8].firstName + ' ' + currentRoster.flex[8].lastName ) : null }
+              { currentRoster.flex[8] ? (currentRoster.flex[8].name ) : null }
               </p>
               <p style={ flexCount >= 10 ? {showStyle} : {display:'none'}}><b> FLX </b>
-              { currentRoster.flex[9] ? (currentRoster.flex[9].firstName + ' ' + currentRoster.flex[9].lastName  ) : null }
+              { currentRoster.flex[9] ? (currentRoster.flex[9].name  ) : null }
               </p>
               <p style={ flexCount >= 11 ? {showStyle} : {display:'none'}}><b> FLX </b>
-              { currentRoster.flex[10] ? (currentRoster.flex[10].firstName + ' ' + currentRoster.flex[10].lastName  ) : null }
+              { currentRoster.flex[10] ? (currentRoster.flex[10].name  ) : null }
               </p>
               <p style={ flexCount >= 12 ? {showStyle} : {display:'none'}}><b> FLX </b>
-              { currentRoster.flex[11] ? (currentRoster.flex[11].firstName + ' ' + currentRoster.flex[11].lastName  ) : null }
+              { currentRoster.flex[11] ? (currentRoster.flex[11].name  ) : null }
               </p>
 
 
               <p style={ numberOfDST >= 1 ? {showStyle} : {display:'none'}}><b> DST </b>
-              { currentRoster.def[0] ? (currentRoster.def[0].firstName + ' ' + currentRoster.def[0].lastName ) : null }
+              { currentRoster.def[0] ? (currentRoster.def[0].name ) : null }
               </p>
               <p style={ numberOfDST >= 2 ? {showStyle} : {display:'none'}}><b> DST </b>
-              { currentRoster.def[1] ? (currentRoster.def[1].firstName + ' ' + currentRoster.def[1].lastName  ) : null }
+              { currentRoster.def[1] ? (currentRoster.def[1].name  ) : null }
               </p>
               <p style={ numberOfDST >= 3 ? {showStyle} : {display:'none'}}><b> DST</b>
-              { currentRoster.def[2] ? (currentRoster.def[2].firstName + ' ' + currentRoster.def[2].lastName  ) : null }
+              { currentRoster.def[2] ? (currentRoster.def[2].name  ) : null }
               </p>
               <p style={ numberOfDST >= 4 ? {showStyle} : {display:'none'}}><b> DST </b>
-              { currentRoster.def[3] ? (currentRoster.def[3].firstName + ' ' + currentRoster.def[3].lastName  ) : null }
+              { currentRoster.def[3] ? (currentRoster.def[3].name  ) : null }
               </p>
 
 
               <p style={ numberOfKickers >= 1 ? {showStyle} : {display:'none'}}><b> K </b>
-              { currentRoster.k[0] ? (currentRoster.k[0].firstName + ' ' + currentRoster.k[0].lastName ) : null }
+              { currentRoster.k[0] ? (currentRoster.k[0].name ) : null }
               </p>
               <p style={ numberOfKickers >= 2 ? {showStyle} : {display:'none'}}><b> K </b>
-              { currentRoster.k[1] ? (currentRoster.k[1].firstName + ' ' + currentRoster.k[1].lastName  ) : null }
+              { currentRoster.k[1] ? (currentRoster.k[1].name  ) : null }
               </p>
               <p style={ numberOfKickers >= 3 ? {showStyle} : {display:'none'}}><b> K </b>
-              { currentRoster.k[2] ? (currentRoster.k[2].firstName + ' ' + currentRoster.k[2].lastName  ) : null }
+              { currentRoster.k[2] ? (currentRoster.k[2].name  ) : null }
               </p>
               <p style={ numberOfKickers >= 4 ? {showStyle} : {display:'none'}}><b> K </b>
-              { currentRoster.k[3] ? (currentRoster.k[3].firstName + ' ' + currentRoster.k[3].lastName  ) : null }
+              { currentRoster.k[3] ? (currentRoster.k[3].name  ) : null }
               </p>
 
 
@@ -291,34 +291,34 @@
 
               <p style={ benchCount >= 1 ? {showStyle} : {display:'none'}}><b> BN </b>
                 { currentRoster.bench[0] ?
-                  (currentRoster.bench[0].firstName + ' ' + currentRoster.bench[0].lastName + ' ' + currentRoster.bench[0].position ) : null } </p>
+                  (currentRoster.bench[0].name + currentRoster.bench[0].position ) : null } </p>
               <p style={ benchCount >= 2 ? {showStyle} : {display:'none'}}><b> BN </b>
                 { currentRoster.bench[1] ?
-                  (currentRoster.bench[1].firstName + ' ' + currentRoster.bench[1].lastName + ' ' + currentRoster.bench[1].position ) : null } </p>
+                  (currentRoster.bench[1].name + ' ' + currentRoster.bench[1].position ) : null } </p>
               <p style={ benchCount >= 3 ? {showStyle} : {display:'none'}}><b> BN </b>
                 { currentRoster.bench[2] ?
-                  (currentRoster.bench[2].firstName + ' ' + currentRoster.bench[2].lastName + ' ' + currentRoster.bench[2].position ) : null } </p>
+                  (currentRoster.bench[2].name + ' ' + currentRoster.bench[2].position ) : null } </p>
               <p style={ benchCount >= 4 ? {showStyle} : {display:'none'}}><b> BN </b>
                 { currentRoster.bench[3] ?
-                  (currentRoster.bench[3].firstName + ' ' + currentRoster.bench[3].lastName + ' ' + currentRoster.bench[3].position ) : null } </p>
+                  (currentRoster.bench[3].name + ' ' + currentRoster.bench[3].position ) : null } </p>
               <p style={ benchCount >= 5 ? {showStyle} : {display:'none'}}><b> BN </b>
                 { currentRoster.bench[4] ?
-                  (currentRoster.bench[4].firstName + ' ' + currentRoster.bench[4].lastName + ' ' + currentRoster.bench[4].position ) : null } </p>
+                  (currentRoster.bench[4].name + ' ' + currentRoster.bench[4].position ) : null } </p>
               <p style={ benchCount >= 6 ? {showStyle} : {display:'none'}}><b> BN </b>
                 { currentRoster.bench[5] ?
-                  (currentRoster.bench[5].firstName + ' ' + currentRoster.bench[5].lastName + ' ' + currentRoster.bench[5].position ) : null } </p>
+                  (currentRoster.bench[5].name + ' ' + currentRoster.bench[5].position ) : null } </p>
               <p style={ benchCount >= 7 ? {showStyle} : {display:'none'}}><b> BN </b>
                 { currentRoster.bench[6] ?
-                  (currentRoster.bench[6].firstName + ' ' + currentRoster.bench[6].lastName + ' ' + currentRoster.bench[6].position ) : null } </p>
+                  (currentRoster.bench[6].name + ' ' + currentRoster.bench[6].position ) : null } </p>
               <p style={ benchCount >= 8 ? {showStyle} : {display:'none'}}><b> BN </b>
                 { currentRoster.bench[7] ?
-                  (currentRoster.bench[7].firstName + ' ' + currentRoster.bench[7].lastName + ' ' + currentRoster.bench[7].position ) : null } </p>
+                  (currentRoster.bench[7].name + ' ' + currentRoster.bench[7].position ) : null } </p>
               <p style={ benchCount >= 9 ? {showStyle} : {display:'none'}}><b> BN </b>
                 { currentRoster.bench[8] ?
-                  (currentRoster.bench[8].firstName + ' ' + currentRoster.bench[8].lastName + ' ' + currentRoster.bench[8].position ) : null } </p>
+                  (currentRoster.bench[8].name + ' ' + currentRoster.bench[8].position ) : null } </p>
               <p style={ benchCount >= 10 ? {showStyle} : {display:'none'}}><b> BN </b>
                 { currentRoster.bench[9] ?
-                  (currentRoster.bench[9].firstName + ' ' + currentRoster.bench[9].lastName + ' ' + currentRoster.bench[9].position ) : null } </p>
+                  (currentRoster.bench[9].name + ' ' + currentRoster.bench[9].position ) : null } </p>
 
 
             </div>

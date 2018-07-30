@@ -26,8 +26,8 @@
   top: 0;
   width: 100%;
   border-bottom: 2px solid gray;
-  height: 7%;
-  padding-top: 2%;
+  height: 6vh;
+  padding-top: 9px;
   background-color: #ffffffe6;
   margin: 0;
 }
@@ -37,14 +37,15 @@
   width: 33%;
   border-left: 1px solid #80808054;
   right: 0;
-  top: 11%;
+  top: 9vh;
+  height: 77vh;
   z-index: 5;
-  padding: 0 14px;
+  padding: 0 14px 60px;
   display: inline-block;
   background-color: white;
   list-style: none;
   overflow-y: scroll;
-  height: 100%;
+  
 }
 
 .favorites {

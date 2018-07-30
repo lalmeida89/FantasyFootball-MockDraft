@@ -95,7 +95,7 @@ export const fetchPlayersError = error => ({
     error
 });
 
-export const FETCH_PLAYERS_REQUEST = 'FETCH_PLAYERS_ERROR';
+export const FETCH_PLAYERS_REQUEST = 'FETCH_PLAYERS_REQUEST';
 export const fetchPlayersRequest = loading => ({
     type: FETCH_PLAYERS_REQUEST,
     loading

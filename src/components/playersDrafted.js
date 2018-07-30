@@ -5,14 +5,13 @@ import PlayerProfile from './playerProfile'
 import {getPlayerProfile} from '../actions/setCurrentPlayerAction'
 
 const ShowDraftedPlayers = props => {
-  console.log(props)
   let style = {fontSize: '13px', lineHeight: '8px'}
   let playersDraftedList = props.draftedPlayers.map((player, index) => (
     <div key={index} style={style} className='drafted'>
       <p className='draftedPlayer' onClick={()=>props.allProps.dispatch(getPlayerProfile(player.id))}>
-        {player.round}.{player.pickedAt}  {player.firstName} {player.lastName} {player.position}
+        {player.round}.{player.pickedAt}  {player.name} {player.position}
       </p>
-    
+
     </div>
   ))
   return (

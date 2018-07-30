@@ -136,7 +136,7 @@ class Intro extends React.Component {
     else {
       return (
         <div className='players'>
-          <h1 style={{textAlign: 'center', fontSize: '24px', padding: '0 5px'}}> Players Available </h1>
+          <h1 style={{textAlign: 'center', fontSide: '27[]'}}> Players Available </h1>
           <h5 style={{textAlign: 'center'}}> Round {this.props.turn} </h5>
           <div className='dropdwnMenu'>
             <Button onClick={()=> this.props.menu

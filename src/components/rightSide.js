@@ -40,7 +40,6 @@ class RightSide extends React.Component {
 }
 
 export const mapStateToProps = ({renderReducer}) => {
-  console.log(renderReducer)
   return ({
     showDraftedPlayers: renderReducer.showDraftedPlayers,
     showFavorites: renderReducer.showFavorites,

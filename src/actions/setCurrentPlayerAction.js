@@ -27,6 +27,7 @@ export function getPlayerProfile(id) {
     ////console.log(idUrl.id);
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url = `http://api.fantasy.nfl.com/v1/players/details?playerId=${idUrl.id}&statType=seasonStatsformat=json`;
+    dispatch(getPlayerProfileRequest())
     fetch(proxyurl + url)
       .then(res => res.json())
       .then(profile => {
@@ -41,3 +42,9 @@ export const hidePlayerProfile = () => {
     dispatch(setPlayerProfile(null))
   }
 }
+
+export const GET_PLAYER_PROFILE_REQUEST = 'GET_PLAYER_PROFILE_REQUEST';
+export const getPlayerProfileRequest = loading => ({
+  type: GET_PLAYER_PROFILE_REQUEST,
+  loading
+})

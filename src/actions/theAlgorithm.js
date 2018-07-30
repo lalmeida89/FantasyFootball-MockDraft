@@ -9,22 +9,22 @@ export const theAlgorithm = (teamArray) => (dispatch, getState) => {
   let QBs = countInArray(teamArray, 'QB')
   let RBs = countInArray(teamArray, 'RB')
   let WRs = countInArray(teamArray, 'WR')
-  console.log(teamArray, playersArray)
+  //console.log(teamArray, playersArray)
   if(teamLength <= 1){
-    console.log(playersArray[0])
+    //console.log(playersArray[0])
     return playersArray[0]
   }
   if(teamLength > 1){
-    console.log('RBs:', RBs)
-    console.log('WRs:', WRs)
+    //console.log('RBs:', RBs)
+    //console.log('WRs:', WRs)
     if(RBs === WRs){
       return playersArray[0]
     }
     else if (RBs > WRs){
-      console.log(wrArray[0])
+      //console.log(wrArray[0])
     }
     else if (RBs < WRs){
-      console.log(rbArray[0])
+      //console.log(rbArray[0])
     }
   }
 }

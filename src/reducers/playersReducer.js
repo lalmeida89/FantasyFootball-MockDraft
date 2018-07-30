@@ -15,7 +15,8 @@ const initialState = {
     playerProfile: null,
     notes: true,
     schedule: false,
-    menu: false
+    menu: false,
+    profileLoading: true
 };
 
 export default (playersState = initialState, action) => {
@@ -97,6 +98,11 @@ export default (playersState = initialState, action) => {
             currentPlayer: playersState.currentPlayer,
             displayPlayers: playersState.displayPlayers
           };
+        case 'GET_PLAYER_PROFILE_REQUEST':
+          return {
+            ...playersState,
+            profileLoading: true
+          }
         case 'SET_CURRENT_PLAYER':
           console.log(action);
           return Object.assign({}, playersState, {
@@ -124,7 +130,9 @@ export default (playersState = initialState, action) => {
             displayPlayers: playersState.displayPlayers,
             notes: true,
             menu: playersState.menu,
-            currentPlayer: playersState.currentPlayer
+            currentPlayer: playersState.currentPlayer,
+            profileLoading: false,
+            schedule: false
           };
         case 'ADD_TO_TEAM':
           //once we draft a player, we want him in the teams roster but removed from the

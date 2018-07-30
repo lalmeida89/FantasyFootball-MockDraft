@@ -77,7 +77,8 @@ export const addPlayerToTeamUp = (counter, direction) => (dispatch, getState) =>
       setTimeout(function(x) { return function() {
         let pickedAt = {pickedAt : getState().counterReducer.counter+1, round: getState().counterReducer.turns}
         let currentPlayer = player[x]
-        currentPlayer = {...currentPlayer, ...pickedAt};
+        let name = {name: currentPlayer.firstName + ' ' + currentPlayer.lastName}
+        currentPlayer = {...currentPlayer, ...pickedAt, ...name};
         playersDrafted.push(currentPlayer)
         dispatch(theAlgorithm(allTeams[getState().counterReducer.counter]))
         if (getState().counterReducer.counter === myTeam){
@@ -131,7 +132,8 @@ export const addPlayerToTeamDown = (counter, direction) => (dispatch, getState) 
     setTimeout(function(x) { return function() {
       let pickedAt = {pickedAt:getState().counterReducer.counter+1, round:getState().counterReducer.turns}
       let currentPlayer = player[x*-1]
-      currentPlayer = {...currentPlayer, ...pickedAt};
+      let name = {name: currentPlayer.firstName + ' ' + currentPlayer.lastName}
+      currentPlayer = {...currentPlayer, ...pickedAt, ...name};
       dispatch(theAlgorithm(allTeams[getState().counterReducer.counter]))
       playersDrafted.push(currentPlayer)
       if (getState().counterReducer.counter === myTeam){
@@ -175,6 +177,7 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
     let pickedAt = {pickedAt:getState().counterReducer.counter+1, round:getState().counterReducer.turns}
     let currentPlayer = player
     currentPlayer = {...currentPlayer, ...pickedAt};
+    console.log(currentPlayer)
     allTeams[myTeam].push(currentPlayer)
     playersDrafted.push(currentPlayer)
     if (myTeam === 0) {

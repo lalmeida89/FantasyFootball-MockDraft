@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {hidePlayerProfile} from '../actions/setCurrentPlayerAction';
 import {showNotes, showSchedule} from '../actions/showActions'
+import {favoritedPlayer, removeFromFavorites} from '../actions/favoriteActions'
+import {addPlayerToMyTeam} from '../actions/draftPreferencesAction'
 
 
 //rearrange the date from the data given from the fetch
@@ -39,6 +41,7 @@ class PlayerProfile extends React.Component {
     //this might be redundant but we again check the truthiness of the playerProfile and
     //at the moment only render the first piece in the notes array that we receive from the fetch
     else if (this.props.playerProfile){
+      console.log(this.props.myFavorites.includes(this.props.playerProfile.id), this.props.myFavorites, this.props.playerProfile)
       const PlayerHeader = () => {
         return (
           <div className='playrHedr'>
@@ -48,29 +51,28 @@ class PlayerProfile extends React.Component {
             <div className='infoSelector'>
               <button onClick={()=> this.renderNotes()}> Notes </button>
               <button onClick={()=> this.renderSchedule()}> Schedule </button>
+              <button onClick={()=> this.props.dispatch(addPlayerToMyTeam(this.props.playerProfile))}> Draft </button>
+              <button onClick={()=>{this.props.myFavorites.includes(this.props.playerProfile)
+                ? this.props.dispatch(removeFromFavorites(this.props.playerProfile))
+                : this.props.dispatch(favoritedPlayer(this.props.playerProfile)) }}>
+                {this.props.myFavorites.includes(this.props.playerProfile) ? 'Remove from favorites' : 'Add to favorites' }
+              </button>
             </div>
           </div>
         )
       }
 
-      /*let currentPlayer = this.props.currentPlayer;
-      let playersUsed = this.props.playersUsed;
-      let playerId = JSON.stringify(profile.id)
-      console.log(playerId, playersUsed.includes(playerId), playersUsed.includes(profile.id))
-      let playersUsed = this.props.playersUsed
-      for (let i=0; i< playersUsed.length ; i++){
-        console.log(playersUsed[i].id === currentPlayer)
-      }
-      console.log(currentPlayer, this.props.playersUsed[0].id===currentPlayer, this.props.playersUsed[0].id)
-      if(this.props.playersUsed.includes(profile)){
-        console.log('hey this is working')
-      }*/
 
       //notes are set to true by default but can also be set to true
       //by the renderNotes function
       let profile = this.props.playerProfile;
       if (this.props.notes === true) {
-        if (profile.notes[0]){
+        if(this.props.loadingPlayer) {
+          return (
+            <div className='playerCard'><p>Loading ... </p></div>
+          )
+        }
+        else if (profile.notes[0]){
           let newDate = profile.notes[0].timestamp.slice(0,10);
           let timePosted = rearrangeDate(newDate);
           return (
@@ -90,7 +92,13 @@ class PlayerProfile extends React.Component {
         //if the selected player has no notes (which is rare but is the case for a few newer players)
         //we simply tell the user that there aren't news at this time
         else if(!profile.notes[0]){
-          return (
+          if(this.props.loadingPlayer) {
+            return (
+              <div className='playerCard'><p>Loading ... </p></div>
+            )
+          }
+          else {
+            return (
           <div className='playerCard'>
             <PlayerHeader />
             <div className='notes'>
@@ -99,7 +107,7 @@ class PlayerProfile extends React.Component {
             </div>
 
           </div>
-          )
+          )}
         }
       }
 
@@ -143,13 +151,15 @@ class PlayerProfile extends React.Component {
   }
 }
 
-export const mapStateToProps = ({playersReducer, teamReducer, draftPreferencesReducer}) => {
+export const mapStateToProps = ({playersReducer, teamReducer, draftPreferencesReducer, favoritesReducer}) => {
   return ({
     playersUsed: draftPreferencesReducer.playersUsed,
     playerProfile: playersReducer.playerProfile,
     notes: playersReducer.notes,
     schedule: playersReducer.schedule,
-    currentPlayer: playersReducer.currentPlayer
+    currentPlayer: playersReducer.currentPlayer,
+    loadingPlayer: playersReducer.profileLoading,
+    myFavorites: favoritesReducer.myFavorites
   })
 }
 export default connect (mapStateToProps)(PlayerProfile)
