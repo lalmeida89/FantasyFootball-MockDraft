@@ -25,7 +25,7 @@ class App extends Component {
       return (
         <div> <h1 className='mainHeader' style={{textAlign: 'center'}}> Mock Draft </h1>
         <div className="App">
-          <PlayerProfile />
+            <PlayerProfile />
           <Intro />
           <RightSide />
           <DraftPage />

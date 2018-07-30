@@ -16,9 +16,11 @@
 }
 
 .playerSelector {
-  font-size: 10px;
-  padding: 5px 20px 0 0;
+  font-size: 14px;
+  padding: 5px 20px 5px 40px;
   height: 30px;
+  border: 1px dashed green;
+  border-radius: 15px;
 }
 
 .fa-file-alt {
@@ -27,6 +29,11 @@
 
 .players {
   width: 60%;
+}
+
+.playersDiv {
+  padding: 20px 10px;
+  
 }
 
 .faveStar {

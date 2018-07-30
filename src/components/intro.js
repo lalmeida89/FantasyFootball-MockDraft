@@ -35,34 +35,21 @@ const sort_by = (field, reverse, primer) => {
 //PlayerProfile will only display for the player the user selected
 const ShowPlayers = props => {
   props.players.sort(sort_by('rank', true, parseInt));
-  //console.log(props);
+  console.log(props);
   let style = {float : 'right', marginTop: '10px'};
   let playerNames = props.players.map((player, index) => (
-    <div key={index} className='playerSelector'>
-      <button
-      style={style}
-      onClick={()=> {props.currentId.dispatch(addPlayerToMyTeam(player))
-      }}
-      className='draftBtn'>Draft
-      </button>
-      <p><b> {player.firstName} {player.lastName} </b>
-        <i
-        className="far fa-file-alt"
-        onClick={()=> props.currentId.dispatch(getPlayerProfile(player.id))}>
-        </i>
-        <i
-          style={ props.currentId.myFavorites.includes(player) ? {color:'#bfbf2f'} : {color: '#646557'}}
-          className="fas fa-star faveStar"
-          title={ props.currentId.myFavorites.includes(player) ? 'Remove from Favorites' : 'Add to Favorites'  }
-          onClick={()=>{props.currentId.myFavorites.includes(player) ? props.currentId.dispatch(removeFromFavorites(player)) : props.currentId.dispatch(favoritedPlayer(player)) }}>
-        </i>
+    <div
+    onClick={()=> props.currentId.dispatch(getPlayerProfile(player.id))}
+    key={index} className='playerSelector'>
+      <p><b> {player.position} {player.teamAbbr} {player.firstName} {player.lastName} <span style={{float: 'right'}}>{player.rank}</span></b>
       </p>
-      <hr/>
     </div>
     )
   )
+  console.log(playerNames)
+  console.log()
   return (
-    <div style={{padding: '0 10px'}}>
+    <div className='playersDiv'>
     {playerNames}
     </div>
   )
@@ -136,7 +123,7 @@ class Intro extends React.Component {
     else {
       return (
         <div className='players'>
-          <h1 style={{textAlign: 'center', fontSide: '27[]'}}> Players Available </h1>
+          <h1 style={{textAlign: 'center', fontSize: '27px'}}> Players Available </h1>
           <h5 style={{textAlign: 'center'}}> Round {this.props.turn} </h5>
           <div className='dropdwnMenu'>
             <Button onClick={()=> this.props.menu
