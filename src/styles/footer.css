@@ -10,16 +10,11 @@
   z-index: 99;
 }
 
-.rostersBtn {
-  float: left;
-  margin-left: 25%;
+.footerButton {
+  width: 32%;
+  display: inline-block;
+  margin: 0;
 }
-
-.favesBtn {
-  float: right;
-  margin-right: 25%;
-}
-
 .footer label {
   font-size: 10px;
   color: #bbb4b4;
@@ -33,11 +28,7 @@
   color: #bbb4b4;
 }
 
-.footerBtn:hover {
+.footerButton:hover i, .footerButton:hover{
   color: #03ff6c !important;
-  cursor: pointer;
-}
-
-.draftedPlayer:hover, .favorites:hover {
   cursor: pointer;
 }

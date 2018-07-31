@@ -11,6 +11,7 @@ import {
 import {Button} from '../styledComponents/dropdown'
 import {PlayerSelector} from '../styledComponents/playerSelector'
 import {Position} from '../styledComponents/position'
+import {TeamAbbr} from '../styledComponents/teamAbbr'
 import {favoritedPlayer, removeFromFavorites} from '../actions/favoriteActions'
 import {addPlayerToMyTeam} from '../actions/draftPreferencesAction'
 import '../styles/intro.css'
@@ -44,11 +45,12 @@ const ShowPlayers = props => {
     position = {player.position}
     onClick={()=> props.currentId.dispatch(getPlayerProfile(player.id))}
     key={index}>
-      <p className='playerName'>
-      <b> <Position position ={player.position}>{player.position}</Position>
-      {player.teamAbbr} {player.firstName} {player.lastName}
-      <span style={{float: 'right'}}>{player.rank}</span></b>
-      </p>
+      <p className='playerName'><b>
+      <Position position={player.position}> {player.position}</Position>
+      <TeamAbbr team={player.teamAbbr}> {player.teamAbbr == '' ? 'FA' : player.teamAbbr} </TeamAbbr>
+      {player.firstName} {player.lastName}
+      <span style={{float: 'right'}}>{player.rank}</span>
+      </b></p>
     </PlayerSelector>
     )
   )
