@@ -9,6 +9,7 @@ import {
   hideMenu
 } from '../actions/showActions'
 import {Button} from '../styledComponents/dropdown'
+import {PlayerSelector} from '../styledComponents/playerSelector'
 import {favoritedPlayer, removeFromFavorites} from '../actions/favoriteActions'
 import {addPlayerToMyTeam} from '../actions/draftPreferencesAction'
 import '../styles/intro.css'
@@ -38,16 +39,16 @@ const ShowPlayers = props => {
   console.log(props);
   let style = {float : 'right', marginTop: '10px'};
   let playerNames = props.players.map((player, index) => (
-    <div
+    <PlayerSelector
+    position = {player.position}
     onClick={()=> props.currentId.dispatch(getPlayerProfile(player.id))}
-    key={index} className='playerSelector'>
-      <p><b> {player.position} {player.teamAbbr} {player.firstName} {player.lastName} <span style={{float: 'right'}}>{player.rank}</span></b>
+    key={index}>
+      <p className='playerName'><b> {player.position} {player.teamAbbr} {player.firstName} {player.lastName} <span style={{float: 'right'}}>{player.rank}</span></b>
       </p>
-    </div>
+    </PlayerSelector>
     )
   )
   console.log(playerNames)
-  console.log()
   return (
     <div className='playersDiv'>
     {playerNames}

@@ -74,6 +74,8 @@ class PlayerProfile extends React.Component {
 
       //notes are set to true by default but can also be set to true
       //by the renderNotes function
+      //if the selected player has no notes (which is rare but is the case for a few newer players)
+      //we simply tell the user that there aren't news at this time
       let profile = this.props.playerProfile;
         const Notes = () => {
           if (notes) {
@@ -89,9 +91,6 @@ class PlayerProfile extends React.Component {
                 </div>
           )
         }
-
-        //if the selected player has no notes (which is rare but is the case for a few newer players)
-        //we simply tell the user that there aren't news at this time
         if(!profile.notes[0]){
             return (
             <div className='notes'>

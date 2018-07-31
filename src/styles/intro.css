@@ -11,16 +11,12 @@
 }
 
 .playerName {
-  display: inline-block;
-  margin-right: 40px;
+  font-size: 13px;
 }
 
-.playerSelector {
-  font-size: 14px;
-  padding: 5px 20px 5px 40px;
-  height: 30px;
-  border: 1px dashed green;
-  border-radius: 15px;
+.playerSelector:hover{
+  cursor: pointer;
+  background-color: gray;
 }
 
 .fa-file-alt {
@@ -33,7 +29,7 @@
 
 .playersDiv {
   padding: 20px 10px;
-  
+
 }
 
 .faveStar {
@@ -45,4 +41,14 @@
 
 .faveStar:hover {
   color: #bfbf2f !important;
+}
+
+@media screen and (max-width: 600px){
+  .playerName {
+    font-size: 10px;
+  }
+
+  .PlayerSelector {
+    padding: 5px 20px 10px 40px;
+  }
 }
