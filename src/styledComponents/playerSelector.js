@@ -13,7 +13,7 @@ export const PlayerSelector = styled.div`
     css`
     background-color: #0e9c3b9c;
       &:hover {
-        background-color: #b7b7b77a;
+        background-color: #0e943966;
       }
   `};
 
@@ -22,7 +22,7 @@ export const PlayerSelector = styled.div`
     css`
     background-color: #0e269c9c;
       &:hover {
-        background-color: #b7b7b77a;
+        background-color: #0e269c6e;
       }
   `};
 
@@ -31,7 +31,7 @@ export const PlayerSelector = styled.div`
     css`
     background-color: #9c980e9c;
       &:hover {
-        background-color: #b7b7b77a;
+        background-color: #9c980e66;
       }
   `};
 
@@ -40,7 +40,7 @@ export const PlayerSelector = styled.div`
     css`
     background-color: #9c0e0e9c;
       &:hover {
-        background-color: #b7b7b77a;
+        background-color: #9c0e0e5e;
       }
   `};
 
@@ -49,7 +49,7 @@ export const PlayerSelector = styled.div`
     css`
     background-color: #580bbf9c;
       &:hover {
-        background-color: #b7b7b77a;
+        background-color: #580bbf73;
       }
   `};
 

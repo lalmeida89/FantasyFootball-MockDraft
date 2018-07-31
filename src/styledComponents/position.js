@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const Position = styled.span`
-  border-radius: 10px;
+  border-radius: 50%;
   background-color: white;
   padding: 2px 5px;
   margin-right: 4px;
