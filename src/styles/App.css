@@ -2,30 +2,6 @@
   padding-left: 0;
 }
 
-.playerCard {
-	position: fixed;
-	background: #f5f5f5;
-	border: 1px solid #63737d;
-  z-index: 9999;
-  width: 75%;
-  height: contain;
-  font-size: 10px;
-  border-radius: 8px;
-  padding: 5px;
-  left: 10%;
-}
-
-/*
-.playerCard-background{
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  position: fixed;
-  z-index: 998;
-  background-color: #000000e0;
-  top: 0;
-}
-*/
 
 .rostersDiv {
   margin-top: 5%;
@@ -103,10 +79,6 @@
   float: left;
 }
 
-.schedule {
-  line-height: 3px;
-}
-
 .fa-user {
   margin-left: 20px;
 }
@@ -123,17 +95,5 @@
 
   .draftedPlayer{
     font-size: 10px;
-  }
-
-  .playerCard {
-  	position: fixed;
-  	background: #f5f5f5;
-  	border: 1px solid #63737d;
-    z-index: 9999;
-    width: auto;
-    font-size: 10px;
-    border-radius: 8px;
-    padding: 5px;
-    left: 0;
   }
 }

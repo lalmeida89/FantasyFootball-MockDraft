@@ -17,7 +17,7 @@ class Favorites extends React.Component {
         <div className='favoritesList' key={index}>
           <p>
             <b className='favorites' onClick={()=> dispatch(getPlayerProfile(player.id))}>
-            {player.firstName} {player.lastName} </b>
+            {player.name} </b>
             <i className="fas fa-times"
             style={{marginLeft:'15px'}}
             onClick={()=> dispatch(removeFromFavorites(player))}
@@ -28,7 +28,10 @@ class Favorites extends React.Component {
       return (
         <div className='favoritePlayers'>
           <h3> Favorite Players </h3>
-          { myFavorites.length >= 1 ? ShowFaves : <h5> No favorites atm </h5> }
+          { myFavorites.length >= 1
+            ? ShowFaves
+            : <h5> No favorites at the moment.</h5>
+          }
         </div>
       )
     }

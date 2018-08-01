@@ -2,14 +2,51 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {hidePlayerProfile} from '../actions/setCurrentPlayerAction';
 import {showNotes, showSchedule} from '../actions/showActions'
-import {favoritedPlayer, removeFromFavorites} from '../actions/favoriteActions'
+import {addToFavorites, removeFromFavorites} from '../actions/favoriteActions'
 import {addPlayerToMyTeam} from '../actions/draftPreferencesAction'
+
+import {TeamAbbr} from '../styledComponents/teamAbbr'
+import {Position} from '../styledComponents/position'
+import '../styles/playerCard.css'
 
 
 //rearrange the date from the data given from the fetch
 const rearrangeDate = (dateString) => {
   var numbers = dateString.substring(0,4);
   return dateString.substring(5) + '-' + numbers
+}
+
+const PlayerHeader = (props) => {
+  let style = {
+    float:'right',
+    cursor: 'pointer',
+    fontSize: '16px',
+    marginTop: '0'
+  }
+  let borderStyle = {border: '1px solid'}
+  let player = props.currentPlayer
+  let faves = props.favorites
+  //console.log(player, props.favorites, faves, faves.indexOf(player));
+
+  return (
+    <div className='playrHedr'>
+      <h1>{player.name}</h1>
+      <h3>
+      <Position style = {borderStyle} position={player.position}> {player.position}</Position>
+      <TeamAbbr team={player.teamAbbr}> {player.teamAbbr == '' ? 'FA' : player.teamAbbr} </TeamAbbr>
+       #{player.jerseyNumber} </h3>
+      <div className='infoSelector'>
+        <button onClick={()=> this.renderNotes()}> Notes </button>
+        <button onClick={()=> this.renderSchedule()}> Schedule </button>
+        <button onClick={()=> props.all.dispatch(addPlayerToMyTeam(player))}> Draft </button>
+        <button onClick={()=>{faves.includes(player)
+          ? props.all.dispatch(removeFromFavorites(player))
+          : props.all.dispatch(addToFavorites(player)) }}>
+          {faves.indexOf(player)!==-1 ? 'Remove from favorites' : 'Add to favorites' }
+        </button>
+      </div>
+    </div>
+  )
 }
 
 
@@ -25,57 +62,39 @@ class PlayerProfile extends React.Component {
   }
 
   render(){
-    let style = {
-      float:'right',
-      cursor: 'pointer',
-      fontSize: '16px',
-      marginTop: '0'
-    }
-
     const {
       playerProfile,
       myFavorites,
       dispatch,
       notes,
-      schedule
+      schedule,
+      loadingPlayer
     } = this.props
 
     //if a player profile is true, we render this component with PlayerHeader as the header.
 
-    if(!playerProfile){
+    if(!playerProfile && !loadingPlayer){
       return null
     }
 
-    //this might be redundant but we again check the truthiness of the playerProfile and
-    //at the moment only render the first piece in the notes array that we receive from the fetch
-    else {
-      const PlayerHeader = () => {
-        return (
-          <div className='playrHedr'>
-            <span><i className="fas fa-times"
-            style={style}
-            onClick={()=>dispatch(hidePlayerProfile())}></i></span>
-            <h1>{playerProfile.name}</h1>
-            <h3>{playerProfile.position} {playerProfile.teamAbbr} #{playerProfile.jerseyNumber} </h3>
-            <div className='infoSelector'>
-              <button onClick={()=> this.renderNotes()}> Notes </button>
-              <button onClick={()=> this.renderSchedule()}> Schedule </button>
-              <button onClick={()=> dispatch(addPlayerToMyTeam(playerProfile))}> Draft </button>
-              <button onClick={()=>{myFavorites.includes(playerProfile)
-                ? dispatch(removeFromFavorites(playerProfile))
-                : dispatch(favoritedPlayer(playerProfile)) }}>
-                {myFavorites.includes(playerProfile) ? 'Remove from favorites' : 'Add to favorites' }
-              </button>
+    if(!playerProfile && loadingPlayer) {
+      return (
+        <div className='playerCard-background' onClick={()=>dispatch(hidePlayerProfile())}>
+          <div className='loadingCard'>
+            <div className='loader'>
             </div>
+            <h3 className='loadingHeader'>LOADING PLAYER STATS</h3>
           </div>
-        )
-      }
+        </div>
+      )
+    }
 
 
       //notes are set to true by default but can also be set to true
       //by the renderNotes function
       //if the selected player has no notes (which is rare but is the case for a few newer players)
       //we simply tell the user that there aren't news at this time
+    else {
       let profile = this.props.playerProfile;
         const Notes = () => {
           if (notes) {
@@ -138,10 +157,13 @@ class PlayerProfile extends React.Component {
       else { return null }
     }
     return (
-      <div className='playerCard'>
-        <PlayerHeader />
-        <Notes />
-        <Schedule />
+      <div className='playerCard-background' onClick={()=>dispatch(hidePlayerProfile())}>
+        <div className='playerCard' onClick={(e)=> e.stopPropagation()}>
+          <PlayerHeader currentPlayer={playerProfile} favorites={myFavorites} all={this.props}/>
+          <Notes />
+          <Schedule />
+          <button onClick={()=>dispatch(hidePlayerProfile())} className='hideProfile'> CLOSE</button>
+        </div>
       </div>
     )
   }

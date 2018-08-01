@@ -16,7 +16,7 @@ const initialState = {
     notes: true,
     schedule: false,
     menu: false,
-    profileLoading: true
+    profileLoading: false
 };
 
 export default (playersState = initialState, action) => {

@@ -5,8 +5,10 @@ const initialState = {
 export default (favoriteState = initialState, action) => {
   switch(action.type) {
     case 'ADD_TO_FAVORITES':
+    console.log(favoriteState.myFavorites)
+    favoriteState.myFavorites.push(action.favoritePlayer)
     return {
-      myFavorites: [...favoriteState.myFavorites, ...action.favoritePlayer]
+      myFavorites: [...favoriteState.myFavorites]
     };
     //when the removedFavorite action comes through, we filter out the selected player and return
     //the array and set that as the current state
