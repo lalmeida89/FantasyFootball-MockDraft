@@ -109,7 +109,7 @@ export default (playersState = initialState, action) => {
             currentPlayer: action.id
           });
         case 'HIDE_PLAYER_PROFILE':
-          ////console.log(action);
+          console.log(action, playersState);
           return Object.assign({}, playersState, {
             currentPlayer: 0,
             playerProfile: null

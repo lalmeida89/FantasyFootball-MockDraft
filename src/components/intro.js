@@ -12,8 +12,6 @@ import {Button} from '../styledComponents/dropdown'
 import {PlayerSelector} from '../styledComponents/playerSelector'
 import {Position} from '../styledComponents/position'
 import {TeamAbbr} from '../styledComponents/teamAbbr'
-import {favoritedPlayer, removeFromFavorites} from '../actions/favoriteActions'
-import {addPlayerToMyTeam} from '../actions/draftPreferencesAction'
 import '../styles/intro.css'
 
 
@@ -38,8 +36,6 @@ const sort_by = (field, reverse, primer) => {
 //PlayerProfile will only display for the player the user selected
 const ShowPlayers = props => {
   props.players.sort(sort_by('rank', true, parseInt));
-  console.log(props);
-  let style = {float : 'right', marginTop: '10px'};
   let playerNames = props.players.map((player, index) => (
     <PlayerSelector
     position = {player.position}
@@ -47,14 +43,13 @@ const ShowPlayers = props => {
     key={index}>
       <p className='playerName'><b>
       <Position position={player.position}> {player.position}</Position>
-      <TeamAbbr team={player.teamAbbr}> {player.teamAbbr == '' ? 'FA' : player.teamAbbr} </TeamAbbr>
+      <TeamAbbr team={player.teamAbbr}> {!player.teamAbbr ? 'FA' : player.teamAbbr} </TeamAbbr>
       {player.firstName} {player.lastName}
       <span style={{float: 'right'}}>{player.rank}</span>
       </b></p>
     </PlayerSelector>
     )
   )
-  console.log(playerNames)
   return (
     <div className='playersDiv'>
     {playerNames}

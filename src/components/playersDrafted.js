@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import PlayerProfile from './playerProfile'
 import {getPlayerProfile} from '../actions/setCurrentPlayerAction'
 
 const ShowDraftedPlayers = props => {

@@ -10,23 +10,24 @@ import '../styles/footer.css'
 
 class Footer extends React.Component {
   render(){
+    const {draftedPlayers, rosters, dispatch} = this.props
+    console.log(this.props)
     let style={display: 'block'}
     return (
       <div className='footer'>
-        <div className='rostersBtn footerButton'
-          onClick={()=>this.props.dispatch(showRosters())}>
+        <div className={rosters
+          ? 'checkedFooter rostersBtn footerButton'
+          : 'rostersBtn footerButton'}
+          onClick={()=>dispatch(showRosters())}>
           <i className="fas footerBtn fa-clipboard-list"></i>
-          <label style={style}>rosters</label>
+          <label style={style}> team rosters </label>
         </div>
-        <div className='favesBtn footerButton'
-          onClick={()=>this.props.dispatch(showFavorites())}>
-          <i className="fas footerBtn fa-star"></i>
-          <label style={style}>favorites</label>
-        </div>
-        <div className='draftedPlayersBtn footerButton'
-          onClick={()=>this.props.dispatch(showDraftedPlayers())}>
+        <div className={draftedPlayers
+          ? 'checkedFooter draftedPlayersBtn footerButton'
+          : 'draftedPlayersBtn footerButton'}
+          onClick={()=>dispatch(showDraftedPlayers())}>
           <i className="fas footerBtn fa-list-ol"></i>
-          <label style={style}>drafted</label>
+          <label style={style}> players drafted</label>
         </div>
       </div>
     )
@@ -35,7 +36,9 @@ class Footer extends React.Component {
 
 export const mapStateToProps = ({renderReducer}) => {
   return ({
-
+    draftedPlayers: renderReducer.showDraftedPlayers,
+    showFavorites: renderReducer.showFavorites,
+    rosters: renderReducer.showRosters
   })
 }
 

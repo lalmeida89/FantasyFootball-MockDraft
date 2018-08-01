@@ -31,6 +31,7 @@
 
 .schedule {
   line-height: 3px;
+  padding: 10px 5px;
 }
 
 .loader {
@@ -84,8 +85,19 @@
   text-align: center;
   margin: 10px auto;
   padding: 4px;
-  border-radius: 2px;
-  border: 1px solid blue;
+  border-radius: 4px;
+  color: white;
+  background-color: #0e269c9c;
+  cursor: pointer;
+}
+
+.hideProfile:hover {
+  box-shadow: 1px 1px 14px -1px rgba(0,0,0,0.75);
+  background-color: #0e269c6e;
+}
+
+.fa-tshirt {
+  text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
 }
 
 @media screen and (max-width: 600px) {

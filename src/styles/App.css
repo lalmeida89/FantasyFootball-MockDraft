@@ -20,40 +20,6 @@
   margin: 0;
 }
 
-.RightSide {
-  position: fixed;
-  width: 33%;
-  border-left: 1px solid #80808054;
-  right: 0;
-  top: 9vh;
-  height: 77vh;
-  z-index: 5;
-  padding: 0 14px 60px;
-  display: inline-block;
-  background-color: white;
-  list-style: none;
-  overflow-y: scroll;
-
-}
-
-.favorites {
-  line-height: 2px;
-  font-size: 13px;
-}
-
-.rosterPlayers {
-  font-size: 12px;
-  line-height: 5px;
-  margin-top: 32px;
-  position: absolute;
-}
-
-.rightSide-App {
-  position: fixed;
-  right: 0;
-  width: 33%;
-}
-
 .positionBtn {
   position: absolute;
   z-index: 99;
@@ -71,13 +37,6 @@
   width: 175px;
 }
 
-.teamDropdown {
-  width: 75%;
-}
-
-.teamBtn {
-  float: left;
-}
 
 .fa-user {
   margin-left: 20px;
@@ -85,9 +44,7 @@
 
 .App {
   width: 100%;
-  margin: auto;
-  height: 90%;
-  margin-top: 80px;
+  margin-top: 50px;
   padding-top: 5px;
 }
 

@@ -4,7 +4,7 @@ import {hidePlayerProfile} from '../actions/setCurrentPlayerAction';
 import {showNotes, showSchedule} from '../actions/showActions'
 import {addToFavorites, removeFromFavorites} from '../actions/favoriteActions'
 import {addPlayerToMyTeam} from '../actions/draftPreferencesAction'
-
+import {ProfileButton} from '../styledComponents/profileButton'
 import {TeamAbbr} from '../styledComponents/teamAbbr'
 import {Position} from '../styledComponents/position'
 import '../styles/playerCard.css'
@@ -25,25 +25,20 @@ const PlayerHeader = (props) => {
   }
   let borderStyle = {border: '1px solid'}
   let player = props.currentPlayer
-  let faves = props.favorites
-  //console.log(player, props.favorites, faves, faves.indexOf(player));
-
   return (
     <div className='playrHedr'>
       <h1>{player.name}</h1>
       <h3>
       <Position style = {borderStyle} position={player.position}> {player.position}</Position>
-      <TeamAbbr team={player.teamAbbr}> {player.teamAbbr == '' ? 'FA' : player.teamAbbr} </TeamAbbr>
-       #{player.jerseyNumber} </h3>
+      <TeamAbbr team={player.teamAbbr}> {!player.teamAbbr ? 'FA' : player.teamAbbr} </TeamAbbr>
+      <i className="fas fa-tshirt" style={{color:'#0e269c9c', fontSize:'24px'}}>
+      <span style={{fontSize:'10px', margin:'-15px 0 0 10px', display:'block', color:'white', fontFamily:'fantasy'}}>
+              {player.jerseyNumber}
+          </span></i></h3>
       <div className='infoSelector'>
-        <button onClick={()=> this.renderNotes()}> Notes </button>
-        <button onClick={()=> this.renderSchedule()}> Schedule </button>
-        <button onClick={()=> props.all.dispatch(addPlayerToMyTeam(player))}> Draft </button>
-        <button onClick={()=>{faves.includes(player)
-          ? props.all.dispatch(removeFromFavorites(player))
-          : props.all.dispatch(addToFavorites(player)) }}>
-          {faves.indexOf(player)!==-1 ? 'Remove from favorites' : 'Add to favorites' }
-        </button>
+        <ProfileButton onClick={()=> props.all.dispatch(showNotes())}> NEWS </ProfileButton>
+        <ProfileButton onClick={()=> props.all.dispatch(showSchedule())}> SCHEDULE </ProfileButton>
+        <ProfileButton draft onClick={()=> props.all.dispatch(addPlayerToMyTeam(player))}> DRAFT </ProfileButton>
       </div>
     </div>
   )
@@ -51,16 +46,6 @@ const PlayerHeader = (props) => {
 
 
 class PlayerProfile extends React.Component {
-  //player profile will have several options. showNotes sets notes to true and schedule to false.
-  //showSchedule will do the exact opposite. We will then render different info based on what is true.
-  renderNotes = () => {
-    this.props.dispatch(showNotes())
-  }
-
-  renderSchedule = () => {
-    this.props.dispatch(showSchedule())
-  }
-
   render(){
     const {
       playerProfile,
@@ -70,8 +55,6 @@ class PlayerProfile extends React.Component {
       schedule,
       loadingPlayer
     } = this.props
-
-    //if a player profile is true, we render this component with PlayerHeader as the header.
 
     if(!playerProfile && !loadingPlayer){
       return null
@@ -89,11 +72,11 @@ class PlayerProfile extends React.Component {
       )
     }
 
-
-      //notes are set to true by default but can also be set to true
-      //by the renderNotes function
-      //if the selected player has no notes (which is rare but is the case for a few newer players)
-      //we simply tell the user that there aren't news at this time
+    //if a player profile is true, we render this component with PlayerHeader as the header.
+    //notes are set to true by default but can also be set to true
+    //by the renderNotes function
+    //if the selected player has no notes (which is rare but is the case for a few newer players)
+    //we simply tell the user that there aren't news at this time
     else {
       let profile = this.props.playerProfile;
         const Notes = () => {
@@ -103,7 +86,7 @@ class PlayerProfile extends React.Component {
               let timePosted = rearrangeDate(newDate);
               return (
                 <div className='notes'>
-                  <h3>Notes</h3>
+                  <h3>NEWS</h3>
                   <p>{timePosted}</p>
                   <h4>{profile.notes[0].body}</h4>
                   <p>{profile.notes[0].analysis}</p>
@@ -134,23 +117,24 @@ class PlayerProfile extends React.Component {
           }
           return (
               <div className='schedule'>
-                <p> Week 1: {profile.weeks[0].opponent} </p>
-                <p> Week 2: {profile.weeks[1].opponent} </p>
-                <p> Week 3: {profile.weeks[2].opponent} </p>
-                <p> Week 4: {profile.weeks[3].opponent} </p>
-                <p> Week 5: {profile.weeks[4].opponent} </p>
-                <p> Week 6: {profile.weeks[5].opponent} </p>
-                <p> Week 7: {profile.weeks[6].opponent} </p>
-                <p> Week 8: {profile.weeks[7].opponent} </p>
-                <p> Week 9: {profile.weeks[8].opponent} </p>
-                <p> Week 10: {profile.weeks[9].opponent} </p>
-                <p> Week 11: {profile.weeks[10].opponent} </p>
-                <p> Week 12: {profile.weeks[11].opponent} </p>
-                <p> Week 13: {profile.weeks[12].opponent} </p>
-                <p> Week 14: {profile.weeks[13].opponent} </p>
-              <p> Week 15: {profile.weeks[14].opponent} </p>
-              <p> Week 16: {profile.weeks[15].opponent} </p>
-              <p> Week 17: {profile.weeks[16].opponent} </p>
+                <h3 style={{marginBottom: '25px'}}> SCHEDULE </h3>
+                <p> Week 1: <b>{profile.weeks[0].opponent}</b> </p>
+                <p> Week 2: <b>{profile.weeks[1].opponent}</b> </p>
+                <p> Week 3: <b>{profile.weeks[2].opponent}</b> </p>
+                <p> Week 4: <b>{profile.weeks[3].opponent}</b> </p>
+                <p> Week 5: <b>{profile.weeks[4].opponent}</b> </p>
+                <p> Week 6: <b>{profile.weeks[5].opponent}</b> </p>
+                <p> Week 7: <b>{profile.weeks[6].opponent}</b> </p>
+                <p> Week 8: <b>{profile.weeks[7].opponent}</b> </p>
+                <p> Week 9: <b>{profile.weeks[8].opponent}</b> </p>
+                <p> Week 10: <b>{profile.weeks[9].opponent}</b> </p>
+                <p> Week 11: <b>{profile.weeks[10].opponent}</b> </p>
+                <p> Week 12: <b>{profile.weeks[11].opponent}</b> </p>
+                <p> Week 13: <b>{profile.weeks[12].opponent}</b> </p>
+                <p> Week 14: <b>{profile.weeks[13].opponent}</b> </p>
+              <p> Week 15: <b>{profile.weeks[14].opponent}</b> </p>
+              <p> Week 16: <b>{profile.weeks[15].opponent}</b> </p>
+              <p> Week 17: <b>{profile.weeks[16].opponent}</b> </p>
             </div>
         )
       }

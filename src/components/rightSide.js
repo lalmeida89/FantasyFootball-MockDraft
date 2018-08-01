@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import TeamRosters from './teamRosters'
 import PlayersDrafted from './playersDrafted'
 import Favorites from './favorites'
+import '../styles/rightSide.css'
 
 class RightSide extends React.Component {
   render(){
@@ -12,7 +13,7 @@ class RightSide extends React.Component {
     showRosters,
     showFavorites} = this.props
 
-    if (showDraftedPlayers === true){
+    /*if (showDraftedPlayers === true){
       console.log('show me the money')
       return (
         <div className='RightSide'>
@@ -27,15 +28,15 @@ class RightSide extends React.Component {
           <TeamRosters />
         </div>
       )
-    }
-    if (showFavorites === true){
-      console.log('show me the faves')
-      return (
-        <div className='RightSide'>
-          <Favorites />
+    }*/
+
+    return (
+      <div className='RightSide'>
+        <div className='card'>
+          {showDraftedPlayers ? <PlayersDrafted /> : <TeamRosters />}
         </div>
-      )
-    }
+      </div>
+    )
   }
 }
 

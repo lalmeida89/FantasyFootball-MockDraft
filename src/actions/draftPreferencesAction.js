@@ -44,7 +44,7 @@ export const draftPageSubmit = (values) => (dispatch, getState) => {
   })
   dispatch(showCurrentTeam(myTeam, values.draftOrder))
   if (values.draftOrder > 1){
-    return setTimeout(()=> dispatch(addPlayerToTeamUp(0, 1)), 2000)
+    return setTimeout(()=> dispatch(addPlayerToTeamUp(0, 1)), 100)
   }
 }
 

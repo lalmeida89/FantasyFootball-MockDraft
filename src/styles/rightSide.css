@@ -1,0 +1,42 @@
+.RightSide {
+  position: fixed;
+  width: 33%;
+  border-left: 1px solid #80808054;
+  right: 0;
+  top: 9vh;
+  height: 77vh;
+  z-index: 5;
+  padding: 0 14px 60px;
+  display: block;
+  background-color: white;
+  list-style: none;
+  overflow-y: scroll;
+  perspective: 600px;
+}
+
+.favorites {
+  line-height: 2px;
+  font-size: 13px;
+}
+
+.rosterPlayers {
+  font-size: 12px;
+  line-height: 5px;
+  margin-top: 32px;
+  position: absolute;
+}
+
+.rightSide-App {
+  position: fixed;
+  right: 0;
+  width: 33%;
+}
+
+.teamDropdown {
+  width: 75%;
+}
+
+
+.teamBtn {
+  float: left;
+}

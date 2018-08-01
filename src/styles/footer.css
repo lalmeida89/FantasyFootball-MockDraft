@@ -10,11 +10,13 @@
 }
 
 .footerButton {
-  width: 32%;
+  width: 49%;
   display: inline-block;
   margin: 0;
   padding-top: 10px;
+  cursor: pointer;
 }
+
 .footer label {
   font-size: 10px;
   color: #bbb4b4;
@@ -28,8 +30,8 @@
   color: #bbb4b4;
 }
 
-.footerButton:hover i{
-  color: #03ff6c !important;
+.footerButton:hover i, .footerButton:hover label, .checkedFooter i, .checkedFooter label{
+  color: #889dff !important;
   cursor: pointer;
 }
 

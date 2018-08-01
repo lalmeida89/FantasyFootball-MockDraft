@@ -7,37 +7,37 @@ export const Position = styled.span`
   margin-right: 4px;
 
   ${props =>
-    props.position == 'RB' &&
+    props.position === 'RB' &&
     css`
     color: #0e9c3b
   `};
 
   ${props =>
-    props.position == 'WR' &&
+    props.position === 'WR' &&
     css`
     color: #0e269cd1
   `};
 
   ${props =>
-    props.position == 'QB' &&
+    props.position === 'QB' &&
     css`
     color: #9c980e;
   `};
 
   ${props =>
-    props.position == 'TE' &&
+    props.position === 'TE' &&
     css`
     color: #960e0ede;
   `};
 
   ${props =>
-    props.position == 'K' &&
+    props.position === 'K' &&
     css`
     color: #580bbfeb;
   `};
 
   ${props =>
-    props.position == 'DEF' &&
+    props.position === 'DEF' &&
     css`
     color: #828384f2;
   `};

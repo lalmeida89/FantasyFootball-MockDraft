@@ -9,7 +9,7 @@ export const PlayerSelector = styled.div`
   line-height: 10px;
 
   ${props =>
-    props.position == 'RB' &&
+    props.position ==='RB' &&
     css`
     background-color: #0e9c3b9c;
       &:hover {
@@ -18,7 +18,7 @@ export const PlayerSelector = styled.div`
   `};
 
   ${props =>
-    props.position == 'WR' &&
+    props.position ==='WR' &&
     css`
     background-color: #0e269c9c;
       &:hover {
@@ -27,7 +27,7 @@ export const PlayerSelector = styled.div`
   `};
 
   ${props =>
-    props.position == 'QB' &&
+    props.position ==='QB' &&
     css`
     background-color: #9c980e9c;
       &:hover {
@@ -36,7 +36,7 @@ export const PlayerSelector = styled.div`
   `};
 
   ${props =>
-    props.position == 'TE' &&
+    props.position ==='TE' &&
     css`
     background-color: #9c0e0e9c;
       &:hover {
@@ -45,7 +45,7 @@ export const PlayerSelector = styled.div`
   `};
 
   ${props =>
-    props.position == 'K' &&
+    props.position ==='K' &&
     css`
     background-color: #580bbf9c;
       &:hover {
@@ -54,7 +54,7 @@ export const PlayerSelector = styled.div`
   `};
 
   ${props =>
-    props.position == 'DEF' &&
+    props.position ==='DEF' &&
     css`
     background-color: #8283849c;
       &:hover {
