@@ -16,6 +16,9 @@ const rearrangeDate = (dateString) => {
   return dateString.substring(5) + '-' + numbers
 }
 
+//create a header based on the selected player. if teamAbbr is falsy, the player is a free agent
+//if the player is a defensive team, he doesn't get a pretty jersey with his number on it.
+//if the player's number is one digit, we add a zero in front so it looks centered.
 const PlayerHeader = (props) => {
   let style = {
     float:'right',
@@ -31,10 +34,13 @@ const PlayerHeader = (props) => {
       <h3>
       <Position style = {borderStyle} position={player.position}> {player.position}</Position>
       <TeamAbbr team={player.teamAbbr}> {!player.teamAbbr ? 'FA' : player.teamAbbr} </TeamAbbr>
+      {player.position !== 'DEF' ?
       <i className="fas fa-tshirt" style={{color:'#0e269c9c', fontSize:'24px'}}>
-      <span style={{fontSize:'10px', margin:'-15px 0 0 10px', display:'block', color:'white', fontFamily:'fantasy'}}>
-              {player.jerseyNumber}
-          </span></i></h3>
+        <span style={{fontSize:'10px', margin:'-15px 0 0 10px', display:'block', color:'white', fontFamily:'fantasy'}}>
+              {player.jerseyNumber<10 ? (0+player.jerseyNumber) : player.jerseyNumber}
+          </span></i>
+          : null }
+      </h3>
       <div className='infoSelector'>
         <ProfileButton onClick={()=> props.all.dispatch(showNotes())}> NEWS </ProfileButton>
         <ProfileButton onClick={()=> props.all.dispatch(showSchedule())}> SCHEDULE </ProfileButton>
@@ -60,6 +66,7 @@ class PlayerProfile extends React.Component {
       return null
     }
 
+    //if the player info is fetching, we render a loading screen.
     if(!playerProfile && loadingPlayer) {
       return (
         <div className='playerCard-background' onClick={()=>dispatch(hidePlayerProfile())}>

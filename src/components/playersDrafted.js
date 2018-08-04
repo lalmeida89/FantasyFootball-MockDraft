@@ -22,6 +22,7 @@ const ShowDraftedPlayers = props => {
 
 class PlayersDrafted extends React.Component {
   render(){
+    const{showDraftedPlayers} = this.props
     return (
       <div className='draftedPlayersList'>
         <h2> Players Taken </h2>
@@ -32,12 +33,13 @@ class PlayersDrafted extends React.Component {
 }
 
 
-export const mapStateToProps = ({draftPreferencesReducer, counterReducer, playersReducer}) => {
+export const mapStateToProps = ({draftPreferencesReducer, counterReducer, playersReducer, renderReducer}) => {
   return ({
     playersUsed: draftPreferencesReducer.playersUsed,
     counter: counterReducer.counter,
     teamCount: draftPreferencesReducer.teamCount,
     currentPlayer: playersReducer.currentPlayer,
+    showDraftedPlayers: renderReducer.showDraftedPlayers
 
   })
 }

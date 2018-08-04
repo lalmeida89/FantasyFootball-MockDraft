@@ -13,7 +13,20 @@ import {PlayerSelector} from '../styledComponents/playerSelector'
 import {Position} from '../styledComponents/position'
 import {TeamAbbr} from '../styledComponents/teamAbbr'
 import '../styles/intro.css'
+import { Transition } from 'react-transition-group';
 
+const duration = 200
+
+const introStyle = {
+  transition: `width ${duration}ms`
+}
+
+const introTransitionStyles = {
+  entering: { width: '60%' },
+  entered: { width: '60%' },
+  exiting: { width: '95%'},
+  exited: { width: '95%'}
+}
 
 //sort function to sort players by their rank
 const sort_by = (field, reverse, primer) => {
@@ -44,8 +57,8 @@ const ShowPlayers = props => {
       <p className='playerName'><b>
       <Position position={player.position}> {player.position}</Position>
       <TeamAbbr team={player.teamAbbr}> {!player.teamAbbr ? 'FA' : player.teamAbbr} </TeamAbbr>
-      {player.firstName} {player.lastName}
-      <span style={{float: 'right'}}>{player.rank}</span>
+      {player.position !== 'DEF' ? (player.firstName + player.lastName) : player.firstName}
+      <span style={{float: 'right', marginRight: '5%'}}>{player.rank}</span>
       </b></p>
     </PlayerSelector>
     )
@@ -124,7 +137,11 @@ class Intro extends React.Component {
     //will show what is passed onto the displayPosition function
     else {
       return (
-        <div className='players'>
+        <Transition in={this.props.isOpen} timeout={duration}>
+        {(state)=> (
+        <div className='players' style={{
+          ...introStyle,
+          ...introTransitionStyles[state]}}>
           <h1 style={{textAlign: 'center', fontSize: '27px'}}> Players Available </h1>
           <h5 style={{textAlign: 'center'}}> Round {this.props.turn} </h5>
           <div className='dropdwnMenu'>
@@ -147,8 +164,13 @@ class Intro extends React.Component {
               : null
             }
           </div>
+          <div className='labels'>
+            <p> <span style={{float:'right'}}>ADP</span></p>
+          </div>
           <ShowPlayers players={this.props.displayPlayers} currentId={this.props} />
         </div>
+      )}
+      </Transition>
       )
     }
   }

@@ -28,7 +28,7 @@
 }
 
 .playersDiv {
-  padding: 20px 10px;
+  padding: 0 10px 60px;
 
 }
 
@@ -43,8 +43,27 @@
   color: #bfbf2f !important;
 }
 
+.labels {
+  display: inline;
+  padding: 0 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.labels p {
+  padding: 0 20px;
+  margin: 8px auto -20px;
+}
+
 @media screen and (max-width: 600px){
   .playerName {
     font-size: 10px;
+  }
+}
+
+
+@media screen and (min-width: 601px){
+  .labels p {
+    margin: 0 5px;
   }
 }

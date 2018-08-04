@@ -5,37 +5,38 @@ import TeamRosters from './teamRosters'
 import PlayersDrafted from './playersDrafted'
 import Favorites from './favorites'
 import '../styles/rightSide.css'
+import { Transition } from 'react-transition-group';
+
+const duration = 400
+
+const rightSideStyle = {
+  transition: `width ${duration}ms`
+}
+
+const rightSideTransitionStyles = {
+  entering: { width: '32%' },
+  entered: { width: '32%' },
+  exiting: { width: 0 },
+  exited: { width: 0}
+}
 
 class RightSide extends React.Component {
   render(){
-    console.log(this.props)
-    const {showDraftedPlayers,
-    showRosters,
-    showFavorites} = this.props
-
-    /*if (showDraftedPlayers === true){
-      console.log('show me the money')
-      return (
-        <div className='RightSide'>
-          <PlayersDrafted />
-        </div>
-      )
-    }
-    if (showRosters === true){
-      console.log('show me the Rosters')
-      return (
-        <div className='RightSide'>
-          <TeamRosters />
-        </div>
-      )
-    }*/
+    const {
+      showDraftedPlayers,
+      showRosters,
+      showFavorites} = this.props
 
     return (
-      <div className='RightSide'>
-        <div className='card'>
+      <Transition in={this.props.isOpen} timeout={duration}>
+      {(state) => (
+        <div className='RightSide' style={{
+          ...rightSideStyle,
+          ...rightSideTransitionStyles[state]}}>
           {showDraftedPlayers ? <PlayersDrafted /> : <TeamRosters />}
         </div>
-      </div>
+      )}
+      </Transition>
     )
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Transition } from 'react-transition-group';
 
 import {
   showFavorites,
@@ -8,13 +9,30 @@ import {
 } from '../actions/showActions'
 import '../styles/footer.css'
 
+const duration = 400
+
+const footerStyle = {
+  transition: `height ${duration}ms`
+}
+
+const footerTransitionStyles = {
+  entering: { height: '50px' },
+  entered: { height: '50px' },
+  exiting: { height: 0 },
+  exited: { height: 0}
+}
+
 class Footer extends React.Component {
   render(){
     const {draftedPlayers, rosters, dispatch} = this.props
     console.log(this.props)
     let style={display: 'block'}
     return (
-      <div className='footer'>
+      <Transition in={this.props.isOpen} timeout={duration}>
+      {(state) => (
+      <div className='footer' style={{
+        ...footerStyle,
+        ...footerTransitionStyles[state]}}>
         <div className={rosters
           ? 'checkedFooter rostersBtn footerButton'
           : 'rostersBtn footerButton'}
@@ -30,6 +48,8 @@ class Footer extends React.Component {
           <label style={style}> players drafted</label>
         </div>
       </div>
+    )}
+    </Transition>
     )
   }
 }

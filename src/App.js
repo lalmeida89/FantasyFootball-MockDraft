@@ -6,32 +6,26 @@ import DraftPage from './components/draftPreferences'
 import AnalysisPage from './components/analysisPage'
 import PlayerProfile from './components/playerProfile'
 import Footer from './components/footer'
-import RightSide from './components/rightSide'
+import MockDraft from './components/mockDraft'
 
 
 class App extends Component {
   render() {
     const {finalPage} = this.props
 
-    if(!finalPage){
-      return (
-        <div> <h1 className='mainHeader' style={{textAlign: 'center'}}> Mock Draft </h1>
-        <div className="App">
+    return (
+      <div className='App'>
+        <h1 className='mainHeader' style={{textAlign: 'center'}}> Mock Draft </h1>
+        { !finalPage ?
+          <div>
             <PlayerProfile />
-          <Intro />
-          <RightSide />
-          <DraftPage />
-          <Footer />
-        </div>
-        </div>
-    );}
-    else if(finalPage){
-      return (
-        <div className='App'>
-          <AnalysisPage />
-        </div>
-      )
-    }
+            <MockDraft />
+            <DraftPage />
+          </div>
+          : <div><AnalysisPage /></div>
+        }
+      </div>
+    )
   }
 }
 
