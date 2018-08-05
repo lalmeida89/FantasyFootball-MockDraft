@@ -1,13 +1,12 @@
 import React from 'react'
 
-
-const SideBarIcon = ({handleClick, isOpen}) => {
-  return <span style={{position: 'absolute', top: '50px'}}onClick={handleClick}>
+const SideBarIcon = ({isOpen}) => {
+  return <div className='sidebarIcon'>
     {isOpen ?
-      <i className="fas fa-angle-double-right"></i> :
-      <i className="fas fa-angle-double-left"></i>
+      <i className="fas fa-arrow-right arrow-icon"></i> :
+      <i className="fas fa-arrow-left arrow-icon"></i>
     }
-  </span>
+  </div>
 }
 
 export default SideBarIcon

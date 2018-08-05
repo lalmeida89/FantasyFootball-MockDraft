@@ -1,6 +1,6 @@
 .RightSide {
   position: fixed;
-  width: 33%;
+  width: 31%;
   border-left: 1px solid #80808054;
   right: 0;
   top: 9vh;
@@ -39,4 +39,8 @@
 
 .teamBtn {
   float: left;
+}
+
+.draftedPlayersList {
+  padding-left: 10px;
 }

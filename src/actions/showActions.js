@@ -9,6 +9,7 @@ export const SHOW_CURRENT_TEAM = 'SHOW_CURRENT_TEAM';
 export const SHOW_DRAFTED_PLAYERS = 'SHOW_DRAFTED_PLAYERS';
 export const SHOW_ROSTERS = 'SHOW_ROSTERS';
 export const SHOW_FAVORITES = 'SHOW_FAVORITES';
+export const RENDER_SIDEBAR = 'RENDER_SIDEBAR';
 
 /* Depending on the button click on the intro component, we can filter what position we'd like to see,
 setting the props to be the displayPlayers and then rendering the displayPlayers. Notes and Schedules just
@@ -67,4 +68,8 @@ export const showRosters = () => ({
 
 export const showDraftedPlayers = () => ({
   type: SHOW_DRAFTED_PLAYERS
+})
+
+export const renderSidebar = () => ({
+  type: RENDER_SIDEBAR
 })

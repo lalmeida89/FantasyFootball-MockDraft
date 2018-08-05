@@ -10,14 +10,14 @@ import { Transition } from 'react-transition-group';
 const duration = 400
 
 const rightSideStyle = {
-  transition: `width ${duration}ms`
+  transition: `right ${duration}ms`
 }
 
 const rightSideTransitionStyles = {
-  entering: { width: '32%' },
-  entered: { width: '32%' },
-  exiting: { width: 0 },
-  exited: { width: 0}
+  entering: { right: '-30%', padding: 0 },
+  entered: { right: 0 },
+  exiting: { right: '-30%', padding: 0 },
+  exited: { right: '-30%', padding: 0}
 }
 
 class RightSide extends React.Component {
@@ -25,10 +25,11 @@ class RightSide extends React.Component {
     const {
       showDraftedPlayers,
       showRosters,
-      showFavorites} = this.props
+      showFavorites,
+      isOpen } = this.props
 
     return (
-      <Transition in={this.props.isOpen} timeout={duration}>
+      <Transition in={isOpen} timeout={duration}>
       {(state) => (
         <div className='RightSide' style={{
           ...rightSideStyle,
@@ -45,7 +46,8 @@ export const mapStateToProps = ({renderReducer}) => {
   return ({
     showDraftedPlayers: renderReducer.showDraftedPlayers,
     showFavorites: renderReducer.showFavorites,
-    showRosters: renderReducer.showRosters
+    showRosters: renderReducer.showRosters,
+    isOpen: renderReducer.showSidebar
   })
 }
 

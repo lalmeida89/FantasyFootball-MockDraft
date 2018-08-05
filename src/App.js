@@ -6,7 +6,7 @@ import DraftPage from './components/draftPreferences'
 import AnalysisPage from './components/analysisPage'
 import PlayerProfile from './components/playerProfile'
 import Footer from './components/footer'
-import MockDraft from './components/mockDraft'
+import RightSide from './components/rightSide'
 
 
 class App extends Component {
@@ -19,8 +19,10 @@ class App extends Component {
         { !finalPage ?
           <div>
             <PlayerProfile />
-            <MockDraft />
+            <Intro />
+            <RightSide />
             <DraftPage />
+            <Footer />
           </div>
           : <div><AnalysisPage /></div>
         }

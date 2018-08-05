@@ -16,7 +16,7 @@ const footerStyle = {
 }
 
 const footerTransitionStyles = {
-  entering: { height: '50px' },
+  entering: { height: 0 },
   entered: { height: '50px' },
   exiting: { height: 0 },
   exited: { height: 0}
@@ -24,11 +24,11 @@ const footerTransitionStyles = {
 
 class Footer extends React.Component {
   render(){
-    const {draftedPlayers, rosters, dispatch} = this.props
+    const {draftedPlayers, rosters, dispatch, isOpen} = this.props
     console.log(this.props)
     let style={display: 'block'}
     return (
-      <Transition in={this.props.isOpen} timeout={duration}>
+      <Transition in={isOpen} timeout={duration}>
       {(state) => (
       <div className='footer' style={{
         ...footerStyle,
@@ -58,7 +58,8 @@ export const mapStateToProps = ({renderReducer}) => {
   return ({
     draftedPlayers: renderReducer.showDraftedPlayers,
     showFavorites: renderReducer.showFavorites,
-    rosters: renderReducer.showRosters
+    rosters: renderReducer.showRosters,
+    isOpen: renderReducer.showSidebar
   })
 }
 

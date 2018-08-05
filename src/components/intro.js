@@ -14,18 +14,31 @@ import {Position} from '../styledComponents/position'
 import {TeamAbbr} from '../styledComponents/teamAbbr'
 import '../styles/intro.css'
 import { Transition } from 'react-transition-group';
+import SideBarIcon from './sideBarIcon'
+import {renderSidebar} from '../actions/showActions'
 
-const duration = 200
+const duration = 400
 
 const introStyle = {
   transition: `width ${duration}ms`
 }
 
 const introTransitionStyles = {
-  entering: { width: '60%' },
-  entered: { width: '60%' },
-  exiting: { width: '95%'},
-  exited: { width: '95%'}
+  entering: { width: '98%' },
+  entered: { width: '64%' },
+  exiting: { width: '98%'},
+  exited: { width: '98%'}
+}
+
+const sideBarIconStyle = {
+  transition: `right ${duration}ms`
+}
+
+const sideBarIconTransitionStyles = {
+  entering: { right: '1%' },
+  entered: { right: '36%' },
+  exiting: { right: '1%'},
+  exited: { right: '1%'}
 }
 
 //sort function to sort players by their rank
@@ -123,7 +136,7 @@ class Intro extends React.Component {
         return (<div> All Players { this.props.menu ? <i className="fas fa-chevron-up"></i> : <i className="fas fa-chevron-down"></i> }</div>)
     }
 
-    const { error, loading } = this.props;
+    const { error, loading, isOpen, dispatch } = this.props;
 
     if(error) {
       return <div className='players'> ERROR! {error.message}</div>;
@@ -137,7 +150,7 @@ class Intro extends React.Component {
     //will show what is passed onto the displayPosition function
     else {
       return (
-        <Transition in={this.props.isOpen} timeout={duration}>
+        <Transition in={isOpen} timeout={duration}>
         {(state)=> (
         <div className='players' style={{
           ...introStyle,
@@ -167,6 +180,20 @@ class Intro extends React.Component {
           <div className='labels'>
             <p> <span style={{float:'right'}}>ADP</span></p>
           </div>
+
+          <Transition in={isOpen} timeout={duration}>
+          {(state)=>(
+            <div className="sideBar-icon" onClick={()=>dispatch(renderSidebar())}
+              style={{
+                ...sideBarIconStyle,
+                ...sideBarIconTransitionStyles[state]}}>
+              <SideBarIcon
+                isOpen={isOpen}
+              />
+            </div>
+          )}
+          </Transition>
+
           <ShowPlayers players={this.props.displayPlayers} currentId={this.props} />
         </div>
       )}
@@ -177,7 +204,7 @@ class Intro extends React.Component {
 }
 
 
-export const mapStateToProps = ({playersReducer, favoritesReducer, counterReducer}) => {
+export const mapStateToProps = ({playersReducer, favoritesReducer, counterReducer, renderReducer}) => {
   ////console.log(playersReducer)
   return ({
   players: playersReducer.players,
@@ -195,7 +222,8 @@ export const mapStateToProps = ({playersReducer, favoritesReducer, counterReduce
   menu: playersReducer.menu,
   myFavorites: favoritesReducer.myFavorites,
   counter: counterReducer.counter,
-  turn: counterReducer.turns
+  turn: counterReducer.turns,
+  isOpen: renderReducer.showSidebar
   })
 }
 
