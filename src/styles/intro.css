@@ -28,7 +28,7 @@
 }
 
 .playersDiv {
-  padding: 0 10px 60px;
+  padding: 7px 10px 60px;
 
 }
 
@@ -44,15 +44,11 @@
 }
 
 .labels {
-  display: inline;
+  float: right;
   padding: 0 20px;
   font-size: 12px;
   font-weight: bold;
-}
-
-.labels p {
-  padding: 0 20px;
-  margin: 8px auto -20px;
+  margin: -15px 14px 10px 0;
 }
 
 @media screen and (max-width: 600px){

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+@import url('https://fonts.googleapis.com/css?family=Graduate');
 
 * {
   padding-left: 0;
@@ -24,8 +24,15 @@
   margin: 0;
 }
 
-.mainHeader, .intro-header, .drafted-header, .currentPick, .positionBtn>button, .dropdwnMenu>button  {
-  font-family: 'Press Start 2P', cursive;
+.mainHeader,
+.intro-header,
+.drafted-header,
+.currentPick,
+.positionBtn>button,
+.dropdwnMenu>button,
+.labels,
+.footerButton  {
+  font-family: 'Graduate', cursive;
 }
 
 .intro-header, .drafted-header {

@@ -178,10 +178,7 @@ class Intro extends React.Component {
               : null
             }
           </div>
-          <div className='labels'>
-            <p> <span style={{float:'right'}}>ADP</span></p>
-          </div>
-
+          <p className='labels'>ADP</p>
           <Transition in={isOpen} timeout={duration}>
           {(state)=>(
             <div className="sideBar-icon" onClick={()=>dispatch(renderSidebar())}
