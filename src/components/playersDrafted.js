@@ -3,12 +3,16 @@ import {connect} from 'react-redux';
 
 import {getPlayerProfile} from '../actions/setCurrentPlayerAction'
 
+
 const ShowDraftedPlayers = props => {
-  let style = {fontSize: '13px', lineHeight: '8px'}
   let playersDraftedList = props.draftedPlayers.map((player, index) => (
-    <div key={index} style={style} className='drafted'>
-      <p className='draftedPlayer' onClick={()=>props.allProps.dispatch(getPlayerProfile(player.id))}>
-        {player.round}.{player.pickedAt}  {player.name} {player.position}
+    <div key={index} className='drafted'
+      onClick={()=>props.allProps.dispatch(getPlayerProfile(player.id))}>
+      <p style={{fontSize: '9px', fontStyle:'italic'}}>TEAM {player.pickedAt} </p>
+      <p className='draftedPlayer'>
+        {player.round}.{index+1}  {player.name.substr(0,player.name.indexOf(' '))}
+        <b className='player-lastName'> {player.name.substr(player.name.indexOf(' ')+1)} </b>
+         {player.position}
       </p>
 
     </div>
@@ -25,8 +29,8 @@ class PlayersDrafted extends React.Component {
     const{showDraftedPlayers} = this.props
     return (
       <div className='draftedPlayersList'>
-        <h2> Players Taken </h2>
-        <ShowDraftedPlayers draftedPlayers={this.props.playersUsed} allProps={this.props}/>
+        <h2 className='drafted-header'> Players Taken </h2>
+        <ShowDraftedPlayers draftedPlayers={this.props.playersUsed} allProps={this.props} teamsTotal={this.props.teamCount}/>
       </div>
     )
   }

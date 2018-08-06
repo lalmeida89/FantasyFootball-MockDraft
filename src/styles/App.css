@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
 * {
   padding-left: 0;
 }
@@ -12,14 +14,30 @@
   z-index: 999;
   position: fixed;
   top: 0;
+  font-size: 30px;
   width: 100%;
   border-bottom: 2px solid gray;
-  height: 6vh;
+  height: auto;
   padding-top: 9px;
+  padding-bottom: 9px;
   background-color: #ffffffe6;
   margin: 0;
 }
 
+.mainHeader, .intro-header, .drafted-header, .currentPick, .positionBtn>button, .dropdwnMenu>button  {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.intro-header, .drafted-header {
+  font-size: 15px;
+}
+
+.currentPick {
+  font-size: 11px;
+}
+.positionBtn>button, .dropdwnMenu>button {
+  font-size: 10px;
+}
 .positionBtn {
   position: absolute;
   z-index: 99;
@@ -27,7 +45,7 @@
   width: 200px;
 }
 
-.fa-chevron-up, .fa-chevron-down {
+.menu-arrow {
   float: right;
   background-color: #b7b7b77a;
 }
@@ -44,7 +62,7 @@
 
 .App {
   width: 100%;
-  margin-top: 50px;
+  margin-top: 70px;
   padding-top: 5px;
 }
 

@@ -36,7 +36,7 @@ const sideBarIconStyle = {
 
 const sideBarIconTransitionStyles = {
   entering: { right: '1%' },
-  entered: { right: '36%' },
+  entered: { right: '34%' },
   exiting: { right: '1%'},
   exited: { right: '1%'}
 }
@@ -115,25 +115,25 @@ class Intro extends React.Component {
       let playerPosition = this.props.displayPlayers
 
       if (playerPosition === this.props.wr){
-        return (<div> Wide Receivers { this.props.menu ? <i className="fas fa-chevron-up"></i> : <i className="fas fa-chevron-down"></i> }</div>)
+        return (<div> Wide Receivers { this.props.menu ? <i className="fas menu-arrow fa-chevron-up"></i> : <i className="fas menu-arrow fa-chevron-down"></i> }</div>)
       }
       else if (playerPosition === this.props.rb){
-        return (<div> Running Backs { this.props.menu ? <i className="fas fa-chevron-up"></i> : <i className="fas fa-chevron-down"></i> }</div>)
+        return (<div> Running Backs { this.props.menu ? <i className="fas menu-arrow fa-chevron-up"></i> : <i className="fas menu-arrow fa-chevron-down"></i> }</div>)
       }
       else if (playerPosition === this.props.qb){
-        return (<div> Quarterbacks { this.props.menu ? <i className="fas fa-chevron-up"></i> : <i className="fas fa-chevron-down"></i> }</div>)
+        return (<div> Quarterbacks { this.props.menu ? <i className="fas menu-arrow fa-chevron-up"></i> : <i className="fas menu-arrow fa-chevron-down"></i> }</div>)
       }
       else if (playerPosition === this.props.te){
-        return (<div> Tight Ends { this.props.menu ? <i className="fas fa-chevron-up"></i> : <i className="fas fa-chevron-down"></i> }</div>)
+        return (<div> Tight Ends { this.props.menu ? <i className="fas menu-arrow fa-chevron-up"></i> : <i className="fas menu-arrow fa-chevron-down"></i> }</div>)
       }
       else if (playerPosition === this.props.def){
-        return (<div> DST { this.props.menu ? <i className="fas fa-chevron-up"></i> : <i className="fas fa-chevron-down"></i> }</div>)
+        return (<div> DST { this.props.menu ? <i className="fas menu-arrow fa-chevron-up"></i> : <i className="fas menu-arrow fa-chevron-down"></i> }</div>)
       }
       else if (playerPosition === this.props.k){
-        return (<div> Kickers { this.props.menu ? <i className="fas fa-chevron-up"></i> : <i className="fas fa-chevron-down"></i> }</div>)
+        return (<div> Kickers { this.props.menu ? <i className="fas menu-arrow fa-chevron-up"></i> : <i className="fas menu-arrow fa-chevron-down"></i> }</div>)
       }
       else
-        return (<div> All Players { this.props.menu ? <i className="fas fa-chevron-up"></i> : <i className="fas fa-chevron-down"></i> }</div>)
+        return (<div> All Players { this.props.menu ? <i className="fas menu-arrow fa-chevron-up"></i> : <i className="fas menu-arrow fa-chevron-down"></i> }</div>)
     }
 
     const { error, loading, isOpen, dispatch } = this.props;
@@ -149,14 +149,15 @@ class Intro extends React.Component {
     //similarly our droptdown buttons will show only if the menu prop is true. ShowPlayers
     //will show what is passed onto the displayPosition function
     else {
+      let currentPick = this.props.counter+1
       return (
         <Transition in={isOpen} timeout={duration}>
         {(state)=> (
         <div className='players' style={{
           ...introStyle,
           ...introTransitionStyles[state]}}>
-          <h1 style={{textAlign: 'center', fontSize: '27px'}}> Players Available </h1>
-          <h5 style={{textAlign: 'center'}}> Round {this.props.turn} </h5>
+          <h1 className='intro-header' style={{textAlign: 'center'}}> Players Available </h1>
+          <h5 className='currentPick' style={{textAlign: 'center'}}> Pick {this.props.turn}.{currentPick<10 ? '0'+currentPick:currentPick} </h5>
           <div className='dropdwnMenu'>
             <Button onClick={()=> this.props.menu
               ? this.closeMenu()

@@ -1,12 +1,12 @@
 .RightSide {
   position: fixed;
-  width: 31%;
+  width: 30%;
   border-left: 1px solid #80808054;
   right: 0;
   top: 9vh;
   height: 77vh;
   z-index: 5;
-  padding: 0 14px 60px;
+  padding: 20px 14px 60px;
   display: block;
   background-color: white;
   list-style: none;
@@ -14,10 +14,15 @@
   perspective: 600px;
 }
 
-.favorites {
-  line-height: 2px;
-  font-size: 13px;
+.sc-bxivhb {
+  font-size: 8px;
 }
+
+.reserves {
+  font-size: 11px;
+  margin-right: 5px;
+}
+
 
 .rosterPlayers {
   font-size: 12px;
@@ -43,4 +48,26 @@
 
 .draftedPlayersList {
   padding-left: 10px;
+}
+
+.drafted {
+  font-size: 10px;
+  line-height: 8px;
+  border-radius: 4px;
+  background-color: #e2dddd;
+  padding: 1px;
+  margin-bottom: 2px;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.player-lastName {
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 600px) {
+  .RightSide {
+    width: 26%;
+  }
 }
