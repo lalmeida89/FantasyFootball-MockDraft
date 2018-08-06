@@ -70,4 +70,8 @@
   .RightSide {
     width: 26%;
   }
+
+  .draftedPlayer {
+    line-height: 12px;
+  }
 }

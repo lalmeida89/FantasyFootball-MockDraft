@@ -77,7 +77,7 @@
           return (
             <div className='teamDropdown positionBtn'>
             { menu
-              ? <div>
+              ? <div className='teams-button'>
                   {teamNames}
                 </div>
               : <Button dropBtn onClick={()=> this.displayMenu()}>

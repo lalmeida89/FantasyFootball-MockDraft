@@ -55,6 +55,14 @@
   .playerName {
     font-size: 10px;
   }
+
+  .App{
+    margin-top: 90px;
+  }
+
+  .labels {
+    padding: 0 10px;
+  }
 }
 
 

@@ -6,7 +6,7 @@
 
 
 .rostersDiv {
-  margin: 5% 0 0 19px;
+  margin-top: 20px;
 }
 
 .mainHeader {
@@ -31,7 +31,8 @@
 .positionBtn>button,
 .dropdwnMenu>button,
 .labels,
-.footerButton  {
+.footerButton,
+.teams-button button  {
   font-family: 'Graduate', cursive;
 }
 
@@ -100,8 +101,15 @@
 
 
 @media screen and (max-width: 600px) {
-
   .draftedPlayer{
     font-size: 10px;
+  }
+
+  .dropdwnMenu {
+    width: 125px;
+  }
+
+  .positionBtn {
+    width: 125px;
   }
 }
