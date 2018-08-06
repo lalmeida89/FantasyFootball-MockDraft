@@ -34,7 +34,7 @@ export const draftPageSubmit = (values) => (dispatch, getState) => {
   let flexCount = parseInt(values.wrRbFlexCount, 10) + parseInt(values.wrTeFlexCount, 10) + parseInt(values.rbTeFlexCount, 10) + parseInt(values.wrRbTeFlexCount, 10) + parseInt(values.qbWrRbTeFlexCount, 10);
   let startersCount = parseInt(values.wrCount, 10) + parseInt(values.dstCount, 10) + parseInt(values.kCount, 10) + parseInt(values.rbCount, 10) + parseInt(values.qbCount, 10) + parseInt(values.teCount, 10);
   let maxRounds = flexCount + startersCount + parseInt(values.benchCount, 10);
-  console.log(maxRounds);
+  console.log(values);
   dispatch({
     type: DRAFT_PAGE_SUBMIT,
     values,

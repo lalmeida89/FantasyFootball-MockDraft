@@ -43,7 +43,7 @@ export default (preferenceState = initialState, action) => {
             playersUsed: [...action.playersUsed]
           }
         case 'DRAFT_PAGE_SUBMIT':
-          console.log(preferenceState)
+          console.log(action, preferenceState)
           return {
             ...preferenceState,
             teamCount: action.values.numberOfTeams,

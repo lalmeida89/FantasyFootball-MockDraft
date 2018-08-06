@@ -22,24 +22,9 @@ class DraftSetup extends Component {
       <form className="draftDetails" onSubmit={handleSubmit}>
         <div className="topHalf">
         <h3 style={{textAlign:'center'}}> Customize Your Draft </h3>
-        <div className="scoringRules">
-          <label><b className='labelHeader'>League Scoring</b></label>
-          <div>
-            <label className='options'><Field name="scoring" component="input" type="radio" value="standard" checked='true'/> Standard</label>
-            <label className='options'><Field name="scoring" component="input" type="radio" value="halfPPR" disabled/> Half PPR (Coming Soon!)</label>
-            <label className='options'><Field name="scoring" component="input" type="radio" value="PPR" disabled /> PPR (Coming Soon!)</label>
-          </div>
-        </div>
-        <div className="draftType">
-          <label><b className='labelHeader'>Draft Type</b></label>
-          <div>
-            <label className='options'><Field name="drafting" component="input" type="radio" value="snake" checked='true'/> Snake</label>
-            <label className='options'><Field name="drafting" component="input" type="radio" value="auction" disabled/> Auction (Coming Soon!)</label>
-          </div>
-        </div>
         <div className="countAndOrder">
         <div className="teamCount">
-          <label><b className='labelHeader'>Number of Teams</b></label>
+          <label><b className='labelHeader'>No. of Teams</b></label>
           <div>
             <Field
               className='positionCount'
@@ -126,189 +111,171 @@ class DraftSetup extends Component {
         </div>
 
         <div className='rosterSetup'>
-          <div>
-            <h3 className='rosterHeader'> Roster Settings </h3>
-          </div>
+          <h3 className='rosterHeader'> Roster Settings </h3>
           <div className='mainStarters'>
-          <table>
-            <tbody>
-              <tr>
-                <td className='starter'>
-            <label>QB </label>
-            <Field name='qbCount' className='positionCount' component='select'>
-              <option value='0'>0</option>
-              <option value='1'>1</option>
-              <option value='2'>2</option>
-              <option value='3'>3</option>
-              <option value='4'>4</option>
-            </Field>
-          </td>
+            <div className='starter'>
+              <label>QB </label>
+              <Field name='qbCount' className='positionCount' component='select'>
+                <option value='0'>0</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+              </Field>
+            </div>
+            <div className='starter'>
+              <label>RB </label>
+              <Field name='rbCount' className='positionCount' component='select'>
+                <option value='0'>0</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                <option value='5'>5</option>
+                <option value='6'>6</option>
+              </Field>
+            </div>
+            <div className='starter'>
+              <label>WR </label>
+              <Field name='wrCount' className='positionCount' component='select'>
+                <option value='0'>0</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                <option value='5'>5</option>
+                <option value='6'>6</option>
+              </Field>
+            </div>
+            <div className='starter'>
+              <label>TE </label>
+              <Field name='teCount' className='positionCount' component='select'>
+                <option value='0'>0</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+              </Field>
+            </div>
+            <div className='starter'>
+              <label> KICKER </label>
+              <Field name='kCount' className='positionCount' component='select'>
+                <option value='0'>0</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+              </Field>
+            </div>
+            <div className='starter'>
+              <label> DST </label>
+              <Field name='dstCount' className='positionCount' component='select'>
+                <option value='0'>0</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+              </Field>
+            </div>
+            <div className='starter'>
+              <label>BENCH </label>
+              <Field name='benchCount' className='positionCount' component='select'>
+                <option value='0'>0</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                <option value='5'>5</option>
+                <option value='6'>6</option>
+                <option value='7'>7</option>
+                <option value='8'>8</option>
+                <option value='9'>9</option>
+                <option value='10'>10</option>
+              </Field>
+            </div>
 
-          <td className='flex'>
-            <label> WR / RB </label>
-            <Field name='wrRbFlexCount' className='positionCount' component='select'>
-              <option value='0'>0</option>
-              <option value='1'>1</option>
-              <option value='2'>2</option>
-              <option value='3'>3</option>
-              <option value='4'>4</option>
-              <option value='5'>5</option>
-              <option value='6'>6</option>
-              <option value='7'>7</option>
-              <option value='8'>8</option>
-              <option value='9'>9</option>
-              <option value='10'>10</option>
-            </Field>
-          </td>
-          <td className='starter'>
-            <label> DST </label>
-            <Field name='dstCount' className='positionCount' component='select'>
-              <option value='0'>0</option>
-              <option value='1'>1</option>
-              <option value='2'>2</option>
-              <option value='3'>3</option>
-              <option value='4'>4</option>
-            </Field>
-          </td>
-          </tr>
-
-          <tr>
-          <td className='starter'>
-            <label>RB </label>
-            <Field name='rbCount' className='positionCount' component='select'>
-              <option value='0'>0</option>
-              <option value='1'>1</option>
-              <option value='2'>2</option>
-              <option value='3'>3</option>
-              <option value='4'>4</option>
-              <option value='5'>5</option>
-              <option value='6'>6</option>
-            </Field>
-          </td>
-          <td className='flex'>
-            <label> WR / TE </label>
-            <Field name='wrTeFlexCount' className='positionCount' component='select'>
-              <option value='0'>0</option>
-              <option value='1'>1</option>
-              <option value='2'>2</option>
-              <option value='3'>3</option>
-              <option value='4'>4</option>
-              <option value='5'>5</option>
-              <option value='6'>6</option>
-              <option value='7'>7</option>
-              <option value='8'>8</option>
-              <option value='9'>9</option>
-              <option value='10'>10</option>
-            </Field>
-          </td>
-          <td className='starter'>
-            <label> KICKER </label>
-            <Field name='kCount' className='positionCount' component='select'>
-              <option value='0'>0</option>
-              <option value='1'>1</option>
-              <option value='2'>2</option>
-              <option value='3'>3</option>
-              <option value='4'>4</option>
-            </Field>
-          </td>
-          </tr>
-
-          <tr>
-          <td className='starter'>
-            <label>WR </label>
-            <Field name='wrCount' className='positionCount' component='select'>
-              <option value='0'>0</option>
-              <option value='1'>1</option>
-              <option value='2'>2</option>
-              <option value='3'>3</option>
-              <option value='4'>4</option>
-              <option value='5'>5</option>
-              <option value='6'>6</option>
-            </Field>
-          </td>
-          <td className='flex'>
-            <label> RB / TE </label>
-            <Field name='rbTeFlexCount' className='positionCount' component='select'>
-              <option value='0'>0</option>
-              <option value='1'>1</option>
-              <option value='2'>2</option>
-              <option value='3'>3</option>
-              <option value='4'>4</option>
-              <option value='5'>5</option>
-              <option value='6'>6</option>
-              <option value='7'>7</option>
-              <option value='8'>8</option>
-              <option value='9'>9</option>
-              <option value='10'>10</option>
-            </Field>
-          </td>
-          <td className='starter'>
-            <label>BENCH </label>
-            <Field name='benchCount' className='positionCount' component='select'>
-              <option value='0'>0</option>
-              <option value='1'>1</option>
-              <option value='2'>2</option>
-              <option value='3'>3</option>
-              <option value='4'>4</option>
-              <option value='5'>5</option>
-              <option value='6'>6</option>
-              <option value='7'>7</option>
-              <option value='8'>8</option>
-              <option value='9'>9</option>
-              <option value='10'>10</option>
-            </Field>
-          </td>
-
-          </tr>
-          <tr>
-          <td className='starter'>
-            <label>TE </label>
-            <Field name='teCount' className='positionCount' component='select'>
-              <option value='0'>0</option>
-              <option value='1'>1</option>
-              <option value='2'>2</option>
-              <option value='3'>3</option>
-              <option value='4'>4</option>
-            </Field>
-          </td>
-          <td className='flex'>
-            <label> WR / RB / TE </label>
-            <Field name='wrRbTeFlexCount' className='positionCount' component='select'>
-              <option value='0'>0</option>
-              <option value='1'>1</option>
-              <option value='2'>2</option>
-              <option value='3'>3</option>
-              <option value='4'>4</option>
-              <option value='5'>5</option>
-              <option value='6'>6</option>
-              <option value='7'>7</option>
-              <option value='8'>8</option>
-              <option value='9'>9</option>
-              <option value='10'>10</option>
-            </Field>
-          </td>
-          <td className='flex'>
-            <label > QB / WR / RB / TE </label>
-            <Field name='qbWrRbTeFlexCount' className='positionCount' component='select'>
-              <option value='0'>0</option>
-              <option value='1'>1</option>
-              <option value='2'>2</option>
-              <option value='3'>3</option>
-              <option value='4'>4</option>
-              <option value='5'>5</option>
-              <option value='6'>6</option>
-              <option value='7'>7</option>
-              <option value='8'>8</option>
-              <option value='9'>9</option>
-              <option value='10'>10</option>
-            </Field>
-          </td>
-          </tr>
-          </tbody>
-        </table>
+            <div className='flex'>
+              <label> WR / RB </label>
+              <Field name='wrRbFlexCount' className='positionCount' component='select'>
+                <option value='0'>0</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                <option value='5'>5</option>
+                <option value='6'>6</option>
+                <option value='7'>7</option>
+                <option value='8'>8</option>
+                <option value='9'>9</option>
+                <option value='10'>10</option>
+              </Field>
+            </div>
+            <div className='flex'>
+              <label> WR / TE </label>
+              <Field name='wrTeFlexCount' className='positionCount' component='select'>
+                <option value='0'>0</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                <option value='5'>5</option>
+                <option value='6'>6</option>
+                <option value='7'>7</option>
+                <option value='8'>8</option>
+                <option value='9'>9</option>
+                <option value='10'>10</option>
+              </Field>
+            </div>
+            <div className='flex'>
+              <label> RB / TE </label>
+              <Field name='rbTeFlexCount' className='positionCount' component='select'>
+                <option value='0'>0</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                <option value='5'>5</option>
+                <option value='6'>6</option>
+                <option value='7'>7</option>
+                <option value='8'>8</option>
+                <option value='9'>9</option>
+                <option value='10'>10</option>
+              </Field>
+            </div>
+            <div className='flex'>
+              <label> WR / RB <br/> / TE </label>
+              <Field name='wrRbTeFlexCount' className='positionCount' component='select'>
+                <option value='0'>0</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                <option value='5'>5</option>
+                <option value='6'>6</option>
+                <option value='7'>7</option>
+                <option value='8'>8</option>
+                <option value='9'>9</option>
+                <option value='10'>10</option>
+              </Field>
+            </div>
+            <div className='flex'>
+              <label > QB / WR <br/> / RB / TE </label>
+              <Field name='qbWrRbTeFlexCount' className='positionCount' component='select'>
+                <option value='0'>0</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                <option value='5'>5</option>
+                <option value='6'>6</option>
+                <option value='7'>7</option>
+                <option value='8'>8</option>
+                <option value='9'>9</option>
+                <option value='10'>10</option>
+              </Field>
+            </div>
       </div>
     </div>
-
     <button className='submitButton' type="submit">Submit</button>
 </form>
 </div>
