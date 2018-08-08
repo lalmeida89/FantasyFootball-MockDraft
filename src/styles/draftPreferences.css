@@ -1,5 +1,6 @@
 
 .draftDetails {
+  border-radius: 15px;
   z-index: 999;
   position: relative;
   width: 500px;
