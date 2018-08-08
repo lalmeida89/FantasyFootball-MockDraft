@@ -11,6 +11,7 @@
   font-size: 11.5px;
   border-radius: 8px;
   padding: 5px;
+  overflow-y: scroll;
 }
 
 
@@ -102,6 +103,6 @@
 
 @media screen and (max-width: 600px) {
   .playerCard, .loadingCard {
-    width: 99%;
+    width: 95%;
   }
 }

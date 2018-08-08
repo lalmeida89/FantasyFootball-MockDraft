@@ -10,7 +10,7 @@ const ShowDraftedPlayers = props => {
       onClick={()=>props.allProps.dispatch(getPlayerProfile(player.id))}>
       <p style={{fontSize: '9px', fontStyle:'italic'}}>TEAM {player.pickedAt} </p>
       <p className='draftedPlayer'>
-        {player.round}.{index+1}  {player.name.substr(0,player.name.indexOf(' '))}
+        {player.round}.{index+1}  {player.name.substr(0,player.name.indexOf(' '))}<br/>
         <b className='player-lastName'> {player.name.substr(player.name.indexOf(' ')+1)} </b>
          {player.position}
       </p>

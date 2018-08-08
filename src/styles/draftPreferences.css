@@ -62,7 +62,7 @@
 
 .mainStarters{
   display: grid;
-  grid-template-columns: 150px 150px;
+  grid-template-columns: 120px 120px;
   grid-gap: 5px 50px;
   padding: 5px 75px;
 }
@@ -75,12 +75,15 @@
   float: right;
 }
 
+.starter>label {
+  padding-top: 5px;
+}
+
 
 .submitButton {
-  bottom: 10px;
-  position: absolute;
-  margin: 0 auto;
-  left: 37%;
+  display: block;
+  bottom: 5px;
+  margin: 5vh auto 0;
   font-size: 1.4rem;
   padding: 10px 32px;
   font-weight: bold;
@@ -95,39 +98,13 @@
   .draftDetails{
     width: 350px;
   }
-  .labelHeader {
+
+  .countAndOrder{
+    padding: 0;
+  }
+
+  .mainStarters {
     font-size: 12px;
-  }
-
-  .positionCount {
-    width: 3.5em;
-    height: 2.2em;
-  }
-
-  .options{
-    font-size: 10px;
-  }
-
-  .teamCount{
-    float: left;
-  }
-
-  .draftPosition {
-    float: right;
-  }
-
-  .starter {
-    position: relative;
-    float: left;
-    font-size: 12px;
-  }
-
-  tr {
-    display: table-row-group;
-  }
-
-  .flex {
-    float: right;
-    font-size: 12px;
+    padding: 0 25px;
   }
 }

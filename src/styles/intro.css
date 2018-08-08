@@ -23,10 +23,6 @@
   cursor: pointer;
 }
 
-.players {
-  width: 60%;
-}
-
 .playersDiv {
   padding: 7px 10px 60px;
 
@@ -46,7 +42,7 @@
 .labels {
   float: right;
   padding: 0 20px;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
   margin: -15px 14px 10px 0;
 }

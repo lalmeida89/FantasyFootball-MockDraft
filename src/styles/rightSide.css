@@ -1,6 +1,6 @@
 .RightSide {
   position: fixed;
-  width: 30%;
+  width: 40%;
   border-left: 1px solid #80808054;
   right: 0;
   top: 9vh;
@@ -31,12 +31,6 @@
   position: absolute;
 }
 
-.rightSide-App {
-  position: fixed;
-  right: 0;
-  width: 33%;
-}
-
 .teamDropdown {
   width: 75%;
 }
@@ -47,12 +41,12 @@
 }
 
 .draftedPlayersList {
-  padding-left: 10px;
+  padding: 5px 0 0 10px;
 }
 
 .drafted {
   font-size: 10px;
-  line-height: 8px;
+  line-height: 12px;
   border-radius: 4px;
   background-color: #e2dddd;
   padding: 1px;
@@ -68,10 +62,14 @@
 
 @media screen and (max-width: 600px) {
   .RightSide {
-    width: 26%;
+    width: 38%;
   }
 
   .draftedPlayer {
     line-height: 12px;
+  }
+
+  .rostered-players {
+    font-size: 10px;
   }
 }

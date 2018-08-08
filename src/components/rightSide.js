@@ -14,10 +14,10 @@ const rightSideStyle = {
 }
 
 const rightSideTransitionStyles = {
-  entering: { right: '-30%', padding: 0 },
+  entering: { right: '-40%', padding: 0 },
   entered: { right: 0 },
-  exiting: { right: '-30%', padding: 0 },
-  exited: { right: '-30%', padding: 0}
+  exiting: { right: '-40%', padding: 0 },
+  exited: { right: '-40%', padding: 0}
 }
 
 class RightSide extends React.Component {

@@ -25,7 +25,7 @@ const introStyle = {
 
 const introTransitionStyles = {
   entering: { width: '98%' },
-  entered: { width: '64%' },
+  entered: { width: '55%' },
   exiting: { width: '98%'},
   exited: { width: '98%'}
 }
@@ -36,7 +36,7 @@ const sideBarIconStyle = {
 
 const sideBarIconTransitionStyles = {
   entering: { right: '1%' },
-  entered: { right: '34%' },
+  entered: { right: '45%' },
   exiting: { right: '1%'},
   exited: { right: '1%'}
 }

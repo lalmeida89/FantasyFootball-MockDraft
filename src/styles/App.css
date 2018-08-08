@@ -32,7 +32,12 @@
 .dropdwnMenu>button,
 .labels,
 .footerButton,
-.teams-button button  {
+.teams-button button,
+.labelHeader,
+.redux-header,
+.rosterHeader,
+.starter>label,
+.flex>label  {
   font-family: 'Graduate', cursive;
 }
 
@@ -40,7 +45,7 @@
   font-size: 15px;
 }
 
-.currentPick {
+.currentPick, .labelHeader {
   font-size: 11px;
 }
 .positionBtn>button, .dropdwnMenu>button {
@@ -111,5 +116,11 @@
 
   .positionBtn {
     width: 125px;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .sideBar-icon {
+    margin-right: -1.2vw;
   }
 }

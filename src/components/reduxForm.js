@@ -21,7 +21,7 @@ class DraftSetup extends Component {
       <div className='reduxFormDiv'>
       <form className="draftDetails" onSubmit={handleSubmit}>
         <div className="topHalf">
-        <h3 style={{textAlign:'center'}}> Customize Your Draft </h3>
+        <h3 className='redux-header' style={{textAlign:'center'}}> Customize Your Draft </h3>
         <div className="countAndOrder">
         <div className="teamCount">
           <label><b className='labelHeader'>No. of Teams</b></label>

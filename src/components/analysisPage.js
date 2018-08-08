@@ -11,9 +11,10 @@ class AnalysisPage extends React.Component{
   }
 }
 
-export const mapStateToProps =({analysisReducer})=> {
+export const mapStateToProps =({draftPreferencesReducer})=> {
+  console.log(draftPreferencesReducer);
   return ({
-    finalPage: analysisReducer.finalPage
+    teams: draftPreferencesReducer.teams
   })
 }
 
