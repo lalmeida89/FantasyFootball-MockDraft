@@ -63,8 +63,9 @@
 .mainStarters{
   display: grid;
   grid-template-columns: 120px 120px;
+  grid-template-rows: 30px 30px 30px 30px 30px;
   grid-gap: 5px 50px;
-  padding: 5px 75px;
+  padding: 0 75px;
 }
 
 .starter, .flex {
@@ -83,7 +84,7 @@
 .submitButton {
   display: block;
   bottom: 5px;
-  margin: 5vh auto 0;
+  margin: 1vh auto 0;
   font-size: 1.4rem;
   padding: 10px 32px;
   font-weight: bold;
@@ -106,5 +107,15 @@
   .mainStarters {
     font-size: 12px;
     padding: 0 25px;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .mainStarters{
+    grid-template-columns: 140px 140px;
+  }
+
+  .submitButton {
+    margin: 1vh auto 0;
   }
 }
