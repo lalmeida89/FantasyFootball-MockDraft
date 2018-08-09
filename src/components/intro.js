@@ -36,7 +36,7 @@ const sideBarIconStyle = {
 
 const sideBarIconTransitionStyles = {
   entering: { right: '1%' },
-  entered: { right: '45%' },
+  entered: { right: '44%' },
   exiting: { right: '1%'},
   exited: { right: '1%'}
 }

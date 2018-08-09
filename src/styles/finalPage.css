@@ -1,0 +1,5 @@
+.teamResults-div {
+  display: grid;
+  grid-template-columns: 125px 125px 125px;
+  grid-gap: 35px;
+}

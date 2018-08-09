@@ -43,6 +43,7 @@
 
 .intro-header, .drafted-header {
   font-size: 15px;
+  text-align: center;
 }
 
 .currentPick, .labelHeader {
@@ -82,10 +83,9 @@
 
 .sideBar-icon {
   position: fixed;
-  right: 36%;
   top: 45vh;
   height: 46px;
-  width: 23px;
+  width: 46px;
   border-bottom-left-radius: 46px;
   border-top-left-radius: 46px;
   background: #000000ab;
@@ -96,7 +96,7 @@
 .sidebarIcon {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 15px;
   transform: translate(-50%,-50%);
 }
 
