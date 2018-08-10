@@ -7,7 +7,6 @@ import AnalysisPage from './components/analysisPage'
 import PlayerProfile from './components/playerProfile'
 import Footer from './components/footer'
 import RightSide from './components/rightSide'
-import MotionMenu from './components/motionMenu'
 
 
 class App extends Component {

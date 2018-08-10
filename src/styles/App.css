@@ -37,7 +37,8 @@
 .redux-header,
 .rosterHeader,
 .starter>label,
-.flex>label  {
+.flex>label,
+.teamResults>h3  {
   font-family: 'Graduate', cursive;
 }
 

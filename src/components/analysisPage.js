@@ -4,7 +4,7 @@ import { Transition } from 'react-transition-group'
 
 import '../styles/finalPage.css'
 
-const duration = 10000
+const duration = 1000
 
 const playerNamesStyle = {
   transition: `opacity ${duration}ms`
@@ -12,7 +12,7 @@ const playerNamesStyle = {
 
 const playerNamesTransitionStyles = {
   entering: {opacity: 0},
-  entered: {opacity: 1},
+  entered: {opacity: '1'},
   exiting: {opacity: 0},
   exited: {opacity: 0}
 }
@@ -26,7 +26,7 @@ const mappedTeam = currentTeam => {
       {' '} {player.round}.{player.pickedAt}
     </div>
   ))
-  return <div>{thisTeam} </div>
+  return <div className='mappedTeam-div'>{thisTeam} </div>
 }
 
 const ShowAllTeams = props => {
@@ -40,31 +40,40 @@ const ShowAllTeams = props => {
         { index === draftPosition-1
         ? userIcon
         : null }
-        </h3>
-      <Transition in={showPlayers} timeout={duration}>
-      {(state) => (
-        <div className='trans-in' style={{
-          ...playerNamesStyle,
-          ...playerNamesTransitionStyles[state]}}>
-          {mappedTeam(team)}
-        </div>
-      )}
-      </Transition>
+      </h3>
+      {mappedTeam(team)}
     </div>
   ))
   return (
-    <div className='teamResults-div'>
+    <Transition in={showPlayers} timeout={duration}>
+    {(state) => (
+    <div className='teamResults-div' style={{
+      ...playerNamesStyle,
+      ...playerNamesTransitionStyles[state]}}>
       {teamNames}
     </div>
+  )}
+  </Transition>
   )
 }
 
 class AnalysisPage extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={isOpen : false}
+  }
+
+  componentDidMount(){
+    this.setState({isOpen : true})
+  }
+
   render(){
     const {teams, draftPos, finalPage} = this.props
     return (
       <div className='analysisPage'>
-        <ShowAllTeams teams={teams} draftPos={draftPos} finalPage={finalPage}/>
+        <div className='teams-container'>
+          <ShowAllTeams teams={teams} draftPos={draftPos} finalPage={this.state.isOpen}/>
+        </div>
       </div>
     )
   }

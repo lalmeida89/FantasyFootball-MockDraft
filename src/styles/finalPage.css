@@ -1,5 +1,52 @@
 .teamResults-div {
   display: grid;
-  grid-template-columns: 125px 125px 125px;
+  grid-template-columns: 150px 150px 150px;
   grid-gap: 35px;
+  padding: 0 40px;
+}
+
+.teams-container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.teamResults>h3  {
+  margin: 0;
+  background-color: #0000ff63;
+  text-align: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.teamResults {
+  border-radius: 7px;
+  background-color: #e2dddd;
+  -webkit-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.75);
+  box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.75);
+}
+
+.mappedTeam-div {
+  padding: 5px 10px;
+  font-size: 11px;
+}
+
+.analysisPage {
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 600px) {
+  .teams-container {
+    width: 350px;
+  }
+
+  .teamResults-div {
+    grid-template-columns: 120px 120px;
+    grid-gap: 20px 40px;
+    padding: 20px 35px;
+  }
+
+  .mappedTeam-div {
+    font-size: 9px;
+  }
 }
