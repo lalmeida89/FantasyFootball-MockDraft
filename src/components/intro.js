@@ -69,10 +69,10 @@ const ShowPlayers = props => {
     key={index}>
       <p className='playerName'><b>
       <Position position={player.position}> {player.position}</Position>
-      <TeamAbbr team={player.teamAbbr}> {!player.teamAbbr ? 'FA' : player.teamAbbr} </TeamAbbr>
-      {player.position !== 'DEF' ? (player.firstName + ' ' + player.lastName) : player.firstName}
+      <TeamAbbr team={player.teamAbbr}> {!player.teamAbbr ? 'FA' : player.teamAbbr} </TeamAbbr></b>
+      <span className='player-name'>{player.position !== 'DEF' ? (player.firstName + ' ' + player.lastName) : player.firstName}</span>
       <span style={{float: 'right', marginRight: '5%'}}>{player.rank}</span>
-      </b></p>
+      </p>
     </PlayerSelector>
     )
   )

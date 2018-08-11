@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Graduate');
+@import url('https://fonts.googleapis.com/css?family=Graduate|Roboto+Condensed');
+
 
 * {
   padding-left: 0;
@@ -45,6 +46,11 @@
 .intro-header, .drafted-header {
   font-size: 15px;
   text-align: center;
+}
+
+.player-name {
+  font-weight: bold;
+  font-family: 'Arial';
 }
 
 .currentPick, .labelHeader {
