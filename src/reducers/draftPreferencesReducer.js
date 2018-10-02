@@ -19,11 +19,16 @@ const initialState = {
   showSettingsPage: true,
   teams: [],
   playersUsed: [],
-  maxTurns: ''
+  maxTurns: '',
+  initialLoading: false
 }
 
 export default (preferenceState = initialState, action) => {
     switch (action.type) {
+        case 'LOADING_SCREEN':
+          return Object.assign({}, preferenceState, {
+            initialLoading: false
+          });
         case 'TEAM_COUNT_CHANGE':
           return Object.assign({}, preferenceState, {
             teamCount: action.teamCount
@@ -64,6 +69,7 @@ export default (preferenceState = initialState, action) => {
             maxTurns: action.maxTurns,
             showSettingsPage: false,
             teams: action.teamArrays,
+            initialLoading: true
           };
         default:
           return {
@@ -87,7 +93,8 @@ export default (preferenceState = initialState, action) => {
             flexCount: preferenceState.flexCount,
             teams: preferenceState.teams,
             playersUsed: preferenceState.playersUsed,
-            maxTurns: preferenceState.maxTurns
+            maxTurns: preferenceState.maxTurns,
+            initialLoading: preferenceState.initialLoading
           }
     }
 }

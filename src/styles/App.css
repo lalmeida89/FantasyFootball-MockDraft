@@ -111,6 +111,17 @@
   color: #b1b1b1;
 }
 
+.loading-page {
+  height: 300px;
+  width: 50%;
+  border-radius: 10px;
+  background: white;
+  z-index: 9999;
+  margin: auto;
+  transform: translate(0, 50%);
+  text-align: center;
+  padding: 20px;
+}
 
 @media screen and (max-width: 600px) {
   .draftedPlayer{

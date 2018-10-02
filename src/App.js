@@ -7,6 +7,7 @@ import AnalysisPage from './components/analysisPage'
 import PlayerProfile from './components/playerProfile'
 import Footer from './components/footer'
 import RightSide from './components/rightSide'
+import LoadingScreen from './components/preDraft-loadingScreen'
 
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
         <h1 className='mainHeader' style={{textAlign: 'center'}}> Build-A-Champion Workshop 2018 </h1>
         { !finalPage ?
           <div>
+            <LoadingScreen />
             <PlayerProfile />
             <Intro />
             <RightSide />

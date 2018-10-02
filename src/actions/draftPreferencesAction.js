@@ -9,6 +9,7 @@ export const DECREASING = 'DECREASING';
 export const ADD_TO_TEAM = 'ADD_TO_TEAM';
 export const INCREASE_TURNS = 'INCREASE_TURNS';
 export const RENDER_FINAL_PAGE = 'RENDER_FINAL_PAGE';
+export const LOADING_SCREEN = 'LOADING_SCREEN'
 
 
 //the teamCount happens onChange. Users selecting their draft position will only be able
@@ -44,7 +45,15 @@ export const draftPageSubmit = (values) => (dispatch, getState) => {
   })
   dispatch(showCurrentTeam(myTeam, values.draftOrder))
   if (values.draftOrder > 1){
-    return setTimeout(()=> dispatch(addPlayerToTeamUp(0, 1)), 100)
+    return setTimeout( function(){
+      dispatch(addPlayerToTeamUp(0, 1));
+      dispatch(renderLoadingScreen());}, 5000
+  )}
+}
+
+const renderLoadingScreen = () => {
+  return {
+    type: LOADING_SCREEN
   }
 }
 
