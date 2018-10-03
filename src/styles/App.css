@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Graduate|Roboto+Condensed');
-
+@import url('https://fonts.googleapis.com/css?family=Graduate|Roboto+Condensed|Titillium+Web');
 
 * {
   padding-left: 0;
@@ -113,7 +112,7 @@
 
 .loading-page {
   height: 300px;
-  width: 50%;
+  width: 250px;
   border-radius: 10px;
   background: white;
   z-index: 9999;
@@ -121,6 +120,60 @@
   transform: translate(0, 50%);
   text-align: center;
   padding: 20px;
+}
+
+.progressBar-container {
+    width: 90%;
+    margin:0 auto
+}
+
+.bar-unfill {
+    height:20px;
+    display:block;
+    background: #e2dddd;
+    width:100%;
+    border-radius:24px;
+}
+
+.bar-fill {
+    height:20px;
+    display:block;
+    background:#45c9a5;
+    width:0;
+    border-radius:25px;
+    -webkit-transition:width .8s ease;
+    -moz-transition:width .8s ease;
+    transition:width .8s ease;
+    -webkit-animation:progressbar 4900ms forwards;
+    animation:progressbar 4900ms forwards;
+}
+
+@-webkit-keyframes progressbar {
+    from {
+        width:0
+    }
+    to {
+        width:100%
+    }
+}
+
+@keyframes progressbar {
+    from {
+        width:0
+    }
+    to {
+        width:100%
+    }
+}
+
+.loading-subtext {
+  font-size: 12px;
+}
+
+.loading-mainText {
+  font-size: 15px;
+  font-family: 'Titillium Web', sans-serif;
+  margin-top: 40px;
 }
 
 @media screen and (max-width: 600px) {

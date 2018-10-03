@@ -21,7 +21,7 @@ class LoadingScreen extends React.Component {
     }, 1500);
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     clearInterval(this.timeout);
   }
 
@@ -37,7 +37,20 @@ class LoadingScreen extends React.Component {
       return (
         <div className="playerCard-background">
           <div className="loading-page">
-            <p><span>{textThatChanges}</span></p>
+            <div className="progressBar-container">
+                <div className="bar">
+                  <span className="bar-unfill">
+                  <span className="bar-fill"></span>
+                  </span>
+                </div>
+              </div>
+            <p className='loading-subtext'>{textThatChanges}</p>
+            <p className='loading-mainText'>
+              You can click on player to see the most recent player news and their schedule for the season.
+              You can change what is being shown in the side bar by toggling between the two buttons in the footer.
+              You can even make the side bar completely disappear by clicking on the arrow icon to the left of it.
+
+            </p>
           </div>
         </div>
       )
@@ -52,8 +65,3 @@ export const mapStateToProps = ({ draftPreferencesReducer }) => {
 }
 
 export default connect(mapStateToProps)(LoadingScreen)
-
-/*MarkLausten@carfax.com>
-elias.mason@thinkful.com
-
-https://calendly.com/bermudezstephanie/30-mins*/
