@@ -73,10 +73,8 @@ export const fetchPlayers = () => {
             fetch(proxyurl + url)
                 .then(res => res.json())
                 .then(response => {
-                    ////console.log(response.players);
                     let formattedRespObj = formatRespObj(response.players);
                     dispatch(loadPlayers(formattedRespObj));
-                    ////console.log('success:', formattedRespObj);
                     }
                 )
                 .catch(error => {

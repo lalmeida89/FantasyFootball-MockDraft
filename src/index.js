@@ -11,9 +11,9 @@ import reducer from './reducers/mainReducer';
 
 
 const middleware = [ thunk ]
-/*if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
   middleware.push(createLogger())
-}*/
+}
 
 //Setup Initial State or preloaded https://redux.js.org/docs/recipes/reducers/InitializingState.html
 const store = createStore(

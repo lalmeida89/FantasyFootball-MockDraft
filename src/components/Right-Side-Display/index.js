@@ -1,10 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import TeamRosters from './teamRosters'
-import PlayersDrafted from './playersDrafted'
-import Favorites from './favorites'
-import '../styles/rightSide.css'
+import TeamRosters from './../Team-Rosters'
+import PlayersDrafted from './../Players-Drafted';
+import '../../styles/rightSide.css'
 import { Transition } from 'react-transition-group';
 
 const duration = 400

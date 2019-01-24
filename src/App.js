@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './styles/App.css';
-import Intro from './components/intro'
-import DraftPage from './components/draftPreferences'
-import AnalysisPage from './components/analysisPage'
-import PlayerProfile from './components/playerProfile'
-import Footer from './components/footer'
-import RightSide from './components/rightSide'
-import LoadingScreen from './components/preDraft-loadingScreen'
+import Intro from './components/Intro'
+import DraftPage from './components/Draft-Preferences'
+import AnalysisPage from './components/Analysis-Page'
+import PlayerProfile from './components/Player-Profile'
+//import Footer from './components/Footer'
+import RightSide from './components/Right-Side-Display'
+import LoadingScreen from './components/Pre-Draft-Loading-Screen'
 
 
 class App extends Component {
@@ -24,7 +24,6 @@ class App extends Component {
             <Intro />
             <RightSide />
             <DraftPage />
-            <Footer />
           </div>
           : <div><AnalysisPage /></div>
         }

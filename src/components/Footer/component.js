@@ -1,13 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import '../../styles/footer.css';
 import { Transition } from 'react-transition-group';
-
-import {
-  showFavorites,
-  showRosters,
-  showDraftedPlayers
-} from '../actions/showActions'
-import '../styles/footer.css'
 
 const duration = 400
 
@@ -24,8 +17,9 @@ const footerTransitionStyles = {
 
 class Footer extends React.Component {
   render(){
-    const {draftedPlayers, rosters, dispatch, isOpen} = this.props
-    console.log(this.props)
+    const {draftedPlayers, rosters, isOpen,
+          showRosters, showDraftedPlayers
+          } = this.props
     let style={display: 'block'}
     return (
       <Transition in={isOpen} timeout={duration}>
@@ -36,31 +30,21 @@ class Footer extends React.Component {
         <div className={rosters
           ? 'checkedFooter rostersBtn footerButton'
           : 'rostersBtn footerButton'}
-          onClick={()=>dispatch(showRosters())}>
+          onClick={()=>showRosters()}>
           <i className="fas footerBtn fa-clipboard-list"></i>
           <label style={style}> team rosters </label>
         </div>
         <div className={draftedPlayers
           ? 'checkedFooter draftedPlayersBtn footerButton'
           : 'draftedPlayersBtn footerButton'}
-          onClick={()=>dispatch(showDraftedPlayers())}>
+          onClick={()=>showDraftedPlayers()}>
           <i className="fas footerBtn fa-list-ol"></i>
           <label style={style}> players drafted</label>
         </div>
       </div>
     )}
     </Transition>
-    )
-  }
+  )}
 }
 
-export const mapStateToProps = ({renderReducer}) => {
-  return ({
-    draftedPlayers: renderReducer.showDraftedPlayers,
-    showFavorites: renderReducer.showFavorites,
-    rosters: renderReducer.showRosters,
-    isOpen: renderReducer.showSidebar
-  })
-}
-
-export default connect (mapStateToProps)(Footer)
+export default Footer

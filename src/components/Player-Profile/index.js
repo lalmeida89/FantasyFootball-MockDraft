@@ -1,13 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {hidePlayerProfile} from '../actions/setCurrentPlayerAction';
-import {showNotes, showSchedule} from '../actions/showActions'
-import {addToFavorites, removeFromFavorites} from '../actions/favoriteActions'
-import {addPlayerToMyTeam} from '../actions/draftPreferencesAction'
-import {ProfileButton} from '../styledComponents/profileButton'
-import {TeamAbbr} from '../styledComponents/teamAbbr'
-import {Position} from '../styledComponents/position'
-import '../styles/playerCard.css'
+import {hidePlayerProfile} from '../../actions/setCurrentPlayerAction';
+import {showNotes, showSchedule} from '../../actions/showActions'
+import {addToFavorites, removeFromFavorites} from '../../actions/favoriteActions'
+import {addPlayerToMyTeam} from '../../actions/draftPreferencesAction'
+import {ProfileButton} from '../../styledComponents/profileButton'
+import {TeamAbbr} from '../../styledComponents/teamAbbr'
+import {Position} from '../../styledComponents/position'
+import '../../styles/playerCard.css'
 
 
 //rearrange the date from the data given from the fetch

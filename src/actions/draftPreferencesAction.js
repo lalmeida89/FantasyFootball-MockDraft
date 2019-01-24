@@ -1,5 +1,4 @@
 import {showCurrentTeam} from './showActions';
-import {theAlgorithm} from './theAlgorithm'
 
 export const ADD_TO_MY_TEAM = 'ADD_TO_MY_TEAM';
 export const DRAFT_PAGE_SUBMIT = 'DRAFT_PAGE_SUBMIT';
@@ -89,7 +88,7 @@ export const addPlayerToTeamUp = (counter, direction) => (dispatch, getState) =>
         let name = {name: currentPlayer.firstName + ' ' + currentPlayer.lastName}
         currentPlayer = {...currentPlayer, ...pickedAt, ...name};
         playersDrafted.push(currentPlayer)
-        dispatch(theAlgorithm(allTeams[getState().counterReducer.counter]))
+        //dispatch(theAlgorithm(allTeams[getState().counterReducer.counter]))
         if (getState().counterReducer.counter === myTeam){
           return
         }
@@ -143,7 +142,7 @@ export const addPlayerToTeamDown = (counter, direction) => (dispatch, getState) 
       let currentPlayer = player[x*-1]
       let name = {name: currentPlayer.firstName + ' ' + currentPlayer.lastName}
       currentPlayer = {...currentPlayer, ...pickedAt, ...name};
-      dispatch(theAlgorithm(allTeams[getState().counterReducer.counter]))
+      //dispatch(theAlgorithm(allTeams[getState().counterReducer.counter]))
       playersDrafted.push(currentPlayer)
       if (getState().counterReducer.counter === myTeam){
         return

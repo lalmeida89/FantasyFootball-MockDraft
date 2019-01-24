@@ -21,18 +21,15 @@ initial fetch. The response will be an array of just one player so we dispatch o
 on the first player in the array. We can then use all of the information to create a profile of that player*/
 
 export function getPlayerProfile(id) {
-  console.log(id, 'lets see if this works')
   return dispatch => {
     dispatch(getPlayerProfileRequest())
     let idUrl = dispatch(setCurrentPlayer(id))
-    ////console.log(idUrl.id);
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     const url = `http://api.fantasy.nfl.com/v1/players/details?playerId=${idUrl.id}&statType=seasonStatsformat=json`;
     fetch(proxyurl + url)
       .then(res => res.json())
       .then(profile => {
         dispatch(setPlayerProfile(profile.players[0]));
-        console.log(profile.players[0]);
     });
   }
 }

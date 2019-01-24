@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import {connect} from 'react-redux';
-import {teamCountChange} from '../actions/draftPreferencesAction'
-import '../styles/draftPreferences.css';
+import {teamCountChange} from '../../actions/draftPreferencesAction'
+import '../../styles/draftPreferences.css';
 
 class DraftSetup extends Component {
 
