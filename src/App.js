@@ -5,7 +5,7 @@ import Intro from './components/Intro'
 import DraftPage from './components/Draft-Preferences'
 import AnalysisPage from './components/Analysis-Page'
 import PlayerProfile from './components/Player-Profile'
-//import Footer from './components/Footer'
+import Footer from './components/Footer'
 import RightSide from './components/Right-Side-Display'
 import LoadingScreen from './components/Pre-Draft-Loading-Screen'
 
@@ -24,6 +24,7 @@ class App extends Component {
             <Intro />
             <RightSide />
             <DraftPage />
+            <Footer />
           </div>
           : <div><AnalysisPage /></div>
         }
