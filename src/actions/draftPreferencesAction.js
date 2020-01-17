@@ -48,6 +48,10 @@ export const draftPageSubmit = (values) => (dispatch, getState) => {
       dispatch(addPlayerToTeamUp(0, 1));
       dispatch(renderLoadingScreen());}, 5000
   )}
+  else {
+    return setTimeout( function(){
+      dispatch(renderLoadingScreen());}, 5000)
+  }
 }
 
 const renderLoadingScreen = () => {
@@ -88,7 +92,6 @@ export const addPlayerToTeamUp = (counter, direction) => (dispatch, getState) =>
         let name = {name: currentPlayer.firstName + ' ' + currentPlayer.lastName}
         currentPlayer = {...currentPlayer, ...pickedAt, ...name};
         playersDrafted.push(currentPlayer)
-        //dispatch(theAlgorithm(allTeams[getState().counterReducer.counter]))
         if (getState().counterReducer.counter === myTeam){
           return
         }
