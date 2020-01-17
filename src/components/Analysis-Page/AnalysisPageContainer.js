@@ -10,7 +10,7 @@ class AnalysisPageContainer extends React.Component{
     this.setState({isOpen : true})
   }
   render(){
-    const {teams, draftPos, finalPage} = this.props
+    const {teams, draftPos} = this.props
     return (
       <div className='analysisPage'>
         <div className='teams-container'>
