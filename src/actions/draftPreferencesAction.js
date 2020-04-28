@@ -50,8 +50,8 @@ export const draftPageSubmit = (values) => (dispatch, getState) => {
   )}
   else {
     return setTimeout( function(){
-      dispatch(renderLoadingScreen());}, 5000)
-  }
+      dispatch(renderLoadingScreen());}, 5000
+    )}
 }
 
 const renderLoadingScreen = () => {

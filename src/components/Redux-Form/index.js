@@ -243,7 +243,7 @@ class DraftSetup extends Component {
               </Field>
             </div>
             <div className='flex'>
-              <label> WR / RB <br/> / TE </label>
+              <label> WR / RB <br/> TE </label>
               <Field name='wrRbTeFlexCount' className='positionCount' component='select'>
                 <option value='0'>0</option>
                 <option value='1'>1</option>
@@ -259,7 +259,7 @@ class DraftSetup extends Component {
               </Field>
             </div>
             <div className='flex'>
-              <label > QB / WR <br/> / RB / TE </label>
+              <label > QB / WR <br/> RB / TE </label>
               <Field name='qbWrRbTeFlexCount' className='positionCount' component='select'>
                 <option value='0'>0</option>
                 <option value='1'>1</option>

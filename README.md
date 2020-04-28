@@ -1,5 +1,7 @@
-# Fantasy Football Mock Draft
+# Build-A-Champion Workshop
 
-### Built with React Redux
+Practice for the upcoming NFL fantasy season by doing mock drafts until your fingers bleed.
 
-#### Still in the works but feel free to clone and play with it
+The NFL API is currently undergoing maintenance and the app will be back up shortly at [Build-A-Champion Workshop](https://romantic-yonath-4a367e.netlify.app/).
+
+![Redux Form](readme-pictures/reduxForm.png)
