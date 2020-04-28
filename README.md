@@ -28,4 +28,4 @@ And check out what each team looks like
 
 ![Team Rosters](roster.png)
 
-And that's about all there is to it. Thanks for reading and happy drafting!!
+## And that's about all there is to it. Thanks for reading and happy drafting!!
