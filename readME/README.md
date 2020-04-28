@@ -8,24 +8,24 @@ The NFL API is currently undergoing maintenance and the app will be back up shor
 
 You may also just click submit to begin with standard settings
 
-![League Settings Form](./readmePics/leagueSettings.png)
+![League Settings Form](leagueSettings.png)
 
 ### All of the players will be listed to you in order of best to worst.
 
 You can sort players by position and see who has already been drafted on the right side of the screen.
 
-![List of Players](readmePics/playersListPic.png)
+![List of Players](playersListPic.png)
 
 ### Once you find a player you like, simply click on their name to see more
 
 This will bring up detailed player information such as most recent news, schedule, and even jersey number. If you like what you see, simply click draft to add him to your team
 
-![Detailed Player Info](readmePics/playerInfo.png)
+![Detailed Player Info](playerInfo.png)
 
 ### You can switch views with the bottom tabs
 
 And check out what each team looks like
 
-![Team Rosters](readmePics/roster.png)
+![Team Rosters](roster.png)
 
 ### And that's about all there is to it. Thanks for reading and happy drafting!!
