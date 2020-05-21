@@ -2,6 +2,7 @@ import React from 'react';
 import {ProfileHeader} from './profileHeader';
 import {PlayerSchedule} from './schedule';
 import {DepthChart} from './depthChart'
+import {ProjectedStats} from './projectedStats';
 import {addPlayerToMyTeam} from '../../actions/draftPreferencesAction';
 import {ProfileButton} from '../../styledComponents/profileButton';
 import '../../styles/playerCard.css';
@@ -16,7 +17,6 @@ export class PlayerProfile extends React.Component {
       showDepthChart: false
     }
   }
-
 
   render(){
     const {
@@ -63,13 +63,15 @@ export class PlayerProfile extends React.Component {
             <div className='infoSelector'>
               <ProfileButton onClick={()=> handleProfileRender('depthChart')}> DEPTH CHART </ProfileButton>
               <ProfileButton onClick={()=> handleProfileRender('schedule')}> SCHEDULE </ProfileButton>
-              <ProfileButton> PROJECTED STATS </ProfileButton>
+              <ProfileButton onClick={()=> handleProfileRender('projectedStats')}> PROJECTED STATS </ProfileButton>
               <ProfileButton draft> DRAFT </ProfileButton>
             </div>
             {showSchedule ?
             <PlayerSchedule schedule={schedule} playerTeam={player.team}/> : null }
             {showDepthChart ?
             <DepthChart depthChart={depthChart} player={player}/> : null }
+            {showStats ?
+            <ProjectedStats projectedPlayerStats={projectedPlayerStats} player={player} /> : null }
           </div>
         </div>
       )

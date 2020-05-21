@@ -1,10 +1,8 @@
 import React from 'react';
 
 export const DepthChart = props => {
-  console.log(props);
   const {depthChart, player} = props;
 
-  console.log(depthChart.WR1.some(e => e.playerId === player.playerId));
   let showQBs = depthChart.QB.map((quarterback, index) => (
       <p key={index} id={player.displayName === quarterback.playerName ? 'highlightPlayer' : null}>
        {quarterback.playerName} </p>
@@ -21,7 +19,7 @@ export const DepthChart = props => {
       <p key={index} id={player.displayName === widereceiver.playerName ? 'highlightPlayer' : null}>
       {widereceiver.playerName} </p>
   ))
-  let showTE = depthChart.TE.map((tightend, index) => (
+  let showTEs = depthChart.TE.map((tightend, index) => (
       <p key={index} id={player.displayName === tightend.playerName ? 'highlightPlayer' : null}>
       {tightend.playerName} </p>
   ))
@@ -49,7 +47,7 @@ export const DepthChart = props => {
       </div>
       <div className='depthChart-inner' id={player.position === 'TE' ? 'highlightPosition' : null}>
         <p> TE </p>
-        {showTE}
+        {showTEs}
       </div>
     </div>
   )

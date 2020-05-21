@@ -4,7 +4,7 @@ export const PlayerSchedule = props => {
   const {schedule, playerTeam} = props;
   let playerSchedule = schedule.map((game, index) => (
     <div key={index}>
-      <p> week {game.gameWeek} :
+      <p> Week {game.gameWeek} :
         <span
           className={playerTeam === game.awayTeam ? 'bolden' : 'plain'} > {game.awayTeam}
         </span> vs
