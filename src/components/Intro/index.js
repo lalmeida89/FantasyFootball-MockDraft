@@ -21,10 +21,7 @@ const mapStateToProps = state => ({
   loading: state.playersReducer.loading,
   error: state.playersReducer.error,
   displayPlayers: state.playersReducer.displayPlayers,
-  currentPlayer: state.playersReducer.currentPlayer,
-  profile: state.playersReducer.profile,
   menu: state.playersReducer.menu,
-  myFavorites: state.favoritesReducer.myFavorites,
   counter: state.counterReducer.counter,
   turn: state.counterReducer.turns,
   isOpen: state.renderReducer.showSidebar

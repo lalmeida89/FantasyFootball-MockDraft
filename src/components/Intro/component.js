@@ -2,7 +2,7 @@ import React  from 'react';
 import {Button} from '../../styledComponents/dropdown';
 import {PlayerSelector} from '../../styledComponents/playerSelector';
 import {Position} from '../../styledComponents/position';
-import {TeamAbbr} from '../../styledComponents/teamAbbr';
+import {TeamAbbr} from '../../styledComponents/team';
 import PositionHeader from './../Position-Header'
 
 //we map the players based on the displayPlayers props. whichever players we want to display
@@ -16,13 +16,13 @@ const ShowPlayers = props => {
   let playerNames = props.players.map((player, index) => (
     <PlayerSelector
     position = {player.position}
-    onClick={()=> props.currentId.dispatch(getPlayerProfile(player.id))}
+    onClick={()=> props.currentId.dispatch(getPlayerProfile(player.playerId))}
     key={index}>
       <p className='playerName'><b>
       <Position position={player.position}> {player.position}</Position>
-      <TeamAbbr team={player.teamAbbr}> {!player.teamAbbr ? 'FA' : player.teamAbbr} </TeamAbbr></b>
-      <span className='player-name'>{player.position !== 'DEF' ? (player.firstName + ' ' + player.lastName) : player.firstName}</span>
-      <span style={{float: 'right', marginRight: '5%'}}>{player.rank}</span>
+      <TeamAbbr team={player.team}> {!player.team ? 'FA' : player.team} </TeamAbbr></b>
+      <span className='player-name'>{player.position !== 'DEF' ? (player.fname + ' ' + player.lname) : player.fname}</span>
+      <span style={{float: 'right', marginRight: '5%'}}>{player.overallRank}</span>
       </p>
     </PlayerSelector>
     )

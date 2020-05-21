@@ -49,7 +49,7 @@ class TeamRosters extends React.Component {
       teamNumber
       } = this.props;
 
-    if (showSettingsPage === true) {
+    if (showSettingsPage) {
       return null
     }
 
@@ -59,7 +59,7 @@ class TeamRosters extends React.Component {
     //Will probably update this to an action creator and pass it to the reducer and just use this component
     //for rendering.
 
-    else if (showSettingsPage === false) {
+    else if (!showSettingsPage) {
 
       const ShowTeams = () => {
         let userIcon = <i className="fas fa-user"></i>

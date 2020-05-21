@@ -11,12 +11,11 @@ class DraftSetup extends Component {
   }
 
   render() {
-
     //settingsPage is set to true to start. This component renders at the start of the app.
     //It's just a reduxForm with select and radio buttons whose values then get passed to the
     //draftPreferences component and then saved in the store
-    const { handleSubmit, teamCount } = this.props;
-    if (this.props.showSettingsPage){
+    const { handleSubmit, teamCount, showSettingsPage } = this.props;
+    if (showSettingsPage){
     return (
       <div className='reduxFormDiv'>
       <form className="draftDetails" onSubmit={handleSubmit}>
@@ -298,7 +297,7 @@ DraftSetup = reduxForm({
   form: 'draft-settings', // a unique name for this form
   initialValues: {
        numberOfTeams: 12,
-       draftOrder: 7,
+       draftOrder: 1,
        qbCount: '1',
        rbCount: '2',
        wrCount: '2',

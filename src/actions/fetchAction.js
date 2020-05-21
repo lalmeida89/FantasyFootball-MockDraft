@@ -63,17 +63,15 @@ export const fetchPlayers = () => {
     return dispatch => {
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
         const urls = [
-          "http://api.fantasy.nfl.com/v1/players/editordraftranks?count=100&format=json",
-          "http://api.fantasy.nfl.com/v1/players/editordraftranks?count=200&offset=100&format=json",
-          "http://api.fantasy.nfl.com/v1/players/editordraftranks?count=300&offset=200&format=json",
-          "http://api.fantasy.nfl.com/v1/players/editordraftranks?count=400&offset=300&format=json"
+          "https://www.fantasyfootballnerd.com/service/draft-rankings/json/test"
         ];
         dispatch(fetchPlayersRequest())
         urls.map(url=> (
             fetch(proxyurl + url)
                 .then(res => res.json())
                 .then(response => {
-                    let formattedRespObj = formatRespObj(response.players);
+                    let top500Players = response.DraftRankings.slice(0,500);
+                    let formattedRespObj = formatRespObj(top500Players);
                     dispatch(loadPlayers(formattedRespObj));
                     }
                 )

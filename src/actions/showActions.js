@@ -1,6 +1,4 @@
 export const SHOW_POSITION = 'SHOW_POSITION';
-export const SHOW_NOTES = 'SHOW_NOTES';
-export const SHOW_SCHEDULE = 'SHOW_SCHEDULE';
 export const SHOW_MENU = 'SHOW_MENU';
 export const HIDE_MENU = 'HIDE_MENU';
 export const SHOW_TEAM_MENU = 'SHOW_TEAM_MENU';
@@ -8,7 +6,6 @@ export const HIDE_TEAM_MENU = 'HIDE_TEAM_MENU';
 export const SHOW_CURRENT_TEAM = 'SHOW_CURRENT_TEAM';
 export const SHOW_DRAFTED_PLAYERS = 'SHOW_DRAFTED_PLAYERS';
 export const SHOW_ROSTERS = 'SHOW_ROSTERS';
-export const SHOW_FAVORITES = 'SHOW_FAVORITES';
 export const RENDER_SIDEBAR = 'RENDER_SIDEBAR';
 
 /* Depending on the button click on the intro component, we can filter what position we'd like to see,
@@ -22,15 +19,6 @@ export const showPosition = displayPlayers => ({
     displayPlayers
 });
 
-export const showNotes = notes => ({
-  type: SHOW_NOTES,
-  notes
-})
-
-export const showSchedule = schedule => ({
-  type: SHOW_SCHEDULE,
-  schedule
-})
 
 export const showMenu = menu => ({
   type: SHOW_MENU,
@@ -56,10 +44,6 @@ export const hideTeamMenu = () => ({
 
 export const showTeamMenu = () => ({
   type: SHOW_TEAM_MENU
-})
-
-export const showFavorites = () => ({
-  type: SHOW_FAVORITES
 })
 
 export const showRosters = () => ({

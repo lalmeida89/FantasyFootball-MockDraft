@@ -19,5 +19,6 @@ export const ProfileButton = styled.button`
     css`
     float: right;
     padding: 5px 10px;
+    background-color: #156d1f9c;
   `}
 `;

@@ -20,7 +20,7 @@ export const TeamAbbr = styled.span`
   `};
 
   ${props =>
-    props.team === 'OAK' &&
+    props.team === 'LV' &&
     css`
     background: linear-gradient(to right, rgba(13,3,2,1) 0%, rgba(13,3,2,1) 49%, rgba(158,156,155,1) 51%, rgba(158,156,155,1) 100%);
   `};
@@ -68,7 +68,7 @@ export const TeamAbbr = styled.span`
   `};
 
   ${props =>
-    props.team === 'LA' &&
+    props.team === 'LAR' &&
     css`
     background: linear-gradient(to right, rgba(11,83,138,1) 0%, rgba(11,83,138,1) 50%, rgba(158,158,15,1) 51%, rgba(158,158,15,1) 100%);
   `};
@@ -135,7 +135,7 @@ export const TeamAbbr = styled.span`
   `};
 
   ${props =>
-    props.team === 'JAX' &&
+    props.team === 'JAC' &&
     css`
     background: linear-gradient(to right, rgba(13,23,87,1) 0%, rgba(13,23,87,1) 50%, rgba(1,82,27,1) 51%, rgba(1,82,27,1) 100%);
   `};

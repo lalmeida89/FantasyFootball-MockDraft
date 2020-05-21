@@ -1,5 +1,3 @@
-
-
 const initialState = {
     players: [],
     loading: true,
@@ -10,20 +8,12 @@ const initialState = {
     te: [],
     def: [],
     k: [],
-    displayPlayers: [],
-    currentPlayer: null,
-    playerProfile: null,
-    notes: true,
-    schedule: false,
-    menu: false,
-    profileLoading: false
+    displayPlayers: []
 };
 
 export default (playersState = initialState, action) => {
-  ////console.log(action.type)
     switch (action.type) {
         case 'FETCH_PLAYERS_SUCCESS':
-          ////console.log(action);
           return {
             ...playersState,
             qb: [...playersState.qb,...action.qb],
@@ -35,39 +25,21 @@ export default (playersState = initialState, action) => {
             players: [...playersState.players, ...action.wr, ...action.qb, ...action.rb, ...action.te, ...action.k, ...action.def],
             displayPlayers: [...playersState.players, ...action.wr, ...action.qb, ...action.rb, ...action.te, ...action.k, ...action.def],
             loading: false,
-            error: null,
-            menu: playersState.menu,
-            currentPlayer: playersState.currentPlayer
+            error: null
           };
         case 'SHOW_POSITION' :
-          ////console.log(action);
           return Object.assign({}, playersState, {
-            displayPlayers: action.displayPlayers,
-            currentPlayer: 0,
-            playerProfile: null
+            displayPlayers: action.displayPlayers
           });
-        case 'SHOW_NOTES' :
-          ////console.log(action);
-          return Object.assign({}, playersState, {
-            notes: true,
-            schedule: false
-        });
         case 'SHOW_MENU' :
-          ////console.log(action);
           return Object.assign({}, playersState, {
             menu: true
         });
         case 'HIDE_MENU' :
-          ////console.log(action);
+
           return Object.assign({}, playersState, {
             menu: false
         });
-        case 'SHOW_SCHEDULE' :
-          ////console.log(action);
-          return Object.assign({}, playersState, {
-            notes: false,
-            schedule: true
-        })
         case 'FETCH_PLAYERS_ERROR':
           return {
             loading: true,
@@ -80,7 +52,6 @@ export default (playersState = initialState, action) => {
             def: playersState.def,
             k: playersState.k,
             menu: playersState.menu,
-            currentPlayer: playersState.currentPlayer,
             displayPlayers: playersState.displayPlayers
           };
         case 'FETCH_PLAYERS_REQUEST':
@@ -95,44 +66,7 @@ export default (playersState = initialState, action) => {
             def: playersState.def,
             k: playersState.k,
             menu: playersState.menu,
-            currentPlayer: playersState.currentPlayer,
             displayPlayers: playersState.displayPlayers
-          };
-        case 'GET_PLAYER_PROFILE_REQUEST':
-          return {
-            ...playersState,
-            profileLoading: true
-          }
-        case 'SET_CURRENT_PLAYER':
-          console.log(action);
-          return Object.assign({}, playersState, {
-            currentPlayer: action.id
-          });
-        case 'HIDE_PLAYER_PROFILE':
-          console.log(action, playersState);
-          return Object.assign({}, playersState, {
-            currentPlayer: 0,
-            playerProfile: null
-          });
-        case 'SET_PLAYER_PROFILE':
-          ////console.log(action, playersState)
-          return {
-            playerProfile: action.profile,
-            loading: false,
-            error: null,
-            players: playersState.players,
-            wr: playersState.wr,
-            qb: playersState.qb,
-            rb: playersState.rb,
-            te: playersState.te,
-            def: playersState.def,
-            k: playersState.k,
-            displayPlayers: playersState.displayPlayers,
-            notes: true,
-            menu: playersState.menu,
-            currentPlayer: playersState.currentPlayer,
-            profileLoading: false,
-            schedule: false
           };
         case 'ADD_TO_TEAM':
           //once we draft a player, we want him in the teams roster but removed from the
@@ -214,10 +148,7 @@ export default (playersState = initialState, action) => {
             def: playersState.def,
             k: playersState.k,
             playersUsed: playersState.playersUsed,
-            notes: playersState.notes,
-            schedule: playersState.schedule,
             menu: playersState.menu,
-            currentPlayer: playersState.currentPlayer,
             displayPlayers: playersState.displayPlayers
           }
         }

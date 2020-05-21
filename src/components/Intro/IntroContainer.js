@@ -45,17 +45,17 @@ const sort_by = (field, reverse, primer) => {
 //PlayerProfile will only display for the player the user selected
 const ShowPlayers = props => {
   console.log(props);
-  props.players.sort(sort_by('rank', true, parseInt));
+  props.players.sort(sort_by('overallRank', true, parseInt));
   let playerNames = props.players.map((player, index) => (
     <PlayerSelector
     position = {player.position}
-    onClick={()=> props.currentId.getPlayerProfile(player.id)}
+    onClick={()=> props.currentId.getPlayerProfile(player)}
     key={index}>
       <p className='playerName'><b>
       <Position position={player.position}> {player.position}</Position>
-      <TeamAbbr team={player.teamAbbr}> {!player.teamAbbr ? 'FA' : player.teamAbbr} </TeamAbbr></b>
-      <span className='player-name'>{player.position !== 'DEF' ? (player.firstName + ' ' + player.lastName) : player.firstName}</span>
-      <span style={{float: 'right', marginRight: '5%'}}>{player.rank}</span>
+      <TeamAbbr team={player.team}> {!player.team ? 'FA' : player.team} </TeamAbbr></b>
+      <span className='player-name'>{player.displayName}</span>
+      <span style={{float: 'right', marginRight: '5%'}}>{player.overallRank}</span>
       </p>
     </PlayerSelector>
     )
@@ -87,7 +87,6 @@ class IntroContainer extends React.Component {
   }
 
   render() {
-    console.log(this.props.wr);
     //what the dropdown will render will be based on the the prop we pass to displayPlayers based on
     //what is set in the showPosition function. initially it will show all players but buttons
     //bellow will change the value and render a different position header
