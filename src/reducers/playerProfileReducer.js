@@ -19,6 +19,15 @@ export default (profileState = initialState, action) => {
         player: action.player
       }
 
+    case 'HIDE_PLAYER_PROFILE':
+      return {
+        renderProfile: false,
+        player: {},
+        depthChart: {},
+        schedule: [],
+        projectedPlayerStats: {}
+      }
+
     case 'SET_CURRENT_PLAYER_DEPTH_CHART':
       return Object.assign({}, profileState, {
           depthChart: action.depthChart

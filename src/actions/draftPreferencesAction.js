@@ -87,7 +87,11 @@ export const addPlayerToTeamUp = (counter, direction) => (dispatch, getState) =>
   if (getState().counterReducer.turns <= maxTurns){
     for (let i = counter; i < allTeams.length; i+= direction) {
       setTimeout(function(x) { return function() {
-        let pickedAt = {pickedAt : getState().counterReducer.counter+1, round: getState().counterReducer.turns}
+        let pickedAt = {
+          pickedAt: getState().counterReducer.counter+1,
+          round: getState().counterReducer.turns,
+          teamDraftedBy: getState().counterReducer.counter+1
+        }
         let currentPlayer = player[x]
         let name = {name: currentPlayer.firstName + ' ' + currentPlayer.lastName}
         currentPlayer = {...currentPlayer, ...pickedAt, ...name};
@@ -141,11 +145,14 @@ export const addPlayerToTeamDown = (counter, direction) => (dispatch, getState) 
   if (getState().counterReducer.turns <= maxTurns){
     for (let i = counter; i>=0; i += direction) {
     setTimeout(function(x) { return function() {
-      let pickedAt = {pickedAt:getState().counterReducer.counter+1, round:getState().counterReducer.turns}
+      let pickedAt = {
+        pickedAt:allTeams.length-getState().counterReducer.counter,
+        round:getState().counterReducer.turns,
+        teamDraftedBy: getState().counterReducer.counter+1
+      }
       let currentPlayer = player[x*-1]
       let name = {name: currentPlayer.firstName + ' ' + currentPlayer.lastName}
       currentPlayer = {...currentPlayer, ...pickedAt, ...name};
-      //dispatch(theAlgorithm(allTeams[getState().counterReducer.counter]))
       playersDrafted.push(currentPlayer)
       if (getState().counterReducer.counter === myTeam){
         return
@@ -185,7 +192,20 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
   let allTeams = getState().draftPreferencesReducer.teams
   let maxTurns = getState().draftPreferencesReducer.maxTurns
   if (getState().counterReducer.turns <= maxTurns){
-    let pickedAt = {pickedAt:getState().counterReducer.counter+1, round:getState().counterReducer.turns}
+    let pickedAt;
+    if(getState().counterReducer.turns%2===0){
+      pickedAt = {
+        pickedAt:allTeams.length-getState().counterReducer.counter,
+        round:getState().counterReducer.turns,
+        teamDraftedBy: getState().counterReducer.counter+1
+      }
+    } else {
+      pickedAt = {
+        pickedAt:getState().counterReducer.counter+1,
+        round:getState().counterReducer.turns,
+        teamDraftedBy: getState().counterReducer.counter+1
+      }
+    }
     let currentPlayer = player
     currentPlayer = {...currentPlayer, ...pickedAt};
     console.log(currentPlayer)

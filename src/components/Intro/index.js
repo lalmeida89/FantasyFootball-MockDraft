@@ -24,7 +24,8 @@ const mapStateToProps = state => ({
   menu: state.playersReducer.menu,
   counter: state.counterReducer.counter,
   turn: state.counterReducer.turns,
-  isOpen: state.renderReducer.showSidebar
+  isOpen: state.renderReducer.showSidebar,
+  teamCount: state.draftPreferencesReducer.teamCount
 })
 
 const mapDispatchToProps = dispatch => {

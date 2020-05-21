@@ -3,7 +3,6 @@ import {ProfileHeader} from './profileHeader';
 import {PlayerSchedule} from './schedule';
 import {DepthChart} from './depthChart'
 import {ProjectedStats} from './projectedStats';
-import {addPlayerToMyTeam} from '../../actions/draftPreferencesAction';
 import {ProfileButton} from '../../styledComponents/profileButton';
 import '../../styles/playerCard.css';
 
@@ -12,8 +11,8 @@ export class PlayerProfile extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      showSchedule: false,
-      showStats: true,
+      showSchedule: true,
+      showStats: false,
       showDepthChart: false
     }
   }
@@ -21,10 +20,14 @@ export class PlayerProfile extends React.Component {
   render(){
     const {
       player,
+      playersUsed,
       renderProfile,
       schedule,
       projectedPlayerStats,
-      depthChart
+      depthChart,
+      dispatch,
+      hidePlayerProfile,
+      addPlayerToMyTeam
     } = this.props;
 
     const {
@@ -55,6 +58,11 @@ export class PlayerProfile extends React.Component {
       }
     }
 
+    const handleDrafting = player => {
+      addPlayerToMyTeam(player);
+      hidePlayerProfile();
+    }
+
     if(renderProfile){
       return (
         <div className='playerCard-background'>
@@ -64,14 +72,18 @@ export class PlayerProfile extends React.Component {
               <ProfileButton onClick={()=> handleProfileRender('depthChart')}> DEPTH CHART </ProfileButton>
               <ProfileButton onClick={()=> handleProfileRender('schedule')}> SCHEDULE </ProfileButton>
               <ProfileButton onClick={()=> handleProfileRender('projectedStats')}> PROJECTED STATS </ProfileButton>
-              <ProfileButton draft> DRAFT </ProfileButton>
+              {!playersUsed.includes(player) ?
+                <ProfileButton draft onClick={()=> handleDrafting(player)}> DRAFT </ProfileButton> : null}
             </div>
-            {showSchedule ?
-            <PlayerSchedule schedule={schedule} playerTeam={player.team}/> : null }
-            {showDepthChart ?
-            <DepthChart depthChart={depthChart} player={player}/> : null }
-            {showStats ?
-            <ProjectedStats projectedPlayerStats={projectedPlayerStats} player={player} /> : null }
+            <div className='playerCard-info'>
+              {showSchedule ?
+              <PlayerSchedule schedule={schedule} playerTeam={player.team}/> : null }
+              {showDepthChart ?
+              <DepthChart depthChart={depthChart} player={player}/> : null }
+              {showStats ?
+              <ProjectedStats projectedPlayerStats={projectedPlayerStats} player={player} /> : null }
+            </div>
+            <ProfileButton className='hideProfile' onClick={()=> hidePlayerProfile()}> Close </ProfileButton>
           </div>
         </div>
       )

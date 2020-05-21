@@ -24,8 +24,8 @@ class RightSide extends React.Component {
     const {
       showDraftedPlayers,
       showRosters,
-      showFavorites,
-      isOpen } = this.props
+      isOpen
+    } = this.props
 
     return (
       <Transition in={isOpen} timeout={duration}>
@@ -44,7 +44,6 @@ class RightSide extends React.Component {
 export const mapStateToProps = ({renderReducer}) => {
   return ({
     showDraftedPlayers: renderReducer.showDraftedPlayers,
-    showFavorites: renderReducer.showFavorites,
     showRosters: renderReducer.showRosters,
     isOpen: renderReducer.showSidebar
   })

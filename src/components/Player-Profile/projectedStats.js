@@ -1,108 +1,92 @@
 import React from 'react';
+import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
 
 export const ProjectedStats = props => {
-  console.log(props);
   const {projectedPlayerStats, player} = props;
-  switch(player.position){
-    case 'QB':
-      return (
-        <div>
-          <p> Attempts: {projectedPlayerStats.attempts} </p>
-          <p> Completions: {projectedPlayerStats.completions} </p>
-          <p> Fantasy Points: {projectedPlayerStats.fantasyPoints} </p>
-          <p> Interceptions: {projectedPlayerStats.passingInt} </p>
-          <p> Passing Yards: {projectedPlayerStats.passingYards} </p>
-          <p> Passing TDs: {projectedPlayerStats.passingTD} </p>
-          <p> Rushing TDs: {projectedPlayerStats.rushTD} </p>
-          <p> Rushing Yards: {projectedPlayerStats.rushYards} </p>
-        </div>
-      )
-    case 'RB' :
-      return (
-        <div> this is a rb </div>
-      )
-    case 'WR' :
-      return (
-        <div> this is a wr </div>
-      )
-    case 'TE' :
-      return (
-        <div> this is a te </div>
-      )
-    case 'K' :
-      return (
-        <div> this a kicker </div>
-      )
-    case 'DEF':
-      return (
-        <div> this a defense </div>
-      )
-    default:
-      return (
-        <div> this is a nobody </div>
-      )
+  if(!projectedPlayerStats.fantasyPoints){
+    return (
+      <SkeletonTheme color="#a9bfde" highlightColor="#c8d1de">
+        <Skeleton count={7} height={30} duration={1.5}/>
+      </SkeletonTheme>
+    )
+  } else {
+    switch(player.position){
+      case 'QB':
+          return (
+            <div>
+              <p> Passing Attempts: {projectedPlayerStats.attempts} </p>
+              <p> Passing Completions: {projectedPlayerStats.completions} </p>
+              <p> Passing Yards: {projectedPlayerStats.passingYards} </p>
+              <p> Passing TDs: {projectedPlayerStats.passingTD} </p>
+              <p> Interceptions: {projectedPlayerStats.passingInt} </p>
+              <p> Rushing Yards: {projectedPlayerStats.rushYards} </p>
+              <p> Rushing TDs: {projectedPlayerStats.rushTD} </p>
+              <p> Fantasy Points: {projectedPlayerStats.fantasyPoints} </p>
+            </div>
+        )
+      case 'RB' :
+        return (
+          <div>
+            <p> Rushing Attempts: {projectedPlayerStats.rushAtt} </p>
+            <p> Rushing Yards : {projectedPlayerStats.rushYards} </p>
+            <p> Ruhsing TDs : {projectedPlayerStats.rushTD} </p>
+            <p> Receptions : {projectedPlayerStats.rec} </p>
+            <p> Receiving Yards : {projectedPlayerStats.recYards} </p>
+            <p> Receiving TDs : {projectedPlayerStats.recTD} </p>
+            <p> Fumbles : {projectedPlayerStats.fumbles} </p>
+            <p> Fantasy Points : {projectedPlayerStats.fantasyPoints} </p>
+          </div>
+        )
+      case 'WR' :
+        return (
+          <div>
+            <p> Receptions : {projectedPlayerStats.rec} </p>
+            <p> Receiving Yards : {projectedPlayerStats.recYards} </p>
+            <p> Receiving TDs : {projectedPlayerStats.recTD} </p>
+            <p> Rushing Attempts: {projectedPlayerStats.rushAtt} </p>
+            <p> Rushing Yards : {projectedPlayerStats.rushYards} </p>
+            <p> Ruhsing TDs : {projectedPlayerStats.rushTD} </p>
+            <p> Fumbles : {projectedPlayerStats.fumbles} </p>
+            <p> Fantasy Points : {projectedPlayerStats.fantasyPoints} </p>
+          </div>
+        )
+      case 'TE' :
+        return (
+          <div>
+            <p> Receptions : {projectedPlayerStats.rec} </p>
+            <p> Receiving Yards : {projectedPlayerStats.recYards} </p>
+            <p> Receiving TDs : {projectedPlayerStats.recTD} </p>
+            <p> Rushing Attempts: {projectedPlayerStats.rushAtt} </p>
+            <p> Rushing Yards : {projectedPlayerStats.rushYards} </p>
+            <p> Ruhsing TDs : {projectedPlayerStats.rushTD} </p>
+            <p> Fumbles : {projectedPlayerStats.fumbles} </p>
+            <p> Fantasy Points : {projectedPlayerStats.fantasyPoints} </p>
+          </div>
+        )
+      case 'K' :
+        return (
+          <div>
+            <p> Field Goals : {projectedPlayerStats.fg} </p>
+            <p> Extra Points : {projectedPlayerStats.xp} </p>
+            <p> Fantasy Points : {projectedPlayerStats.fantasyPoints} </p>
+          </div>
+        )
+      case 'DEF':
+        return (
+          <div>
+              <p> Fumbles Recovered : {projectedPlayerStats.fumbleRec} </p>
+              <p> Interceptions : {projectedPlayerStats.interceptions} </p>
+              <p> Sacks : {projectedPlayerStats.sacks} </p>
+              <p> Special Teams TDs : {projectedPlayerStats.specialTeamTD} </p>
+              <p> Fantasy Points : {projectedPlayerStats.fantasyPoints} </p>
+          </div>
+        )
+      default:
+        return (
+          <div>
+            <p> No Data available for the current player </p>
+          </div>
+        )
+    }
   }
 }
-
-/*
-
-QB stats -
-attempts: "640"
-completions: "422"
-displayName: "Drew Brees"
-fantasyPoints: "335"
-passingInt: "17"
-passingTD: "40"
-passingYards: "4992"
-playerId: "14"
-rushTD: "1"
-rushYards: "28"
-
-WR stats -
-fantasyPoints: "212"
-fumbles: "0"
-playerId: "454"
-rec: "98"
-recTD: "11"
-recYards: "1461"
-rushAtt: "0"
-rushTD: "0"
-rushYards: "0"
-
-RB stats -
-fantasyPoints: "273"
-fumbles: "2"
-playerId: "259"
-rec: "39"
-recTD: "1"
-recYards: "318"
-rushAtt: "342"
-rushTD:
-rushYards:
-
-TE stats -
-fantasyPoints: "172"
-fumbles: "0"
-playerId: "1187"
-rec: "91"
-recTD: "10"
-recYards: "1122"
-rushAtt: "0"
-rushTD: "0"
-rushYards: "0"
-
-DEF stats -
-fantasyPoints: "135"
-fumbleRec: "14"
-interceptions: "19"
-playerId: "1056"
-sacks: "39"
-specialTeamTD: "1"
-
-K stats -
-fantasyPoints: "126"
-fg: "25"
-playerId: "752"
-team: "NE"
-xp: "51"
-*/

@@ -1,10 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {PlayerProfile} from './playerProfileContainer';
+import {hidePlayerProfile} from '../../actions/setCurrentPlayerAction'
+import {addPlayerToMyTeam} from '../../actions/draftPreferencesAction';
 import {bindActionCreators} from 'redux';
 
-
-export const mapStateToProps = state => ({
+const mapStateToProps = state => ({
   renderProfile: state.playerProfileReducer.renderProfile,
   playersUsed: state.draftPreferencesReducer.playersUsed,
   player: state.playerProfileReducer.player,
@@ -13,5 +14,10 @@ export const mapStateToProps = state => ({
   projectedPlayerStats: state.playerProfileReducer.projectedPlayerStats
 })
 
-
-export default connect (mapStateToProps)(PlayerProfile)
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({
+    hidePlayerProfile,
+    addPlayerToMyTeam
+  }, dispatch);
+}
+export default connect (mapStateToProps, mapDispatchToProps)(PlayerProfile)

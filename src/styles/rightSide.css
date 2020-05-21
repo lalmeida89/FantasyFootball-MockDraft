@@ -55,6 +55,9 @@
   cursor: pointer;
 }
 
+#myTeam-player {
+  background-color: yellow;
+}
 .player-lastName {
   text-transform: uppercase;
   font-size: 14px;

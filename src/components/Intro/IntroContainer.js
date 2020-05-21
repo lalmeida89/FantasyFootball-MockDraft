@@ -1,12 +1,15 @@
 import React  from 'react';
+import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
+
 import {Button} from '../../styledComponents/dropdown';
 import {PlayerSelector} from '../../styledComponents/playerSelector';
 import {Position} from '../../styledComponents/position';
 import {TeamAbbr} from '../../styledComponents/teamAbbr';
 import {Transition} from 'react-transition-group';
 import SideBarIcon from './../Right-Side-Icon';
-import '../../styles/intro.css'
-import PositionHeader from './../Position-Header'
+import PositionHeader from './../Position-Header';
+
+import '../../styles/intro.css';
 
 const duration = 400
 const introStyle = {
@@ -62,7 +65,11 @@ const ShowPlayers = props => {
   )
   return (
     <div className='playersDiv'>
-    {playerNames}
+      {props.currentId.loading ?
+        <SkeletonTheme color="#a9bfde" highlightColor="#c8d1de" >
+          <Skeleton count={10} height={50}/>
+        </SkeletonTheme>
+        : playerNames }
     </div>
   )
 }
@@ -90,22 +97,38 @@ class IntroContainer extends React.Component {
     //what the dropdown will render will be based on the the prop we pass to displayPlayers based on
     //what is set in the showPosition function. initially it will show all players but buttons
     //bellow will change the value and render a different position header
+    const {
+      error,
+      isOpen,
+      dispatch,
+      turn,
+      counter,
+      teamCount
+    } = this.props;
 
-
-    const { error, loading, isOpen, dispatch } = this.props;
+    const displayPickNumber = turn => {
+      let currentPick;
+      if(turn%2===0){
+        currentPick = teamCount-counter
+        return (
+          <span> Pick {turn}.{currentPick<10 ? '0'+currentPick:currentPick} </span>
+        )
+      } else {
+        currentPick = counter+1
+        return (
+          <span> Pick {turn}.{currentPick<10 ? '0'+currentPick:currentPick} </span>
+        )
+      }
+    }
 
     if(error) {
       return <div className='players'> ERROR! {error.message}</div>;
-    }
-    if(loading) {
-      return <div className='players'> LOADING... </div>;
     }
     //if there is no error and our fetch isnt loading then render the main component.
     //our Button will open or close the menu based on the menu prop. PositionHeader is shown inside of it.
     //similarly our droptdown buttons will show only if the menu prop is true. ShowPlayers
     //will show what is passed onto the displayPosition function
     else {
-      let currentPick = this.props.counter+1
       return (
         <Transition in={isOpen} timeout={duration}>
         {(state)=> (
@@ -113,7 +136,7 @@ class IntroContainer extends React.Component {
           ...introStyle,
           ...introTransitionStyles[state]}}>
           <h1 className='intro-header' style={{textAlign: 'center'}}> Players Available </h1>
-          <h5 className='currentPick' style={{textAlign: 'center'}}> Pick {this.props.turn}.{currentPick<10 ? '0'+currentPick:currentPick} </h5>
+          <h5 className='currentPick' style={{textAlign: 'center'}}> {displayPickNumber(turn)} </h5>
           <div className='dropdwnMenu'>
             <Button onClick={()=> this.props.menu
               ? this.closeMenu()

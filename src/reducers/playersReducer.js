@@ -72,25 +72,25 @@ export default (playersState = initialState, action) => {
           //once we draft a player, we want him in the teams roster but removed from the
           //players array and the position array. So we use the filter method.
           const withPlayersRemoved = playersState.players.filter(el => {
-            return el.id !== action.player.id;
+            return el.playerId !== action.player.playerId;
           });
           const wrPlayersRemoved = playersState.wr.filter(wr => {
-            return wr.id !== action.player.id;
+            return wr.playerId !== action.player.playerId;
           })
           const rbPlayersRemoved = playersState.rb.filter(rb => {
-            return rb.id !== action.player.id;
+            return rb.playerId !== action.player.playerId;
           })
           const qbPlayersRemoved = playersState.qb.filter(qb => {
-            return qb.id !== action.player.id;
+            return qb.playerId !== action.player.playerId;
           })
           const tePlayersRemoved = playersState.te.filter(te => {
-            return te.id !== action.player.id;
+            return te.playerId !== action.player.playerId;
           })
           const defPlayersRemoved = playersState.def.filter(def => {
-            return def.id !== action.player.id;
+            return def.playerId !== action.player.playerId;
           })
           const kPlayersRemoved = playersState.k.filter(k => {
-            return k.id !== action.player.id;
+            return k.playerId !== action.player.playerId;
           })
           return {
             players: withPlayersRemoved,
@@ -106,25 +106,25 @@ export default (playersState = initialState, action) => {
           //once we draft a player, we want him in the teams roster but removed from the
           //players array and the position array. So we use the filter method.
           const myPlayersRemoved = playersState.players.filter(el => {
-            return el.id !== action.player.id;
+            return el.playerId !== action.player.playerId;
           });
           const myWrPlayersRemoved = playersState.wr.filter(wr => {
-            return wr.id !== action.player.id;
+            return wr.playerId !== action.player.playerId;
           })
           const myRbPlayersRemoved = playersState.rb.filter(rb => {
-            return rb.id !== action.player.id;
+            return rb.playerId !== action.player.playerId;
           })
           const myQbPlayersRemoved = playersState.qb.filter(qb => {
-            return qb.id !== action.player.id;
+            return qb.playerId !== action.player.playerId;
           })
           const myTePlayersRemoved = playersState.te.filter(te => {
-            return te.id !== action.player.id;
+            return te.playerId !== action.player.playerId;
           })
           const myDefPlayersRemoved = playersState.def.filter(def => {
-            return def.id !== action.player.id;
+            return def.playerId !== action.player.playerId;
           })
           const myKPlayersRemoved = playersState.k.filter(k => {
-            return k.id !== action.player.id;
+            return k.playerId !== action.player.playerId;
           })
         return {
           players: myPlayersRemoved,

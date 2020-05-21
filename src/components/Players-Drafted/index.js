@@ -1,50 +1,23 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {getPlayerProfile} from '../../actions/setCurrentPlayerAction';
+import {PlayersDrafted} from './playersDraftedContainer';
 
-import {getPlayerProfile} from '../../actions/setCurrentPlayerAction'
+const mapStateToProps = state => ({
+    playersUsed: state.draftPreferencesReducer.playersUsed,
+    counter: state.counterReducer.counter,
+    teamCount: state.draftPreferencesReducer.teamCount,
+    currentPlayer: state.playersReducer.currentPlayer,
+    showDraftedPlayers: state.renderReducer.showDraftedPlayers,
+    teams: state.draftPreferencesReducer.teams,
+    draftPos: state.draftPreferencesReducer.draftPos
+})
 
-
-const ShowDraftedPlayers = props => {
-  let playersDraftedList = props.draftedPlayers.map((player, index) => (
-    <div key={index} className='drafted'
-      onClick={()=>props.allProps.dispatch(getPlayerProfile(player.id))}>
-      <p style={{fontSize: '9px', fontStyle:'italic'}}>TEAM {player.pickedAt} </p>
-      <p className='draftedPlayer'>
-        {player.round}.{index+1}  {player.name.substr(0,player.name.indexOf(' '))}<br/>
-        <b className='player-lastName'> {player.name.substr(player.name.indexOf(' ')+1)} </b>
-         {player.position}
-      </p>
-
-    </div>
-  ))
-  return (
-    <div>
-    {playersDraftedList}
-    </div>
-  )
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({
+    getPlayerProfile
+  }, dispatch);
 }
 
-class PlayersDrafted extends React.Component {
-  render(){
-    const{showDraftedPlayers} = this.props
-    return (
-      <div className='draftedPlayersList'>
-        <h2 className='drafted-header'> Players Taken </h2>
-        <ShowDraftedPlayers draftedPlayers={this.props.playersUsed} allProps={this.props} teamsTotal={this.props.teamCount}/>
-      </div>
-    )
-  }
-}
-
-
-export const mapStateToProps = ({draftPreferencesReducer, counterReducer, playersReducer, renderReducer}) => {
-  return ({
-    playersUsed: draftPreferencesReducer.playersUsed,
-    counter: counterReducer.counter,
-    teamCount: draftPreferencesReducer.teamCount,
-    currentPlayer: playersReducer.currentPlayer,
-    showDraftedPlayers: renderReducer.showDraftedPlayers
-
-  })
-}
-export default connect (mapStateToProps)(PlayersDrafted)
+export default connect (mapStateToProps, mapDispatchToProps)(PlayersDrafted)

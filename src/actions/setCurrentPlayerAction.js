@@ -14,7 +14,6 @@ on the first player in the array. We can then use all of the information to crea
 
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-
 export const getPlayerProfile = player =>  {
   return dispatch => {
     dispatch(setCurrentPlayer(player))
@@ -24,8 +23,6 @@ export const getPlayerProfile = player =>  {
     dispatch(getPlayerProjectStats(player))
   }
 }
-
-
 
 const getTeamDepthChart = team => {
     const url = `https://www.fantasyfootballnerd.com/service/depth-charts/json/test`;
@@ -74,19 +71,10 @@ const filterByValue = (arr, value) => {
   ))
 }
 
+export const hidePlayerProfile = () => ({
+  type: HIDE_PLAYER_PROFILE
+})
 
-
-
-
-
-
-/*
-export const hidePlayerProfile = () => {
-  return dispatch => {
-    dispatch(setPlayerProfile(null))
-  }
-}
-*/
 export const setCurrentPlayerProjections = projectedPlayerStats => ({
   type: SET_CURRENT_PLAYER_PROJECTIONS,
   projectedPlayerStats
@@ -106,7 +94,6 @@ export const getPlayerProfileSuccess = profile => ({
   type: GET_PLAYER_PROFILE_SUCCESS,
   profile
 })
-
 
 export const setCurrentPlayer = player => ({
   type: SET_CURRENT_PLAYER,
