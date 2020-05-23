@@ -1,4 +1,3 @@
-
 .draftBtn {
   display: inline-block;
   background-color: green;
@@ -12,6 +11,34 @@
 
 .playerName {
   font-size: 13px;
+  display: grid;
+  padding-right: 10px;
+  color: #cecece;
+  grid-column-gap: 1px;
+}
+
+.labels {
+  display: grid;
+  position: fixed;
+  top: 45px;
+  left: 0;
+  grid-column-gap: 2px;
+  padding: 0 15px 0 20px;
+  font-size: 10px;
+  font-weight: bold;
+  margin: -15px 0 10px 0;
+}
+
+#labels-shortened {
+  grid-template-columns: 30px 30px 4.5fr 1fr;
+}
+
+#labels-extended {
+  grid-template-columns: 30px 30px 4fr 1fr 1fr;
+}
+
+.player-name {
+  margin-left: 10px;
 }
 
 .playerSelector:hover{
@@ -24,27 +51,13 @@
 }
 
 .playersDiv {
-  padding: 7px 10px 60px;
-
+  padding: 0 10px 60px;
+  height: 80vh;
 }
 
-.faveStar {
-  color: #646557;
-  right: 300px;
-  float: right;
-  margin-right: 10px;
-}
-
-.faveStar:hover {
-  color: #bfbf2f !important;
-}
-
-.labels {
-  float: right;
-  padding: 0 20px;
-  font-size: 10px;
-  font-weight: bold;
-  margin: -15px 14px 10px 0;
+.labels p {
+  margin: 0;
+  color: white;
 }
 
 @media screen and (max-width: 600px){
@@ -52,19 +65,26 @@
     font-size: 10px;
   }
 
-  .App{
-    margin-top: 90px;
+  .labels {
+    font-size: 8px;
   }
 
-  .labels {
-    padding: 0 10px;
-    font-size: 8px;
+  #labels-shortened {
+    width: 45%;
+  }
+
+  #labels-extended {
+    width: 90%;
   }
 }
 
 
 @media screen and (min-width: 601px){
-  .labels p {
-    margin: 0 5px;
+  #labels-shortened {
+    width: 51%;
+  }
+
+  #labels-extended {
+    width: 95%;
   }
 }

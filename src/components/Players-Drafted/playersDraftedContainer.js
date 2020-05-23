@@ -14,7 +14,6 @@ export class PlayersDrafted extends React.Component {
 
     return (
       <div className='draftedPlayersList'>
-        <h2 className='drafted-header'> Players Taken </h2>
         <ShowDraftedPlayers
           draftedPlayers={playersUsed}
           getPlayerProfile={getPlayerProfile}

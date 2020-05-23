@@ -37,7 +37,7 @@ export class SearchBar extends React.Component {
 
   render() {
     const {showSearchBar} = this.state;
-    const {playerList, filteredPlayers} = this.props;
+    const {isOpen, playerList, filteredPlayers} = this.props;
 
     console.log(this.props, this.state);
     return (
@@ -45,7 +45,10 @@ export class SearchBar extends React.Component {
         <h4><i className="fas fa-search" onClick={()=>this.renderSearchBar()}></i></h4>
         {showSearchBar ?
           <div>
-            <div className='searchBar-container'>
+            <div className='searchBar-container'
+              id={!isOpen ?
+                'searchBar-container-extended':
+                'searchBar-container-shortened'}>
               <input type="text" className='input' name="searchBar"
               onChange={(e)=>this.handleChange(e, playerList)}
               placeholder='Search...' />

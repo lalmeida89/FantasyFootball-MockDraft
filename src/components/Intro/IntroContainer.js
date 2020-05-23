@@ -32,6 +32,13 @@ const sideBarIconTransitionStyles = {
   exiting: { right: '1%'},
   exited: { right: '1%'}
 }
+
+const labelsExtendedStyle = {
+  gridTemplateColumns: '30px 30px 4fr 1fr 1fr'
+}
+const labelsShortenedStyle = {
+  gridTemplateColumns: '30px 30px 5fr 1fr'
+}
 //sort function to sort players by their rank
 const sort_by = (field, reverse, primer) => {
   var key = primer ?
@@ -56,12 +63,15 @@ const ShowPlayers = props => {
     position = {player.position}
     onClick={()=> props.currentId.getPlayerProfile(player)}
     key={index}>
-      <div className='playerName'>
-      <b><Position position={player.position}> {player.position}</Position></b>
-      <TeamAbbr team={player.team}> {!player.team ? 'FA' : player.team} </TeamAbbr>
-      <span className='player-name'>{player.displayName}</span>
-      <span style={{textAlign:'right'}}>{player.overallRank}</span>
-      <span style={{textAlign:'right'}}>{Math.round(player.nerdRank*10)/10}</span>
+      <div className='playerName'
+          style={!props.currentId.isOpen ? {gridTemplateColumns: '30px 30px 4fr 1fr 1fr'} : {gridTemplateColumns:'30px 30px 5fr 1fr'}}>
+        <b><Position position={player.position}> {player.position}</Position></b>
+        <TeamAbbr team={player.team}> {!player.team ? 'FA' : player.team} </TeamAbbr>
+        <span className='player-name'>{player.displayName}</span>
+        <span style={{textAlign:'right'}}>{player.overallRank}</span>
+        {!props.currentId.isOpen ?
+          <span style={{textAlign:'right'}}> {Math.round(player.nerdRank*10)/10}</span>
+          : null }
       </div>
     </PlayerSelector>
     )
@@ -70,7 +80,7 @@ const ShowPlayers = props => {
     <div className='playersDiv'>
       {props.currentId.loading ?
         <SkeletonTheme color="#a9bfde" highlightColor="#c8d1de" >
-          <Skeleton count={10} height={50}/>
+          <Skeleton count={30} height={50}/>
         </SkeletonTheme>
         : playerNames }
     </div>
@@ -131,8 +141,9 @@ class IntroContainer extends React.Component {
           ...introTransitionStyles[state]}}>
           {/*<h5 className='currentPick' style={{textAlign: 'center'}}> {displayPickNumber(turn)} </h5>*/}
           <div className='filter-options'>
-            <SearchBar playerList={players} filteredPlayers={filteredPlayers}/>
+            <SearchBar isOpen={isOpen} playerList={players} filteredPlayers={filteredPlayers}/>
             <PositionDropdownMenu
+              isOpen={isOpen}
               allPlayers={players}
               filterByPosition={showPosition}
               qb={this.props.qb}
@@ -143,12 +154,13 @@ class IntroContainer extends React.Component {
               k={this.props.k}
               />
           </div>
-          <div className='labels'>
+          <div className='labels'
+            id={!isOpen ? 'labels-extended' : 'labels-shortened'}>
             <p> </p>
             <p> </p>
             <p> </p>
             <p style={{textAlign:'right'}}> Rank </p>
-            <p style={{textAlign:'right', paddingRight:'10px'}}> ADP </p>
+            {!isOpen ? <p style={{textAlign:'right', paddingRight:'10px'}}> ADP </p> : null}
           </div>
           <Transition in={isOpen} timeout={duration}>
           {(state)=>(

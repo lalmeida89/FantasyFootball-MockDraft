@@ -31,12 +31,15 @@ export default (playersState = initialState, action) => {
           return Object.assign({}, playersState, {
             displayPlayers: action.displayPlayers
           });
+        case 'FILTERED_PLAYERS' :
+          return Object.assign({}, playersState, {
+            displayPlayers: action.filteredPlayersList
+          });
         case 'SHOW_MENU' :
           return Object.assign({}, playersState, {
             menu: true
         });
         case 'HIDE_MENU' :
-
           return Object.assign({}, playersState, {
             menu: false
         });

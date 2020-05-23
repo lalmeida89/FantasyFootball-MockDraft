@@ -16,7 +16,6 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <h1 className='mainHeader' style={{textAlign: 'center'}}> Build-A-Champion Workshop 2018 </h1>
         { !finalPage ?
           <div>
             <LoadingScreen />

@@ -4,6 +4,9 @@
   padding-left: 0;
 }
 
+body {
+  background-color: #191a1b;
+}
 
 .rostersDiv {
   margin-top: 20px;
@@ -36,9 +39,11 @@
 .labelHeader,
 .redux-header,
 .rosterHeader,
-.starter>label,
-.flex>label,
-.teamResults>h3  {
+.starter label,
+.flex label,
+.teamResults h3,
+.rightSide-header h3,
+.filter-options  {
   font-family: 'Graduate', cursive;
 }
 
@@ -55,26 +60,6 @@
 .currentPick, .labelHeader {
   font-size: 11px;
 }
-.positionBtn>button, .dropdwnMenu>button {
-  font-size: 10px;
-}
-.positionBtn {
-  position: absolute;
-  z-index: 99;
-  background-color: white;
-  width: 200px;
-}
-
-.menu-arrow {
-  float: right;
-  background-color: #b7b7b77a;
-}
-
-.dropdwnMenu {
-  margin: auto;
-  width: 200px;
-}
-
 
 .fa-user {
   margin-left: 20px;
@@ -82,10 +67,9 @@
 
 .App {
   width: 100%;
-  margin-top: 70px;
+  margin-top: 40px;
   padding-top: 5px;
 }
-
 
 .sideBar-icon {
   position: fixed;
@@ -179,14 +163,6 @@
 @media screen and (max-width: 600px) {
   .draftedPlayer{
     font-size: 10px;
-  }
-
-  .dropdwnMenu {
-    width: 125px;
-  }
-
-  .positionBtn {
-    width: 125px;
   }
 }
 

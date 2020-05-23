@@ -5,22 +5,42 @@ import React from 'react';
 //bellow will change the value and render a different position header
 class PositionHeader extends React.Component {
   render(){
-    const {qb, wr, rb, te, def, k, displayPlayers, menu} = this.props
-    if (displayPlayers === wr){
-      return <div> Wide Receivers { menu ? <i className="fas menu-arrow fa-chevron-up"></i> : <i className="fas menu-arrow fa-chevron-down"></i> }</div>
-    }else if (displayPlayers === rb){
-      return <div> Running Backs { menu ? <i className="fas menu-arrow fa-chevron-up"></i> : <i className="fas menu-arrow fa-chevron-down"></i> }</div>
-    }else if (displayPlayers === qb){
-      return <div> Quarterbacks { menu ? <i className="fas menu-arrow fa-chevron-up"></i> : <i className="fas menu-arrow fa-chevron-down"></i> }</div>
-    }else if (displayPlayers === te){
-      return <div> Tight Ends { menu ? <i className="fas menu-arrow fa-chevron-up"></i> : <i className="fas menu-arrow fa-chevron-down"></i> }</div>
-    }else if (displayPlayers === def){
-      return <div> DST { menu ? <i className="fas menu-arrow fa-chevron-up"></i> : <i className="fas menu-arrow fa-chevron-down"></i> }</div>
-    }else if (displayPlayers === k){
-      return <div> Kickers { menu ? <i className="fas menu-arrow fa-chevron-up"></i> : <i className="fas menu-arrow fa-chevron-down"></i> }</div>
-    }else {
-      return <div> All Players { menu ? <i className="fas menu-arrow fa-chevron-up"></i> : <i className="fas menu-arrow fa-chevron-down"></i> }</div>
+    const {
+      qb,
+      wr,
+      rb,
+      te,
+      def,
+      k,
+      displayPlayers,
+      menu
+    } = this.props
+
+    const displayHeader = position => {
+      let msg;
+      if (position === wr){
+        msg = 'WR'
+      }else if (position === rb){
+        msg = 'RB'
+      }else if (position === qb){
+        msg = 'QB'
+      }else if (position === te){
+        msg = 'TE'
+      }else if (position === def){
+        msg = 'DST'
+      }else if (position === k){
+        msg = 'PK'
+      }else {
+        msg = 'Pos'
+      }
+      return msg
     }
+
+    return (
+      <div className='positionHeader-display'>
+        <h4> {displayHeader(this.props.position)} </h4>
+      </div>
+    )
   }
 }
 

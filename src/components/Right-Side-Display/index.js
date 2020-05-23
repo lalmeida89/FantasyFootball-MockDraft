@@ -30,9 +30,12 @@ class RightSide extends React.Component {
     return (
       <Transition in={isOpen} timeout={duration}>
       {(state) => (
-        <div className='RightSide' style={{
+        <div className='rightSide-wrapper' style={{
           ...rightSideStyle,
           ...rightSideTransitionStyles[state]}}>
+          <div className='rightSide-header'>
+            <h3> {showDraftedPlayers ? 'Players Taken' : 'Team Rosters'} </h3>
+          </div>
           {showDraftedPlayers ? <PlayersDrafted /> : <TeamRosters />}
         </div>
       )}

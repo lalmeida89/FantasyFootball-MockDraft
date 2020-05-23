@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
 
 export const TeamAbbr = styled.span`
+  text-align: center;
   border-radius: 4px;
+  height: 11px;
   padding: 2px 5px;
-  margin-right: 4px;
   text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
   color: white;
 

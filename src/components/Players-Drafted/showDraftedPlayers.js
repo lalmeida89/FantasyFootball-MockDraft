@@ -15,7 +15,6 @@ export const ShowDraftedPlayers = props => {
 
   let playersDraftedList = draftedPlayers.map((player, index) => {
     let myTeam = teams[draftPos-1]
-    //console.log(myTeam.includes(player))
     return (
       <div key={index} className='drafted'
         id={myTeam.includes(player)?'myTeam-player' : null}
@@ -32,8 +31,8 @@ export const ShowDraftedPlayers = props => {
   })
 
   return (
-    <div>
-    {playersDraftedList}
+    <div className='draftedPlayers-container'>
+      {playersDraftedList}
     </div>
   )
 }

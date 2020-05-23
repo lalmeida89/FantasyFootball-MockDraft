@@ -27,6 +27,7 @@ export class PositionDropdownMenu extends React.Component {
       te,
       def,
       k,
+      isOpen,
       filterByPosition
     } = this.props;
 
@@ -40,16 +41,19 @@ export class PositionDropdownMenu extends React.Component {
           <PositionHeader position={currentPositionSelected}/>
           {showMenu ?
             <div>
-              <div className='dropdownMenu-container'>
-                <p className='dropdownMenu-options'>
-                  <span onClick={()=>displayPosition(allPlayers)}>All</span>
-                  <span onClick={()=>displayPosition(qb)}>QB</span>
-                  <span onClick={()=>displayPosition(rb)}>RB</span>
-                  <span onClick={()=>displayPosition(wr)}>WR</span>
-                  <span onClick={()=>displayPosition(te)}>TE</span>
-                  <span onClick={()=>displayPosition(def)}>DST</span>
-                  <span onClick={()=>displayPosition(k)}>PK</span>
-                </p>
+              <div className='dropdownMenu-container'
+              id={!isOpen ?
+                'dropdownMenu-container-extended':
+                'dropdownMenu-container-shortened'}>
+                <span className='dropdownMenu-options'>
+                  <p><span onClick={()=>displayPosition(allPlayers)}>ALL</span></p>
+                  <p><span onClick={()=>displayPosition(qb)}>QB</span></p>
+                  <p><span onClick={()=>displayPosition(rb)}>RB</span></p>
+                  <p><span onClick={()=>displayPosition(wr)}>WR</span></p>
+                  <p><span onClick={()=>displayPosition(te)}>TE</span></p>
+                  <p><span onClick={()=>displayPosition(def)}>DST</span></p>
+                  <p><span onClick={()=>displayPosition(k)}>PK</span></p>
+                </span>
               </div>
             <div className='dropdownMenu-outerDiv'></div>
             </div>

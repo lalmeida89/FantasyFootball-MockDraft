@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 
 export const PlayerSelector = styled.div`
-  padding: 5px 10px;
+  padding: 20px 5px 0 8px;
   height: 30px;
-  border: 2px solid white;
+  border: 2px solid #191a1b;
   border-radius: 5px;
   cursor: pointer;
   line-height: 10px;
