@@ -6,7 +6,8 @@ import {getPlayerProfile} from '../../actions/setCurrentPlayerAction';
 import {
   showPosition,
   showMenu,
-  hideMenu
+  hideMenu,
+  filteredPlayers
 } from '../../actions/showActions';
 import IntroContainer from './IntroContainer';
 
@@ -35,7 +36,8 @@ const mapDispatchToProps = dispatch => {
     hideMenu,
     getPlayerProfile,
     fetchPlayers,
-    renderSidebar
+    renderSidebar,
+    filteredPlayers
   }, dispatch);
 }
 

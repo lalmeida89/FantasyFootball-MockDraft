@@ -8,8 +8,10 @@ import {TeamAbbr} from '../../styledComponents/teamAbbr';
 import {Transition} from 'react-transition-group';
 import SideBarIcon from './../Right-Side-Icon';
 import PositionHeader from './../Position-Header';
-
+import {SearchBar} from './searchBar';
+import {PositionDropdownMenu} from './positionDropdownMenu'
 import '../../styles/intro.css';
+import '../../styles/filterOptions.css';
 
 const duration = 400
 const introStyle = {
@@ -54,12 +56,13 @@ const ShowPlayers = props => {
     position = {player.position}
     onClick={()=> props.currentId.getPlayerProfile(player)}
     key={index}>
-      <p className='playerName'><b>
-      <Position position={player.position}> {player.position}</Position>
-      <TeamAbbr team={player.team}> {!player.team ? 'FA' : player.team} </TeamAbbr></b>
+      <div className='playerName'>
+      <b><Position position={player.position}> {player.position}</Position></b>
+      <TeamAbbr team={player.team}> {!player.team ? 'FA' : player.team} </TeamAbbr>
       <span className='player-name'>{player.displayName}</span>
-      <span style={{float: 'right', marginRight: '5%'}}>{player.overallRank}</span>
-      </p>
+      <span style={{textAlign:'right'}}>{player.overallRank}</span>
+      <span style={{textAlign:'right'}}>{Math.round(player.nerdRank*10)/10}</span>
+      </div>
     </PlayerSelector>
     )
   )
@@ -76,34 +79,25 @@ const ShowPlayers = props => {
 
 class IntroContainer extends React.Component {
   componentDidMount() {
-    //fetches all the players when this component mounts
     this.props.fetchPlayers()
   }
-  //dispatch showPosition on the array of positions we select. then close the dropdown menu
-  displayPosition = position => {
-    this.props.showPosition(position);
-    this.closeMenu();
-  }
-  //set the menu value in the reducer to true
-  displayMenu = () => {
-    this.props.showMenu();
-  }
-  //set the menu value in the reducer to false
-  closeMenu = () => {
-    this.props.hideMenu();
-  }
 
+  //what the dropdown will render will be based on the the prop we pass to displayPlayers based on
+  //what is set in the showPosition function. initially it will show all players but buttons
+  //bellow will change the value and render a different position header
   render() {
-    //what the dropdown will render will be based on the the prop we pass to displayPlayers based on
-    //what is set in the showPosition function. initially it will show all players but buttons
-    //bellow will change the value and render a different position header
     const {
       error,
+      menu,
       isOpen,
       dispatch,
       turn,
       counter,
-      teamCount
+      teamCount,
+      displayPlayers,
+      players,
+      showPosition,
+      filteredPlayers
     } = this.props;
 
     const displayPickNumber = turn => {
@@ -135,29 +129,27 @@ class IntroContainer extends React.Component {
         <div className='players' style={{
           ...introStyle,
           ...introTransitionStyles[state]}}>
-          <h1 className='intro-header' style={{textAlign: 'center'}}> Players Available </h1>
-          <h5 className='currentPick' style={{textAlign: 'center'}}> {displayPickNumber(turn)} </h5>
-          <div className='dropdwnMenu'>
-            <Button onClick={()=> this.props.menu
-              ? this.closeMenu()
-              : this.displayMenu()}>
-              <PositionHeader />
-            </Button>
-              { this.props.menu ? (
-              <div className='positionBtn'>
-                <Button dropBtn onClick={()=>this.displayPosition(this.props.players)}> Show All </Button>
-                <Button dropBtn onClick={()=>this.displayPosition(this.props.qb)}> Quarterbacks </Button>
-                <Button dropBtn onClick={()=>this.displayPosition(this.props.rb)}> Running Backs </Button>
-                <Button dropBtn onClick={()=>this.displayPosition(this.props.wr)}> Wide Receivers </Button>
-                <Button dropBtn onClick={()=>this.displayPosition(this.props.te)}> Tight Ends </Button>
-                <Button dropBtn onClick={()=>this.displayPosition(this.props.def)}> DST </Button>
-                <Button dropBtn onClick={()=>this.displayPosition(this.props.k)}> Kickers </Button>
-              </div>
-              )
-              : null
-            }
+          {/*<h5 className='currentPick' style={{textAlign: 'center'}}> {displayPickNumber(turn)} </h5>*/}
+          <div className='filter-options'>
+            <SearchBar playerList={players} filteredPlayers={filteredPlayers}/>
+            <PositionDropdownMenu
+              allPlayers={players}
+              filterByPosition={showPosition}
+              qb={this.props.qb}
+              rb={this.props.rb}
+              wr={this.props.wr}
+              te={this.props.te}
+              def={this.props.def}
+              k={this.props.k}
+              />
           </div>
-          <p className='labels'>ADP</p>
+          <div className='labels'>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+            <p style={{textAlign:'right'}}> Rank </p>
+            <p style={{textAlign:'right', paddingRight:'10px'}}> ADP </p>
+          </div>
           <Transition in={isOpen} timeout={duration}>
           {(state)=>(
             <div className="sideBar-icon" onClick={()=>this.props.renderSidebar()}
@@ -171,7 +163,7 @@ class IntroContainer extends React.Component {
           )}
           </Transition>
 
-          <ShowPlayers players={this.props.displayPlayers} currentId={this.props} />
+          <ShowPlayers players={displayPlayers} currentId={this.props} />
         </div>
       )}
       </Transition>
