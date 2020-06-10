@@ -39,7 +39,7 @@ export class SearchBar extends React.Component {
     const {showSearchBar} = this.state;
     const {isOpen, playerList, filteredPlayers} = this.props;
 
-    console.log(this.props, this.state);
+    //console.log(this.props, this.state);
     return (
       <div className='searchBar-wrapper'>
         <h4><i className="fas fa-search" onClick={()=>this.renderSearchBar()}></i></h4>

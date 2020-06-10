@@ -1,15 +1,16 @@
 .rightSide-wrapper {
   position: fixed;
-  width: 40%;
+  width: 42vw;
+  height: 100%;
   right: 0;
   top: 0;
-  height: 80vh;
   z-index: 0;
-  padding: 20px 14px 60px;
+  padding: 20px 0px 60px 0;
   display: block;
   list-style: none;
-  overflow-y: scroll;
+  overflow-y: overlay;
   perspective: 600px;
+  box-sizing: border-box;
 }
 
 .rightSide-header {
@@ -39,6 +40,17 @@
   line-height: 5px;
   margin-top: 32px;
   position: absolute;
+}
+
+.rostersDiv {
+  padding: 20px 10px;
+  border: 1px solid #000000ab;
+  height: 95%;
+  background-color: yellow;
+  width: 95%;
+  margin: 20px 10px 0 0;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .teamDropdown {
@@ -77,10 +89,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  .rightSide-wrapper {
-    width: 38%;
-  }
-
   .draftedPlayer {
     line-height: 12px;
   }

@@ -14,7 +14,7 @@ class DraftSetup extends Component {
     //settingsPage is set to true to start. This component renders at the start of the app.
     //It's just a reduxForm with select and radio buttons whose values then get passed to the
     //draftPreferences component and then saved in the store
-    const { handleSubmit, teamCount, showSettingsPage } = this.props;
+    const {handleSubmit, teamCount, showSettingsPage} = this.props;
     if (showSettingsPage){
     return (
       <div className='reduxFormDiv'>
@@ -112,7 +112,7 @@ class DraftSetup extends Component {
         <div className='rosterSetup'>
           <h3 className='rosterHeader'> Roster Settings </h3>
           <div className='mainStarters'>
-            <div className='starter'>
+
               <label>QB </label>
               <Field name='qbCount' className='positionCount' component='select'>
                 <option value='0'>0</option>
@@ -121,8 +121,7 @@ class DraftSetup extends Component {
                 <option value='3'>3</option>
                 <option value='4'>4</option>
               </Field>
-            </div>
-            <div className='starter'>
+
               <label>RB </label>
               <Field name='rbCount' className='positionCount' component='select'>
                 <option value='0'>0</option>
@@ -133,8 +132,7 @@ class DraftSetup extends Component {
                 <option value='5'>5</option>
                 <option value='6'>6</option>
               </Field>
-            </div>
-            <div className='starter'>
+
               <label>WR </label>
               <Field name='wrCount' className='positionCount' component='select'>
                 <option value='0'>0</option>
@@ -145,8 +143,7 @@ class DraftSetup extends Component {
                 <option value='5'>5</option>
                 <option value='6'>6</option>
               </Field>
-            </div>
-            <div className='starter'>
+
               <label>TE </label>
               <Field name='teCount' className='positionCount' component='select'>
                 <option value='0'>0</option>
@@ -155,8 +152,7 @@ class DraftSetup extends Component {
                 <option value='3'>3</option>
                 <option value='4'>4</option>
               </Field>
-            </div>
-            <div className='starter'>
+
               <label> KICKER </label>
               <Field name='kCount' className='positionCount' component='select'>
                 <option value='0'>0</option>
@@ -165,8 +161,7 @@ class DraftSetup extends Component {
                 <option value='3'>3</option>
                 <option value='4'>4</option>
               </Field>
-            </div>
-            <div className='starter'>
+
               <label> DST </label>
               <Field name='dstCount' className='positionCount' component='select'>
                 <option value='0'>0</option>
@@ -175,8 +170,7 @@ class DraftSetup extends Component {
                 <option value='3'>3</option>
                 <option value='4'>4</option>
               </Field>
-            </div>
-            <div className='starter'>
+
               <label>BENCH </label>
               <Field name='benchCount' className='positionCount' component='select'>
                 <option value='0'>0</option>
@@ -191,9 +185,7 @@ class DraftSetup extends Component {
                 <option value='9'>9</option>
                 <option value='10'>10</option>
               </Field>
-            </div>
 
-            <div className='flex'>
               <label> WR / RB </label>
               <Field name='wrRbFlexCount' className='positionCount' component='select'>
                 <option value='0'>0</option>
@@ -208,8 +200,7 @@ class DraftSetup extends Component {
                 <option value='9'>9</option>
                 <option value='10'>10</option>
               </Field>
-            </div>
-            <div className='flex'>
+
               <label> WR / TE </label>
               <Field name='wrTeFlexCount' className='positionCount' component='select'>
                 <option value='0'>0</option>
@@ -224,8 +215,7 @@ class DraftSetup extends Component {
                 <option value='9'>9</option>
                 <option value='10'>10</option>
               </Field>
-            </div>
-            <div className='flex'>
+
               <label> RB / TE </label>
               <Field name='rbTeFlexCount' className='positionCount' component='select'>
                 <option value='0'>0</option>
@@ -240,9 +230,8 @@ class DraftSetup extends Component {
                 <option value='9'>9</option>
                 <option value='10'>10</option>
               </Field>
-            </div>
-            <div className='flex'>
-              <label> WR / RB <br/> TE </label>
+
+              <label> WR / RB / TE </label>
               <Field name='wrRbTeFlexCount' className='positionCount' component='select'>
                 <option value='0'>0</option>
                 <option value='1'>1</option>
@@ -256,9 +245,8 @@ class DraftSetup extends Component {
                 <option value='9'>9</option>
                 <option value='10'>10</option>
               </Field>
-            </div>
-            <div className='flex'>
-              <label > QB / WR <br/> RB / TE </label>
+
+              <label > QB / WR / RB / TE </label>
               <Field name='qbWrRbTeFlexCount' className='positionCount' component='select'>
                 <option value='0'>0</option>
                 <option value='1'>1</option>
@@ -272,7 +260,7 @@ class DraftSetup extends Component {
                 <option value='9'>9</option>
                 <option value='10'>10</option>
               </Field>
-            </div>
+
       </div>
     </div>
     <button className='submitButton' type="submit">Submit</button>

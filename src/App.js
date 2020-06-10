@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './styles/App.css';
 import Intro from './components/Intro'
-import DraftPage from './components/Draft-Preferences'
+import LandingPage from './components/Landing-Page'
 import AnalysisPage from './components/Analysis-Page'
 import PlayerProfile from './components/Player-Profile'
 import Footer from './components/Footer'
@@ -18,11 +18,11 @@ class App extends Component {
       <div className='App'>
         { !finalPage ?
           <div>
+            <LandingPage />
             <LoadingScreen />
             <PlayerProfile />
             <Intro />
             <RightSide />
-            <DraftPage />
             <Footer />
           </div>
           : <div><AnalysisPage /></div>

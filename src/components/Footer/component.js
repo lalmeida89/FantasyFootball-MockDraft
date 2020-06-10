@@ -9,7 +9,7 @@ const footerStyle = {
 }
 
 const footerTransitionStyles = {
-  entering: { height: 0 },
+  entering: { height: '50px' },
   entered: { height: '50px' },
   exiting: { height: 0 },
   exited: { height: 0}

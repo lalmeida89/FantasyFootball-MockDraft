@@ -6,7 +6,6 @@ import {ProjectedStats} from './projectedStats';
 import {ProfileButton} from '../../styledComponents/profileButton';
 import '../../styles/playerCard.css';
 
-
 export class PlayerProfile extends React.Component {
   constructor(props){
     super(props);

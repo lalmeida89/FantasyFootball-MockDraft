@@ -2,6 +2,7 @@ const initialState = {
     players: [],
     loading: true,
     error: null,
+    menu: false,
     wr: [],
     qb: [],
     rb: [],
@@ -96,6 +97,7 @@ export default (playersState = initialState, action) => {
             return k.playerId !== action.player.playerId;
           })
           return {
+            ...playersState,
             players: withPlayersRemoved,
             wr: wrPlayersRemoved,
             qb: qbPlayersRemoved,
@@ -130,6 +132,7 @@ export default (playersState = initialState, action) => {
             return k.playerId !== action.player.playerId;
           })
         return {
+          ...playersState,
           players: myPlayersRemoved,
           wr: myWrPlayersRemoved,
           qb: myQbPlayersRemoved,

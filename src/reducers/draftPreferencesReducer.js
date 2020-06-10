@@ -27,7 +27,7 @@ export default (preferenceState = initialState, action) => {
     switch (action.type) {
         case 'LOADING_SCREEN':
           return Object.assign({}, preferenceState, {
-            initialLoading: false
+            initialLoading: !action.initialLoading
           });
         case 'TEAM_COUNT_CHANGE':
           return Object.assign({}, preferenceState, {
@@ -69,7 +69,7 @@ export default (preferenceState = initialState, action) => {
             maxTurns: action.maxTurns,
             showSettingsPage: false,
             teams: action.teamArrays,
-            initialLoading: true
+            initialLoading: false
           };
         default:
           return {

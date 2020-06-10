@@ -15,10 +15,7 @@ const playerNamesTransitionStyles = {
 const mappedTeam = currentTeam => {
   let thisTeam = currentTeam.map((player, i) => (
     <div key={i}>
-      {player.name ?
-        player.name
-        : player.firstName + player.lastName}
-      {' '} {player.round}.{player.pickedAt}
+      {player.displayName} {player.round}.{player.pickedAt}
     </div>
   ))
   return <div className='mappedTeam-div'>{thisTeam} </div>

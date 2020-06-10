@@ -128,8 +128,8 @@ body {
     -webkit-transition:width .8s ease;
     -moz-transition:width .8s ease;
     transition:width .8s ease;
-    -webkit-animation:progressbar 4900ms forwards;
-    animation:progressbar 4900ms forwards;
+    -webkit-animation:progressbar 100ms forwards;
+    animation:progressbar 100ms forwards;
 }
 
 @-webkit-keyframes progressbar {

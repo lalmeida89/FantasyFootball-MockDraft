@@ -1,10 +1,11 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {draftPageSubmit} from '../../actions/draftPreferencesAction';
-import DraftPageContainer from './DraftPageContainer'
+import LandingPageContainer from './LandingPageContainer';
 
 const mapStateToProps = state => ({
-  teamCount: state.draftPreferencesReducer.teamCount
+  teamCount: state.draftPreferencesReducer.teamCount,
+  showSettingsPage: state.draftPreferencesReducer.showSettingsPage
 })
 
 const mapDispatchToProps = dispatch => {
@@ -13,4 +14,4 @@ const mapDispatchToProps = dispatch => {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DraftPageContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(LandingPageContainer)
