@@ -134,8 +134,9 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
           playersUsed: playersDrafted,
           counter: 0
         })
-        dispatch(increaseTurns())
-        return dispatch(increasing())
+        dispatch(increaseTurns());
+        dispatch(increasing());
+        return dispatch(cycleThroughTeams());
       }
       else {
         //if the direction isnt negative, we just add the player and dispatch addPlayerToTeamUp starting
@@ -146,7 +147,7 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
           playersUsed: playersDrafted,
           counter: myTeam + 1
         })
-        return dispatch(cycleThroughTeams())
+        return dispatch(cycleThroughTeams());
       }
   }
   if (myTeam === allTeams.length -1){
@@ -159,7 +160,8 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
         playersUsed: playersDrafted,
         counter: allTeams.length-1
       })
-      return dispatch(decreasing())
+      dispatch(decreasing());
+      return dispatch(cycleThroughTeams());
     }
     else {
       //similar to above, except if it's coming down we dispatch addPlayerToTeamDown with the
@@ -195,7 +197,7 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
       return dispatch(cycleThroughTeams())
     }
   }}
-  else{
+  else {
     dispatch(renderFinalPage())
   }
 }

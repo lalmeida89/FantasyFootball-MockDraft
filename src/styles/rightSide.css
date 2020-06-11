@@ -3,29 +3,29 @@
   width: 42vw;
   height: 100%;
   right: 0;
-  top: 0;
-  z-index: 0;
-  padding: 20px 0px 60px 0;
+  top: 10px;
+  padding: 0 10px 60px 10px;
   display: block;
   list-style: none;
   overflow-y: overlay;
-  perspective: 600px;
   box-sizing: border-box;
+  border-left: 1px solid #ffffff;
+  margin-top: 50px;
 }
 
 .rightSide-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   color: white;
+  background-color: blue;
   text-align: center;
-  position: absolute;
+  position: fixed;
   top: 10px;
-  width: 100%;
   right: 0;
-  background-color: #191a1b;
+  z-index: 999;
+  width: 42vw;
 }
 
-.rightSide-header h3 {
-  margin: 0 auto;
-}
 .sc-bxivhb {
   font-size: 8px;
 }
@@ -43,12 +43,12 @@
 }
 
 .rostersDiv {
+  position: absolute;
   padding: 20px 10px;
   border: 1px solid #000000ab;
-  height: 95%;
-  background-color: yellow;
+  background-color: white;
   width: 95%;
-  margin: 20px 10px 0 0;
+  margin: 0 10px 0 0;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -62,11 +62,10 @@
 }
 
 .draftedPlayersList {
-  padding: 5px 0 0 10px;
+  padding-bottom: 60px;
 }
 
 .draftedPlayers-container {
-  margin-top: 30px;
 }
 
 .drafted {
@@ -88,11 +87,28 @@
   font-size: 14px;
 }
 
+#fadeToFrontStyle {
+  opacity: 1;
+}
+
+#fadeToBackStyle {
+  opacity: 0;
+  display: none;
+}
+
+.rightSide-innerDiv {
+  height: 85%;
+  top: 10px;
+  width: 95%;
+}
+
 @media screen and (max-width: 600px) {
   .draftedPlayer {
     line-height: 12px;
   }
 
+  .rightSide-header {
+  }
   .rostered-players {
     font-size: 10px;
   }

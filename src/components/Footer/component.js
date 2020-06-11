@@ -17,10 +17,15 @@ const footerTransitionStyles = {
 
 class Footer extends React.Component {
   render(){
-    const {draftedPlayers, rosters, isOpen,
-          showRosters, showDraftedPlayers
-          } = this.props
-    let style={display: 'block'}
+    const { 
+      draftedPlayers,
+      rosters,
+      isOpen,
+      showRosters,
+      showDraftedPlayers
+    } = this.props
+    let style={ display: 'block'}
+
     return (
       <Transition in={isOpen} timeout={duration}>
       {(state) => (
