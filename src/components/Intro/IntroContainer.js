@@ -98,20 +98,22 @@ class IntroContainer extends React.Component {
         <div className='players' style={{
           ...introStyle,
           ...introTransitionStyles[state]}}>
-          {/*<h5 className='currentPick' style={{textAlign: 'center'}}> {displayPickNumber(turn)} </h5>*/}
+          <h5 className='currentPick' style={{textAlign: 'center'}}> </h5>
           <div className='filter-options'>
-            <SearchBar isOpen={isOpen} playerList={players} filteredPlayers={filteredPlayers}/>
-            <PositionDropdownMenu
-              isOpen={isOpen}
-              allPlayers={players}
-              filterByPosition={showPosition}
-              qb={this.props.qb}
-              rb={this.props.rb}
-              wr={this.props.wr}
-              te={this.props.te}
-              def={this.props.def}
-              k={this.props.k}
-              />
+            <div className='filter-options-innerDiv'>
+              <SearchBar isOpen={isOpen} playerList={players} filteredPlayers={filteredPlayers}/>
+              <PositionDropdownMenu
+                isOpen={isOpen}
+                allPlayers={players}
+                filterByPosition={showPosition}
+                qb={this.props.qb}
+                rb={this.props.rb}
+                wr={this.props.wr}
+                te={this.props.te}
+                def={this.props.def}
+                k={this.props.k}
+                />
+            </div>
           </div>
           <Transition in={isOpen} timeout={duration}>
           {(state)=>(
@@ -121,7 +123,7 @@ class IntroContainer extends React.Component {
                 ...labelsTransitionStyles[state]}}>
               <p> </p>
               <p> </p>
-              <p> </p>
+              <p style={{paddingLeft: '40px'}}> {displayPickNumber(turn)} </p>
               <p style={{textAlign:'right'}}> Rank </p>
               {!isOpen ? <p style={{textAlign:'right', paddingRight:'10px'}}> ADP </p> : null}
               {!isOpen ? <p style={{textAlign:'right', paddingRight:'10px'}}> BYE </p> : null}

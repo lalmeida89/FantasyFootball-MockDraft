@@ -1,14 +1,13 @@
 .searchBar-container, .dropdownMenu-container {
   z-index: 999;
-  position: relative;
+  position: absolute;
   height: 52px;
   border: 1px solid black;
   border-radius: 3px;
-  padding: 20px 10px 5px;
+  padding: 17px 10px 5px;
   background-color: white;
   box-sizing: border-box;
   left: 10px;
-  top: 45px;
 }
 
 .searchBar-container:after, .dropdownMenu-container:after{
@@ -24,12 +23,7 @@
   margin-bottom: -5px;
   background-color: white;
 }
-.searchBar-container:after{
-  left: 32px;
-}
-.dropdownMenu-container:after{
-  left: 92px;
-}
+
 .searchBar-container > input {
   width: 95%;
   border: none;
@@ -61,58 +55,61 @@
 }
 
 .filter-options {
-  padding: 15px 0 0 5px;
-  width: 100%;
-  height: 30px;
+  width: inherit;
+  height: 45px;
   background-color: #191a1b;
   position: fixed;
   top: 0;
   color: white;
   font-size: 12px;
+  text-align: center;
 }
 
-.filter-options div {
-  display: inline-block;
-  position: fixed;
+.filter-options-innerDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 15px 0 0 5px;
 }
 
-.searchBar-wrapper {
-  left: 40px;
-  z-index: -1;
-}
-
-.dropdownMenu-wrapper {
-  left: 100px;
-  z-index: -1;
-}
-.filter-options div h4 {
+.filter-options-innerDiv div h4 {
   cursor: pointer;
   margin-top: 0;
 }
 
-#searchBar-container-shortened, #dropdownMenu-container-shortened {
-  width: 52vw;
-}
-#searchBar-container-extended, #dropdownMenu-container-extended {
-  width: 93vw;
-}
 
-/*
+
 @media screen and (max-width: 600px) {
   #searchBar-container-shortened, #dropdownMenu-container-shortened {
-    width: 47%;
+    width: 50vw;
   }
   #searchBar-container-extended, #dropdownMenu-container-extended {
-    width: 90%;
+    width: 94vw;
+  }
+  .filter-options-innerDiv {
+    width: 140px;
+  }
+  .searchBar-container:after{
+    left: 25px;
+  }
+  .dropdownMenu-container:after{
+    left: 95px;
   }
 }
 
 @media screen and (min-width: 600px) {
   #searchBar-container-shortened, #dropdownMenu-container-shortened {
-    width: 52%;
+    width: 53vw;
   }
   #searchBar-container-extended, #dropdownMenu-container-extended {
-    width: 95%;
+    width: 93vw;
+  }
+  .filter-options-innerDiv {
+    width: 280px;
+  }
+  .searchBar-container:after{
+    left: 60px;
+  }
+  .dropdownMenu-container:after{
+    left: 200px;
   }
 }
-*/

@@ -20,14 +20,25 @@
 .labels {
   display: grid;
   position: fixed;
-  top: 45px;
+  top: 65px;
   left: 0;
   grid-column-gap: 2px;
-  padding: 0 15px 0 20px;
+  padding: 0 15px 10px 20px;
   font-size: 10px;
   font-weight: bold;
-  margin: -15px 0 10px 0;
+  margin: -20px 0 10px 0;
   box-sizing: border-box;
+  background-color: #191a1b;
+}
+
+.players {
+  box-sizing: border-box;
+  padding: 0 10px 60px;
+  height: 80vh;
+}
+
+.playersDiv {
+  height: inherit;
 }
 
 #labels-shortened {
@@ -49,11 +60,6 @@
 
 .fa-file-alt {
   cursor: pointer;
-}
-
-.playersDiv {
-  padding: 0 10px 60px;
-  height: 80vh;
 }
 
 .labels p {

@@ -42,7 +42,7 @@ body {
 .starter label,
 .flex label,
 .teamResults h3,
-.rightSide-header h3,
+.rightSide-header,
 .filter-options  {
   font-family: 'Graduate', cursive;
 }

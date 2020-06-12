@@ -6,27 +6,17 @@ import RightSideHeader from './../Right-Side-Header';
 import '../../styles/rightSide.css'
 import { Transition } from 'react-transition-group';
 
-const duration = 400
+const duration = 200
 
 const rightSideStyle = {
   transition: `right ${duration}ms`
 }
 
 const rightSideTransitionStyles = {
-  entering: { right: 0 },
-  entered: { right: 0 },
-  exiting: { right: '-45vw', padding: 0 },
-  exited: { right: '-45vw', padding: 0}
-}
-
-const fadeToBackStyle = {
-  zIndex: 500,
-  background: 'blue'
-}
-
-const fadeToFrontStyle = {
-  zIndex: 990,
-  background: 'green'
+  entering: { right: 0, opacity: 0 },
+  entered: { right: 0, opacity: 1 },
+  exiting: { right: '-45vw', padding: 0, opacity: 0 },
+  exited: { right: '-45vw', padding: 0, opacity: 0 }
 }
 
 export class RightSide extends React.Component {

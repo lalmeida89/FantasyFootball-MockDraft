@@ -11,11 +11,11 @@ export const RightSideHeader = props => {
     <div className='rightSide-header'>
       <div className='rostersBtn'
         onClick={()=>showRosters()}>
-        <span> Rosters </span>
+        <span> Team <br/> Rosters </span>
       </div>
       <div className='draftedPlayersBtn'
         onClick={()=>showDraftedPlayers()}>
-        <span> Drafted Players </span>
+        <span> Drafted <br/> Players </span>
       </div>
     </div>
   )

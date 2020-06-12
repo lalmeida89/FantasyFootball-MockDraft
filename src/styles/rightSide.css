@@ -4,26 +4,28 @@
   height: 100%;
   right: 0;
   top: 10px;
-  padding: 0 10px 60px 10px;
+  padding: 50px 10px 60px 10px;
   display: block;
   list-style: none;
   overflow-y: overlay;
   box-sizing: border-box;
   border-left: 1px solid #ffffff;
-  margin-top: 50px;
 }
 
 .rightSide-header {
+  opacity: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   color: white;
-  background-color: blue;
+  background-color: #191a1b;
   text-align: center;
   position: fixed;
-  top: 10px;
+  top: 5px;
   right: 0;
   z-index: 999;
-  width: 42vw;
+  width: 43vw;
+  font-size: 12px;
+  padding: 5px 0;
 }
 
 .sc-bxivhb {
@@ -107,8 +109,6 @@
     line-height: 12px;
   }
 
-  .rightSide-header {
-  }
   .rostered-players {
     font-size: 10px;
   }
