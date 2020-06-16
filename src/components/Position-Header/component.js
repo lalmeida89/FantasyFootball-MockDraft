@@ -31,7 +31,7 @@ class PositionHeader extends React.Component {
       }else if (position === k){
         msg = 'PK'
       }else {
-        msg = 'Position'
+        msg = 'POS'
       }
       return msg
     }

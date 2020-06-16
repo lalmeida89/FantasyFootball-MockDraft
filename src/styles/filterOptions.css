@@ -1,6 +1,5 @@
 .dropdownMenu-container {
-  top: 0;
-  background-color: rgba(34,41,48,.7)!important;
+  background-color: #191d23;
   color: #fff;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -42,7 +41,7 @@
 
 .searchBar-input {
   border: none;
-  background-color: rgba(34,41,48,.7)!important;
+  background-color: #191d23;
   color: #fff;
   box-shadow: none;
   border-radius: 4px;
@@ -59,6 +58,10 @@
   display: block;
   position: relative;
   width: 100%;
+}
+
+.searchBar-input:focus {
+  outline: none;
 }
 
 .searchBar-icon {
@@ -78,7 +81,7 @@
 .filter-options {
   width: 100%;
   height: 45px;
-  background-color: #000000;
+  background-color: #2d2e2f;
   position: fixed;
   left: 0;
   top: 0;
@@ -99,18 +102,30 @@
 #filter-options-searchBar-shortened input {
   transition: width .6s;
   transition-delay: .1s;
-  width: 140px;
+  width: 80px;
 }
 #filter-options-searchBar-extended input {
   transition: width .6s;
   transition-delay: .1s;
-  width: 240px;
+  width: 170px;
 }
 
 .filter-options-innerDiv div h4 {
   font-size: 15px;
   cursor: pointer;
   margin-top: 0;
+}
+
+.searchBar-clear-icon {
+  color: #666;
+  right: 13px;
+  top: 6px;
+  padding: 0;
+  position: absolute;
+  height: 100%;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 600px) {

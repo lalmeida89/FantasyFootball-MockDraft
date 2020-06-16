@@ -114,7 +114,8 @@ class IntroContainer extends React.Component {
               <SearchBar
                 isOpen={isOpen}
                 playerList={players}
-                filteredPlayers={filteredPlayers}/>
+                filteredPlayers={filteredPlayers}
+                allPlayers={players}/>
             </div>
           </div>
           <Transition in={isOpen} timeout={duration}>
