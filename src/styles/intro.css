@@ -23,7 +23,7 @@
   top: 65px;
   left: 0;
   grid-column-gap: 2px;
-  padding: 0 15px 10px 20px;
+  padding: 8px 15px 10px 20px;
   font-size: 10px;
   font-weight: bold;
   margin: -20px 0 10px 0;
@@ -33,7 +33,7 @@
 
 .players {
   box-sizing: border-box;
-  padding: 0 10px 60px;
+  padding: 30px 10px 60px;
   height: 80vh;
 }
 

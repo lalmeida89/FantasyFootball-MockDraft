@@ -3,13 +3,12 @@
   width: 42vw;
   height: 100%;
   right: 0;
-  top: 10px;
+  top: 35px;
   padding: 50px 10px 60px 10px;
   display: block;
   list-style: none;
   overflow-y: overlay;
   box-sizing: border-box;
-  border-left: 1px solid #ffffff;
 }
 
 .rightSide-header {
@@ -17,10 +16,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   color: white;
-  background-color: #000000;
+  background-color: #2d2e2f;
   text-align: center;
   position: fixed;
-  top: 5px;
+  top: 45px;
   right: 0;
   z-index: 999;
   width: 43vw;

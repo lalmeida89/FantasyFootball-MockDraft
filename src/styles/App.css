@@ -11,7 +11,7 @@ body {
 .rostersDiv {
   margin-top: 20px;
 }
-
+/*
 .mainHeader {
   display: block;
   z-index: 999;
@@ -25,7 +25,7 @@ body {
   padding-bottom: 9px;
   background-color: #ffffffe6;
   margin: 0;
-}
+}*/
 
 .mainHeader,
 .intro-header,

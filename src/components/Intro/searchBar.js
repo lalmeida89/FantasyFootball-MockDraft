@@ -30,9 +30,11 @@ export class SearchBar extends React.Component {
   };
 
   renderSearchBar = () => {
-    this.setState(prevState => ({
-      showSearchBar: !prevState.showSearchBar
-    }));
+    this.setState({showSearchBar: true})
+  };
+
+  hideSearchBar = () => {
+    this.setState({showSearchBar: false})
   };
 
   render() {
@@ -41,12 +43,13 @@ export class SearchBar extends React.Component {
     return (
       <div id={showSearchBar ? 'filter-options-searchBar-extended' : 'filter-options-searchBar-shortened'}
         className='searchBar-wrapper'
-        onClick={()=>this.renderSearchBar()}>
+        onFocus={()=>this.renderSearchBar()}
+        onBlur={()=>this.hideSearchBar()}>
           <div className='searchBar-container'>
             <div className='searchBar-input-container'>
               <input type='text' className='searchBar-input' name='searchBar'
               onChange={(e)=>this.handleChange(e, playerList)}
-              placeholder='Search...' />
+              placeholder='Search by player' />
               <i className='fas fa-search searchBar-icon'></i>
             </div>
           </div>

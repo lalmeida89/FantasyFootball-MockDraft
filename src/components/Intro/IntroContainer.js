@@ -98,7 +98,7 @@ class IntroContainer extends React.Component {
         <div className='players' style={{
           ...introStyle,
           ...introTransitionStyles[state]}}>
-          <h5 className='currentPick' style={{textAlign: 'center'}}> </h5>
+          {/*<h5 className='currentPick' style={{textAlign: 'center'}}> </h5>*/}
           <div className='filter-options'>
             <div className='filter-options-innerDiv'>
               <PositionDropdownMenu
@@ -112,7 +112,7 @@ class IntroContainer extends React.Component {
                 def={this.props.def}
                 k={this.props.k}/>
               <SearchBar
-                isOpen={isOpen} 
+                isOpen={isOpen}
                 playerList={players}
                 filteredPlayers={filteredPlayers}/>
             </div>
@@ -125,7 +125,7 @@ class IntroContainer extends React.Component {
                 ...labelsTransitionStyles[state]}}>
               <p> </p>
               <p> </p>
-              <p style={{paddingLeft: '40px'}}> {displayPickNumber(turn)} </p>
+              <p style={{paddingLeft: '40px'}}> {/*displayPickNumber(turn)*/} </p>
               <p style={{textAlign:'right'}}> Rank </p>
               {!isOpen ? <p style={{textAlign:'right', paddingRight:'10px'}}> ADP </p> : null}
               {!isOpen ? <p style={{textAlign:'right', paddingRight:'10px'}}> BYE </p> : null}

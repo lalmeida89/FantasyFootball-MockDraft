@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const PlayerSelector = styled.div`
   padding: 20px 5px 0 8px;
   height: 30px;
-  border: 2px solid #191a1b;
+  border: 2px solid rgba(34,41,48,.7);
   border-radius: 5px;
   cursor: pointer;
   line-height: 10px;
