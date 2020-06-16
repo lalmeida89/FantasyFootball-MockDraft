@@ -1,5 +1,5 @@
 .dropdownMenu-container {
-  top: 10px;
+  top: 0;
   background-color: rgba(34,41,48,.7)!important;
   color: #fff;
   -webkit-box-shadow: none;
@@ -58,8 +58,6 @@
 .searchBar-input-container {
   display: block;
   position: relative;
-  -ms-flex-negative: 1;
-  flex-shrink: 1;
   width: 100%;
 }
 
@@ -124,6 +122,12 @@
   }
   .filter-options-innerDiv {
 
+  }
+  .searchBar-input {
+    padding-top: 0;
+  }
+  .dropdownMenu-container {
+    padding-top: 4px;
   }
 }
 

@@ -101,26 +101,26 @@
 }
 
 .rightSide-button {
+  min-width: 70px;
   border: none;
   border-radius: 4px;
-  padding: 0 0 10px 8px;
+  padding: 0 10px 10px 8px;
   color: white;
   background-color: #191d22;
-  display: grid;
-  grid-template-columns: 1fr 5fr;
-  grid-gap: 9px;
-  text-align: justify;
+  display: flex;
   cursor: pointer;
 }
 
 .rightSide-button-label {
   font-size: 11px;
   padding-top: 8px;
+  margin-left: 3px;
+  text-align: justify;
 }
 .rightSide-button-icon {
   font-size: 20px;
   transform: translateY(50%);
-  position: relative;
+  position: static;
 }
 .rosters-button {
   margin-left: 20px;
@@ -134,8 +134,13 @@
   .draftedPlayer {
     line-height: 12px;
   }
-
   .rostered-players {
     font-size: 10px;
+  }
+  .rightSide-button-label {
+    font-size: 8px;
+  }
+  .rightSide-button-icon {
+    font-size: 14px;
   }
 }
