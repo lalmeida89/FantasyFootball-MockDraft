@@ -101,7 +101,6 @@ class IntroContainer extends React.Component {
           <h5 className='currentPick' style={{textAlign: 'center'}}> </h5>
           <div className='filter-options'>
             <div className='filter-options-innerDiv'>
-              <SearchBar isOpen={isOpen} playerList={players} filteredPlayers={filteredPlayers}/>
               <PositionDropdownMenu
                 isOpen={isOpen}
                 allPlayers={players}
@@ -111,8 +110,11 @@ class IntroContainer extends React.Component {
                 wr={this.props.wr}
                 te={this.props.te}
                 def={this.props.def}
-                k={this.props.k}
-                />
+                k={this.props.k}/>
+              <SearchBar
+                isOpen={isOpen} 
+                playerList={players}
+                filteredPlayers={filteredPlayers}/>
             </div>
           </div>
           <Transition in={isOpen} timeout={duration}>

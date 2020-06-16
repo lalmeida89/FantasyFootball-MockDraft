@@ -38,14 +38,12 @@ export class PositionDropdownMenu extends React.Component {
 
     return(
         <div className='dropdownMenu-wrapper' onClick={()=> this.renderDropdownMenu()}>
-          <PositionHeader position={currentPositionSelected}/>
-          {showMenu ?
-            <div>
-              <div className='dropdownMenu-container'
-              id={!isOpen ?
-                'dropdownMenu-container-extended':
-                'dropdownMenu-container-shortened'}>
-                <span className='dropdownMenu-options'>
+            <div id={showMenu ? 'filter-options-dropdown-extended'
+              : 'filter-options-dropdown-shortened'}
+              className='dropdownMenu-container'>
+              {!showMenu ?
+                <PositionHeader position={currentPositionSelected}/> : null }
+                <div className='dropdownMenu-options'>
                   <p><span onClick={()=>displayPosition(allPlayers)}>ALL</span></p>
                   <p><span onClick={()=>displayPosition(qb)}>QB</span></p>
                   <p><span onClick={()=>displayPosition(rb)}>RB</span></p>
@@ -53,12 +51,8 @@ export class PositionDropdownMenu extends React.Component {
                   <p><span onClick={()=>displayPosition(te)}>TE</span></p>
                   <p><span onClick={()=>displayPosition(def)}>DST</span></p>
                   <p><span onClick={()=>displayPosition(k)}>PK</span></p>
-                </span>
-              </div>
-            <div className='dropdownMenu-outerDiv'></div>
+                </div>
             </div>
-            : null }
-
       </div>
     )
   }

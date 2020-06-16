@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export class SearchBar extends React.Component {
   constructor(props){
@@ -11,7 +11,7 @@ export class SearchBar extends React.Component {
   filterList = (val, arr) =>{
     let currentList = [];
     let newList = [];
-    if(val!==""){
+    if(val!==''){
       currentList = arr
       newList = currentList.filter(player => {
         const lc = player.displayName.toLowerCase();
@@ -38,24 +38,18 @@ export class SearchBar extends React.Component {
   render() {
     const {showSearchBar} = this.state;
     const {isOpen, playerList, filteredPlayers} = this.props;
-
-    //console.log(this.props, this.state);
     return (
-      <div className='searchBar-wrapper'>
-        <h4><i className="fas fa-search" onClick={()=>this.renderSearchBar()}></i></h4>
-        {showSearchBar ?
-          <div>
-            <div className='searchBar-container'
-              id={!isOpen ?
-                'searchBar-container-extended':
-                'searchBar-container-shortened'}>
-              <input type="text" className='input' name="searchBar"
+      <div id={showSearchBar ? 'filter-options-searchBar-extended' : 'filter-options-searchBar-shortened'}
+        className='searchBar-wrapper'
+        onClick={()=>this.renderSearchBar()}>
+          <div className='searchBar-container'>
+            <div className='searchBar-input-container'>
+              <input type='text' className='searchBar-input' name='searchBar'
               onChange={(e)=>this.handleChange(e, playerList)}
               placeholder='Search...' />
+              <i className='fas fa-search searchBar-icon'></i>
             </div>
-            <div onClick={()=>this.renderSearchBar()} className='searchBar-outerDiv'></div>
           </div>
-          : null }
       </div>
     );
   }
