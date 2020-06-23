@@ -49,6 +49,7 @@ export class SearchBar extends React.Component {
           <div className='searchBar-container'>
             <div className='searchBar-input-container'>
               <input type='text' className='searchBar-input' ref='searchBar'
+              autoComplete="none"
               onChange={(e)=>this.handleChange(e, playerList)}
               placeholder='Search..' />
               <i className='fas fa-search searchBar-icon'></i>

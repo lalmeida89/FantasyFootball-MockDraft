@@ -43,7 +43,8 @@ body {
 .flex label,
 .teamResults h3,
 .rightSide-button,
-.filter-options  {
+.filter-options,
+.searchBar-input  {
   font-family: 'Graduate', cursive;
 }
 

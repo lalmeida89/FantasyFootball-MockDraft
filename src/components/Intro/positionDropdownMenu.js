@@ -49,7 +49,7 @@ export class PositionDropdownMenu extends React.Component {
                   <p><span onClick={()=>displayPosition(rb)}>RB</span></p>
                   <p><span onClick={()=>displayPosition(wr)}>WR</span></p>
                   <p><span onClick={()=>displayPosition(te)}>TE</span></p>
-                  <p><span onClick={()=>displayPosition(def)}>DST</span></p>
+                  <p><span onClick={()=>displayPosition(def)}>DS</span></p>
                   <p><span onClick={()=>displayPosition(k)}>PK</span></p>
                 </div>
             </div>

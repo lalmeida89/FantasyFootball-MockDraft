@@ -27,7 +27,7 @@ export const ShowPlayers = props => {
     key={index}>
       <div className='playerName'
           style={!props.isOpen ? {gridTemplateColumns: '30px 30px 3fr 1fr 1fr 1fr'} : {gridTemplateColumns:'30px 30px 5fr 1fr'}}>
-        <b><Position position={player.position}> {player.position}</Position></b>
+        <b><Position position={player.position}> {player.position === 'DEF' ? 'DS' : player.position}</Position></b>
         <TeamAbbr team={player.team}> {!player.team ? 'FA' : player.team} </TeamAbbr>
         <span className='player-name'>{player.displayName}</span>
         <span style={{textAlign:'right'}}>{player.overallRank}</span>
