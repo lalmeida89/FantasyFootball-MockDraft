@@ -1,4 +1,4 @@
-import {showCurrentTeam} from './showActions';
+import {showCurrentTeam, showDraftedPlayers} from './showActions';
 //import {pickRandomPlayer} from './algorithm';
 
 export const ADD_TO_MY_TEAM = 'ADD_TO_MY_TEAM';
@@ -147,6 +147,7 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
           playersUsed: playersDrafted,
           counter: myTeam + 1
         })
+        dispatch(showDraftedPlayers())
         return dispatch(cycleThroughTeams());
       }
   }
@@ -172,6 +173,7 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
         playersUsed: playersDrafted,
         counter: myTeam-1
       })
+      dispatch(showDraftedPlayers())
       return dispatch(cycleThroughTeams())
     }
   }
@@ -185,6 +187,7 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
         playersUsed: playersDrafted,
         counter: myTeam + 1
       })
+      dispatch(showDraftedPlayers())
       return dispatch(cycleThroughTeams())
     }
     if (getState().counterReducer.currentDirection === -1){
@@ -194,6 +197,7 @@ export const addPlayerToMyTeam = (player) => (dispatch, getState) => {
         playersUsed: playersDrafted,
         counter : myTeam-1
       })
+      dispatch(showDraftedPlayers())
       return dispatch(cycleThroughTeams())
     }
   }}

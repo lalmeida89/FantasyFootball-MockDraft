@@ -26,6 +26,29 @@
   top: 0;
 }
 
+.playerHeader {
+  display: grid;
+  grid-template-columns: auto auto;
+  width: 95%;
+  margin: 10px auto 30px;
+}
+
+.playerStats {
+  padding-top: 20px;
+  display: grid;
+  grid-template-rows: 40px 30px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 0;
+  width: 200px;
+}
+
+.playerStats p {
+  padding-top: 4px;
+  margin: 0;
+  text-align: center;
+  border: 1px solid black;
+}
+
 #highlightPlayer {
   font-weight: bolder;
 }
