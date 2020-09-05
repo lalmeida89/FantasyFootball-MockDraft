@@ -2,7 +2,7 @@ export const SET_CURRENT_PLAYER = 'SET_CURRENT_PLAYER';
 export const GET_PLAYER_PROFILE_REQUEST = 'GET_PLAYER_PROFILE_REQUEST';
 export const GET_PLAYER_PROFILE_SUCCESS = 'GET_PLAYER_PROFILE_SUCCESS';
 export const SET_PLAYER_PROFILE = 'SET_PLAYER_PROFILE';
-export const HIDE_PLAYER_PROFILE ='HIDE_PLAYER_PROFILE';
+export const HIDE_PLAYER_PROFILE = 'HIDE_PLAYER_PROFILE';
 export const SET_CURRENT_PLAYER_SCHEDULE = 'SET_CURRENT_PLAYER_SCHEDULE';
 export const SET_CURRENT_PLAYER_DEPTH_CHART = 'SET_CURRENT_PLAYER_DEPTH_CHART';
 export const SET_CURRENT_PLAYER_PROJECTIONS = 'SET_CURRENT_PLAYER_PROJECTIONS'
@@ -14,7 +14,7 @@ on the first player in the array. We can then use all of the information to crea
 
 const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-export const getPlayerProfile = player =>  {
+export const getPlayerProfile = player => {
   return dispatch => {
     dispatch(setCurrentPlayer(player))
     dispatch(getPlayerProfileSuccess())
@@ -25,41 +25,41 @@ export const getPlayerProfile = player =>  {
 }
 
 const getTeamDepthChart = team => {
-    const url = `https://www.fantasyfootballnerd.com/service/depth-charts/json/test`;
-    return dispatch => {
-      fetch(proxyurl + url)
-        .then(res => res.json())
-        .then(response => {
-          console.log(response.DepthCharts[team]);
-          dispatch(setCurrentPlayerDepthChart(response.DepthCharts[team]))
-        });
-    }
+  const url = `https://www.fantasyfootballnerd.com/service/depth-charts/json/6z6crnfu35gn`;
+  return dispatch => {
+    fetch(proxyurl + url)
+      .then(res => res.json())
+      .then(response => {
+        console.log(response.DepthCharts[team]);
+        dispatch(setCurrentPlayerDepthChart(response.DepthCharts[team]))
+      });
+  }
 }
 
 const getPlayerSchedule = team => {
-    const url = `https://www.fantasyfootballnerd.com/service/schedule/json/test/`;
-    return dispatch => {
-      fetch(proxyurl + url)
-        .then(res => res.json())
-        .then(response => {
-            let playerSchedule = filterByValue(response.Schedule, team);
-            console.log(playerSchedule);
-            dispatch(setCurrentPlayerSchedule(playerSchedule))
-        });
-    }
+  const url = `https://www.fantasyfootballnerd.com/service/schedule/json/6z6crnfu35gn/`;
+  return dispatch => {
+    fetch(proxyurl + url)
+      .then(res => res.json())
+      .then(response => {
+        let playerSchedule = filterByValue(response.Schedule, team);
+        console.log(playerSchedule);
+        dispatch(setCurrentPlayerSchedule(playerSchedule))
+      });
+  }
 }
 
 const getPlayerProjectStats = player => {
-    let pos = player.position;
-    const url = `https://www.fantasyfootballnerd.com/service/draft-projections/json/test/${pos}/`;
-    return dispatch => {
-      fetch(proxyurl + url)
-        .then(res => res.json())
-        .then(response => {
-          let projectedPlayerStats = filterByValue(response.DraftProjections, player.playerId)
-          dispatch(setCurrentPlayerProjections(projectedPlayerStats[0]))
-        });
-    }
+  let pos = player.position;
+  const url = `https://www.fantasyfootballnerd.com/service/draft-projections/json/6z6crnfu35gn/${pos}/`;
+  return dispatch => {
+    fetch(proxyurl + url)
+      .then(res => res.json())
+      .then(response => {
+        let projectedPlayerStats = filterByValue(response.DraftProjections, player.playerId)
+        dispatch(setCurrentPlayerProjections(projectedPlayerStats[0]))
+      });
+  }
 }
 
 

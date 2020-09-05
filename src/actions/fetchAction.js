@@ -16,7 +16,7 @@ refer back to these players on FETCH SUCCESS
 */
 
 function formatRespObj(playersResp) {
-    let formattedRespObj = {players: [], wr: [], qb: [], rb: [], te: [], def: [], k: []};
+    let formattedRespObj = { players: [], wr: [], qb: [], rb: [], te: [], def: [], k: [] };
 
     // Note, this can probably be prettier
     for (let i = 0; i < playersResp.length; i++) {
@@ -46,12 +46,12 @@ function formatRespObj(playersResp) {
     }
 
     formattedRespObj.players = [
-      ...formattedRespObj.wr,
-      ...formattedRespObj.qb,
-      ...formattedRespObj.rb,
-      ...formattedRespObj.te,
-      ...formattedRespObj.def,
-      ...formattedRespObj.k
+        ...formattedRespObj.wr,
+        ...formattedRespObj.qb,
+        ...formattedRespObj.rb,
+        ...formattedRespObj.te,
+        ...formattedRespObj.def,
+        ...formattedRespObj.k
     ]
     return formattedRespObj;
 }
@@ -63,24 +63,24 @@ export const fetchPlayers = () => {
     return dispatch => {
         const proxyurl = "https://cors-anywhere.herokuapp.com/";
         const urls = [
-          "https://www.fantasyfootballnerd.com/service/draft-rankings/json/test"
+            "https://www.fantasyfootballnerd.com/service/draft-rankings/json/6z6crnfu35gn"
         ];
         dispatch(fetchPlayersRequest())
-        urls.map(url=> (
+        urls.map(url => (
             fetch(proxyurl + url)
                 .then(res => res.json())
                 .then(response => {
-                    let top500Players = response.DraftRankings.slice(0,500);
+                    let top500Players = response.DraftRankings.slice(0, 500);
                     let formattedRespObj = formatRespObj(top500Players);
                     dispatch(loadPlayers(formattedRespObj));
-                    }
+                }
                 )
                 .catch(error => {
                     console.error('Error:', error);
                     dispatch(fetchPlayersError(error));
-                    }
+                }
                 )
-            )
+        )
         )
     }
 };
